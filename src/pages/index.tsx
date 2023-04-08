@@ -23,7 +23,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
      
-				<ColoredP>Some stuff will be here soon..sffsfsf.</ColoredP>
+				<ColoredP>Здесь скоро будет контент...</ColoredP>
     </>
   )
 }

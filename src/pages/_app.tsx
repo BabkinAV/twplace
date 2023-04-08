@@ -4,8 +4,8 @@ import { Roboto } from 'next/font/google';
 import '../styles/reset.css'
 
 const roboto = Roboto({
-  weight: ['400', '500', '700'],
-  style: ['normal', 'italic'],
+  weight: [ '400'],
+  style: ['normal',],
   subsets: ['latin', 'cyrillic'],
 });
 
