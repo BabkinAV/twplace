@@ -8,5 +8,7 @@ export const StyledHeader = styled.header`
 	padding-top: 50px;
 	color: green;
 	min-height: 200px;
+	display: flex;
+	align-items: start;
 	
 `
