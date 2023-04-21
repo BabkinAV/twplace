@@ -3,15 +3,21 @@ import styled from 'styled-components';
 export const StyledSearchForm = styled.form`
   display: flex;
   flex-direction: row;
-	min-width: 500px;
-	/* align-self: center; */
+  min-width: 500px;
+  /* align-self: center; */
 
   /* This bit draws the box around it */
-  border: solid;  border-image: linear-gradient(to right, #F64D4D, #4D5EF6) 1 / 2px;
+  border: solid;
+  border-image: linear-gradient(to right, #f64d4d, #4d5ef6) 1 / 2px;
 
   /* I've used padding so you can see the edges of the elements. */
-  padding: 1px;
-	height: 46px;
+  /* padding: 1px; */
+  height: 46px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-right: 3px;
+	font-size: 16px;
+
 
   input {
     /* Tell the input to use all the available space */
@@ -30,10 +36,5 @@ export const StyledSearchForm = styled.form`
     outline: 1px solid blue;
   }
 
-  button {
-    /* Just a little styling to make it pretty */
-    border: 1px solid blue;
-    background: blue;
-    color: white;
-  }
 `;
+ 
