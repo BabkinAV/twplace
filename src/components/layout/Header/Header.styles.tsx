@@ -10,5 +10,6 @@ export const StyledHeader = styled.header`
 	min-height: 200px;
 	display: flex;
 	align-items: start;
+	gap: 20px;
 	
 `
