@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledSearchForm = styled.form`
   display: flex;
   flex-direction: row;
-  min-width: 500px;
+  flex: 1 1 auto;
   /* align-self: center; */
 
   /* This bit draws the box around it */

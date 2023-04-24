@@ -9,4 +9,5 @@ export const StyledSearchButton = styled.button`
     rgba(255, 67, 67, 0.1) 121.33%
   );
   font-size: 16px;
+	cursor: pointer;
 `;

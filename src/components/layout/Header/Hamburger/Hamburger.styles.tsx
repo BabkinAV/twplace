@@ -11,7 +11,6 @@ export const StyledHamburger = styled.button`
   font-weight: inherit;
   line-height: inherit;
   padding: 0;
-	margin-right: 30px;
 	display: inline-block;
 	width: 77px;
 	height: 77px;

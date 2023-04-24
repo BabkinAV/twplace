@@ -8,14 +8,16 @@ const HeaderLink = ({
   altText,
   subTitle,
   badgeCounter,
+	badgeCoord
 }: {
   imageSrc: string;
   altText: string;
   subTitle: string;
   badgeCounter?: number;
+	badgeCoord?: [topOffset:number, rightOffset:number]
 }) => {
   return (
-    <StyledHeaderLink>
+    <StyledHeaderLink badgeCoord={badgeCoord}>
       <Image priority src={imageSrc} alt={altText} />
       {badgeCounter && (
         <div className="badgeCounter">

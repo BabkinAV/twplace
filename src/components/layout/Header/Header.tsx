@@ -13,30 +13,45 @@ import CartIcon from '../../assets/images/CartIcon.svg';
 const Header = () => {
   return (
     <StyledHeader>
-      <Hamburger />
+      <div className="container">
+        <div className="column-left">
+          <Hamburger />
 
-      <Logo />
-
-      <SearchForm />
-      <Link href="#">
-        <HeaderLink imageSrc={UserIcon} altText="User Icon" subTitle="Войти" />
-      </Link>
-      <Link href="#">
-        <HeaderLink
-          imageSrc={HeartIcon}
-          altText="Heart Icon"
-          subTitle="Избранное"
-          badgeCounter={1}
-        />
-      </Link>
-      <Link href="#">
-        <HeaderLink
-          imageSrc={CartIcon}
-          altText="Cart Icon"
-          subTitle="Корзина"
-          badgeCounter={1}
-        />
-      </Link>
+          <Logo />
+        </div>
+        <div className="column-right">
+          <div className="search_form-wrapper">
+            <SearchForm />
+          </div>
+          <div className='login_links-wrapper'>
+            <Link href="#">
+              <HeaderLink
+                imageSrc={UserIcon}
+                altText="User Icon"
+                subTitle="Войти"
+              />
+            </Link>
+            <Link href="#">
+              <HeaderLink
+                imageSrc={HeartIcon}
+                altText="Heart Icon"
+                subTitle="Избранное"
+                badgeCounter={1}
+                badgeCoord={[-3, 15]}
+              />
+            </Link>
+            <Link href="#">
+              <HeaderLink
+                imageSrc={CartIcon}
+                altText="Cart Icon"
+                subTitle="Корзина"
+                badgeCounter={1}
+                badgeCoord={[0, 10]}
+              />
+            </Link>
+          </div>
+        </div>
+      </div>
     </StyledHeader>
   );
 };
