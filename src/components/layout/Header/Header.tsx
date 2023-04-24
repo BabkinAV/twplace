@@ -9,11 +9,12 @@ import HeaderLink from './HeaderLink/HeaderLink';
 import UserIcon from '../../assets/images/UserIcon.svg';
 import HeartIcon from '../../assets/images/HeartIcon.svg';
 import CartIcon from '../../assets/images/CartIcon.svg';
+import Container from '../Container/Container';
 
 const Header = () => {
   return (
     <StyledHeader>
-      <div className="container">
+      <Container>
         <div className="column-left">
           <Hamburger />
 
@@ -51,7 +52,7 @@ const Header = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </Container>
     </StyledHeader>
   );
 };
