@@ -2,13 +2,7 @@ import Head from 'next/head';
 
 import styled from 'styled-components';
 
-const ColoredP = styled.p`
-	color: red;
-
-
-`;
-
-import Header from '../components/layout/Header/Header';
+import Hero from '../components/Hero/Hero';
 
 
 
@@ -23,7 +17,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
      
-				<ColoredP>Здесь скоро будет контент...</ColoredP>
+				<Hero />
     </>
   )
 }
