@@ -9,7 +9,6 @@ const Hamburger = () => {
   return (
     <StyledHamburger>
       <Image
-        priority
         src={hamburgerIcon}
         alt="hamburgerIcon"
       />

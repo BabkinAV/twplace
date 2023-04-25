@@ -18,7 +18,7 @@ const HeaderLink = ({
 }) => {
   return (
     <StyledHeaderLink badgeCoord={badgeCoord}>
-      <Image priority src={imageSrc} alt={altText} />
+      <Image src={imageSrc} alt={altText} />
       {badgeCounter && (
         <div className="badgeCounter">
           <span>{badgeCounter}</span>

@@ -17,6 +17,9 @@ export const StyledSearchForm = styled.form`
 	padding-bottom: 2px;
 	padding-right: 3px;
 	font-size: 16px;
+	background-color: #fff;
+	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
 
 
   input {

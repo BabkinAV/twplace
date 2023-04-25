@@ -17,7 +17,7 @@ export default class MyDocument extends Document {
         styles: (
           <>
             {initialProps.styles}
-            {/*👇 insert the collected styles to the html document*/}
+            {/* insert the collected styles to the html document*/}
             {sheet.getStyleElement()}
           </>
         ),
