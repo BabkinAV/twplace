@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledHero } from './Hero.styles';
 import Container from '../layout/Container/Container';
-import CategoriesNavigaion from './CategoriesNavigaion/CategoriesNavigaion';
+import CategoriesNavigaion from './CategoriesNavigaion/CategoriesNavigation';
 
 const Hero = () => {
   return (
