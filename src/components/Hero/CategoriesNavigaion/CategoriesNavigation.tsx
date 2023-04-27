@@ -25,7 +25,7 @@ const CategoriesNavigation = () => {
               <Link href="#">
                 <Image
                   src={el.categoryImg.categoryImagePath}
-                  alt={el.categoryImg.categoryImagePath}
+                  alt={el.categoryImg.altImageText}
                   width={20}
                   height={20}
                 />
