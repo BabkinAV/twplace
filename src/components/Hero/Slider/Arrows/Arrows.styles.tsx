@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import ArrowIcon from '../../../assets/images/arrow.png'
 
 export const StyledArrows = styled.div`
-  color: white;
+  color: black;
   display: flex;
-  font-size: 30px;
+  font-size: 15px;
   justify-content: space-between;
   height: 100%;
   position: absolute;
@@ -16,23 +16,24 @@ export const StyledArrows = styled.div`
   & .arrow {
     height: 30px;
     width: 30px;
+		background: ${props => props.theme.palette.backgroundGradient};
 
     &:hover {
       cursor: pointer;
     }
 
     &.left {
-      background-image: url(${ArrowIcon.src});
+      /* background-image: url(${ArrowIcon.src});
       background-repeat: no-repeat;
-      background-size: contain;
+      background-size: contain; */
       margin-left: 5px;
       transform: rotate(180deg);
     }
 
     &.right {
-      background-image: url(${ArrowIcon.src});
+      /* background-image: url(${ArrowIcon.src});
       background-repeat: no-repeat;
-      background-size: contain;
+      background-size: contain; */
       margin-right: 5px;
     }
   }

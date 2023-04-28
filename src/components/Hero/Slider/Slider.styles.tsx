@@ -9,19 +9,21 @@ export const StyledSlider = styled.div`
   & .slide-list {
     display: flex;
     height: 100%;
-    transition: transform 0.5s ease-in-out;
+    
     width: 100%;
 
     & .slide {
       flex: 1 0 100%;
       position: relative;
+			transition: transform 0.5s ease-in-out;
 
 			& .slide-image {
         display: flex;
         margin: 0 auto;
         max-height: 400px;
         width: 100%;
-        object-fit: contain;
+				height: 100%;
+        object-fit: cover;
       }
 
 
