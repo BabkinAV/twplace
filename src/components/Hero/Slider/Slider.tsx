@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { StyledSlider } from './Slider.styles';
 
 import Arrows from './Arrows/Arrows';
+import Arrow from './Arrow/Arrow';
 
 const sliderArr = [
   {
@@ -63,7 +64,11 @@ const Slider = () => {
 
   return (
     <StyledSlider>
-      <Arrows changeSlide={changeSlide} />
+			<div className='slider__arrows'>
+			<Arrow changeSlide={changeSlide} side='left' inactive onClick={() => changeSlide(-1)}/>
+			<Arrow changeSlide={changeSlide} side='right' onClick={() => changeSlide(1)}/>
+      {/* <Arrows changeSlide={changeSlide} /> */}
+			</div>
       <div
         className="slide-list"
         onTouchStart={handleTouchStart}
