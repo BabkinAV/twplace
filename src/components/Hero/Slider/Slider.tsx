@@ -3,7 +3,6 @@ import React, { useEffect, useState, TouchEvent } from 'react';
 import Image from 'next/image';
 import { StyledSlider } from './Slider.styles';
 
-import Arrows from './Arrows/Arrows';
 import Arrow from './Arrow/Arrow';
 
 const sliderArr = [

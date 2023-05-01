@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyledArrow } from './Arrow.styles';
-import ArrowIcon from '../Arrows/ArrowIcon/ArrowIcon';
+import ArrowIcon from './ArrowIcon/ArrowIcon';
 
 const Arrow = ({
   side,
