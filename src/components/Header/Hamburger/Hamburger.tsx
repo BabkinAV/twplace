@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-import hamburgerIcon from '../../../assets/images/hamburgerIcon.svg'
+import hamburgerIcon from '../../assets/images/hamburgerIcon.svg'
 
 import { StyledHamburger } from './Hamburger.styles';
 

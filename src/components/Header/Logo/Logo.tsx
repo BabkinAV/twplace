@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyledLogo } from './Logo.styles';
-import Link from 'next/link';
 import Image from 'next/image';
-import logoImg from '../../../assets/images/logo.png';
+import logoImg from '../../assets/images/logo.png';
 
 const Logo = () => {
   return (

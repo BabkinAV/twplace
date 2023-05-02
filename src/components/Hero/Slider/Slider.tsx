@@ -1,5 +1,5 @@
 // Inspired by the article: https://betterprogramming.pub/how-to-implement-star-rating-widget-with-react-js-and-optimize-it-e3625f3104f
-import React, { useEffect, useState, TouchEvent } from 'react';
+import React, { useState, TouchEvent } from 'react';
 import Image from 'next/image';
 import { StyledSlider } from './Slider.styles';
 

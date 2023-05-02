@@ -6,10 +6,10 @@ import Logo from './Logo/Logo';
 import SearchForm from './Search/SearchForm';
 import HeaderLink from './HeaderLink/HeaderLink';
 
-import UserIcon from '../../assets/images/UserIcon.svg';
-import HeartIcon from '../../assets/images/HeartIcon.svg';
-import CartIcon from '../../assets/images/CartIcon.svg';
-import Container from '../Container/Container';
+import UserIcon from '../assets/images/UserIcon.svg';
+import HeartIcon from '../assets/images/HeartIcon.svg';
+import CartIcon from '../assets/images/CartIcon.svg';
+import Container from '../layout/Container/Container';
 
 const Header = () => {
   return (
