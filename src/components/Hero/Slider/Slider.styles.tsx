@@ -11,9 +11,9 @@ export const StyledSlider = styled.div`
     display: flex;
     font-size: 15px;
     justify-content: space-between;
-    height: 100%;
     position: absolute;
-    top: 30%;
+    top: 50%;
+		transform: translateY(-50%);
     width: 100%;
     z-index: 1;
   }

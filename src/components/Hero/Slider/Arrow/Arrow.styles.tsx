@@ -14,12 +14,12 @@ export const StyledArrow = styled.div.attrs(({side, inactive} : {side: string, i
   }
 
   &.left {
-    margin-left: 5px;
+    margin-left: 17px;
     transform: rotate(180deg);
   }
 
   &.right {
-    margin-right: 5px;
+    margin-right: 17px;
   }
 	&.inactive {
 		background: linear-gradient(96.78deg, rgba(246, 77, 77, 0.2) -57.09%, rgba(77, 94, 246, 0.2) 101.17%);

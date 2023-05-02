@@ -10,7 +10,7 @@ const Arrow = ({
   side: 'left' | 'right';
   changeSlide: (direction: number) => void;
 	inactive?: boolean
-	onClick: () => void
+	onClick?: () => void 
 }) => {
   return (
     <StyledArrow side={side} inactive={inactive} onClick={onClick}>
