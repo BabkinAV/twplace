@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledHero } from './Hero.styles';
 import StyledRowDoubleColumns from '../layout/RowDoubleColumns/RowDoubleColumns';
-import CategoriesNavigaion from './CategoriesNavigaion/CategoriesNavigation';
+import CategoriesNavigation from './CategoriesNavigaion/CategoriesNavigation';
 import Slider from './Slider/Slider';
 
 const Hero = () => {
@@ -9,7 +9,7 @@ const Hero = () => {
     <StyledHero>
       <StyledRowDoubleColumns>
         <div className="column-left">
-          <CategoriesNavigaion />
+          <CategoriesNavigation />
         </div>
         <div className="column-right">
           <Slider />

@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
 export const StyledRowDoubleColumns = styled.div`
+  display: flex;
+  align-items: center;
+  max-width: 1366px;
 
   width: 100%;
   justify-content: space-between;
-  margin-left: auto;
-  margin-right: auto;
+  
   padding-left: 43px;
   padding-right: 43px;
 
