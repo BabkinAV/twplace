@@ -9,12 +9,12 @@ import HeaderLink from './HeaderLink/HeaderLink';
 import UserIcon from '../assets/images/UserIcon.svg';
 import HeartIcon from '../assets/images/HeartIcon.svg';
 import CartIcon from '../assets/images/CartIcon.svg';
-import Container from '../layout/Container/Container';
+import StyledRowDoubleColumns from '../layout/RowDoubleColumns/RowDoubleColumns';
 
 const Header = () => {
   return (
     <StyledHeader>
-      <Container>
+      <StyledRowDoubleColumns>
         <div className="column-left">
           <Hamburger />
 
@@ -52,7 +52,7 @@ const Header = () => {
             </Link>
           </div>
         </div>
-      </Container>
+      </StyledRowDoubleColumns>
     </StyledHeader>
   );
 };
