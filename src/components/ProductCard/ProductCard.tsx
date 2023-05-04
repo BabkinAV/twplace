@@ -18,23 +18,28 @@ const ProductCard = ({
 }) => {
   return (
     <StyledProductCard>
-      <div className="product-card__image-wrapper">
+      <div className="image-wrapper">
         <Image
           src={productImgLink}
           width={160}
-          height={160}
+					height={160}
           alt={productTitle}
         />
-				<span>{discount}</span>
+        <span>{discount}</span>
       </div>
-      <div className="product-card__price-wrapper">
-        <p className="product-card__price">
-          <ins>{priceCurrent} ₽</ins>
+      <div className="price-wrapper">
+        <p className="price">
+          {priceOld ? (
+            <>
+              <ins>{priceCurrent} ₽</ins>
+              <del>{priceOld} ₽</del>
+            </>
+          ) : (
+            <span>{priceCurrent}</span>
+          )}
         </p>
       </div>
-			<div className='product-card__title-wrapper'>
-				{productTitle}
-			</div>
+      <div className="title-wrapper">{productTitle}</div>
     </StyledProductCard>
   );
 };

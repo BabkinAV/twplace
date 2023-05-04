@@ -7,6 +7,8 @@ export const  StyledFeaturedProducts = styled.section`
 
 	& .products__gallery {
 		padding-top: 15px;
+		display: flex;
+		justify-content: space-between;
 	}
-	
+
 `

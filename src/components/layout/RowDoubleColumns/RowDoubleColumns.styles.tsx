@@ -8,9 +8,6 @@ export const StyledRowDoubleColumns = styled.div`
   width: 100%;
   justify-content: space-between;
   
-  padding-left: 43px;
-  padding-right: 43px;
-
   & .column-left {
     display: flex;
     max-width: 296px;
