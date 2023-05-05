@@ -6,9 +6,10 @@ export const StyledProductCard = styled.div`
   display: flex;
   flex-direction: column;
 
-  border: 1px solid orange;
   width: 182px;
   padding: 10px;
+
+	box-shadow: 0px 4px 80px rgba(0, 0, 0, 0.12);
 
   & .image-wrapper {
     position: relative;

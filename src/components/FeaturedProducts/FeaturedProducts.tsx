@@ -14,7 +14,7 @@ const FeaturedProducts = () => {
     <StyledFeaturedProducts>
       <h3 className="products__title">Успей купить</h3>
       <div className="products__gallery">
-        {featuredProductsArr.slice(0, 6).map(product => (
+        {featuredProductsArr.map(product => (
           <ProductCard
             key={product.id}
             productImgLink={product.imageLink}

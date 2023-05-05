@@ -7,8 +7,11 @@ export const  StyledFeaturedProducts = styled.section`
 
 	& .products__gallery {
 		padding-top: 15px;
-		display: flex;
+		display: grid;
+		grid-template-columns: repeat(6, min-content);
+		/* Adjus template  with media queries here */
 		justify-content: space-between;
+		row-gap: 26px;
 	}
 
 `
