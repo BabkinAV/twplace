@@ -30,9 +30,20 @@ export const StyledProductCard = styled.div`
         font-size: 10px;
         line-height: 12px;
 				color: ${props => props.theme.palette.colors.grey100};
-				background-image: url(${LinePrice.src});
-				background-position: center;
-				background-repeat: no-repeat;
+			
+				position: relative;
+
+					.price-line {
+						position: absolute;
+						top: 0;
+						left: 0;
+						display: inline-block;
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+
+
+					}
 
       }
     }

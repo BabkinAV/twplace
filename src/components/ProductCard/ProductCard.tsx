@@ -3,6 +3,8 @@ import Image from 'next/image';
 
 import { StyledProductCard } from './ProductCard.styles';
 
+import LinePrice from '../assets/images/LinePrice.svg';
+
 const ProductCard = ({
   productImgLink,
   productTitle,
@@ -22,7 +24,7 @@ const ProductCard = ({
         <Image
           src={productImgLink}
           width={160}
-					height={160}
+          height={160}
           alt={productTitle}
         />
         <span>{discount}</span>
@@ -32,7 +34,12 @@ const ProductCard = ({
           {priceOld ? (
             <>
               <ins>{priceCurrent} ₽</ins>
-              <del>{priceOld} ₽</del>
+              <del>
+                {priceOld} ₽
+                 <span className="price-line">
+                  <Image src={LinePrice} alt="strikethrough line" fill/>
+                </span> 
+              </del>
             </>
           ) : (
             <span>{priceCurrent}</span>
