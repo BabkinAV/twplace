@@ -21,13 +21,15 @@ const ProductCard = ({
   return (
     <StyledProductCard>
       <div className="image-wrapper">
+        {discount && <div className='discount-wrapper'>
+					<p className="product-discount">-{discount}%</p>
+				</div>}
         <Image
           src={productImgLink}
           width={160}
           height={160}
           alt={productTitle}
         />
-        <span>{discount}</span>
       </div>
       <div className="price-wrapper">
         <p className="price">
@@ -36,9 +38,9 @@ const ProductCard = ({
               <ins>{priceCurrent} ₽</ins>
               <del>
                 {priceOld} ₽
-                 <span className="price-line">
-                  <Image src={LinePrice} alt="strikethrough line" fill/>
-                </span> 
+                <span className="price-line">
+                  <Image src={LinePrice} alt="strikethrough line" fill />
+                </span>
               </del>
             </>
           ) : (

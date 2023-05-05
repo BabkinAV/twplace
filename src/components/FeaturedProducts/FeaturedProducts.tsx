@@ -21,6 +21,7 @@ const FeaturedProducts = () => {
             productTitle={product.title}
             priceCurrent={product.price.priceCurrent}
 						priceOld={product.price.priceOld}
+						discount={product.price.discount}
 						
           />
         ))}
