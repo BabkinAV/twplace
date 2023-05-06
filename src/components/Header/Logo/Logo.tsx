@@ -7,7 +7,6 @@ const Logo = () => {
   return (
     <StyledLogo>
       <Image src={logoImg} alt="TWplace" />
-      <h1>Товары из Тайваня от производителя</h1>
     </StyledLogo>
   );
 };

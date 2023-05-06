@@ -12,10 +12,14 @@ export const StyledProductCard = styled.div`
 
 
 	box-shadow: 0px 4px 80px rgba(0, 0, 0, 0.12);
+	position: relative;
+	z-index: 5;
+	background-color: #fff;
 
-	/* &:hover {
-		transform: scale(1.1);
-	} */
+	&:hover {
+		transform: scale(1.2);
+		z-index: 10;
+	}
 
   & .image-wrapper {
     position: relative;
@@ -80,4 +84,7 @@ export const StyledProductCard = styled.div`
 		margin-bottom: 9px;
 
   }
+	& .button-wrapper {
+		margin-top: auto;
+	}
 `;
