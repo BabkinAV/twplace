@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import LinePrice from '../assets/images/LinePrice.svg';
 
 export const StyledProductCard = styled.div`
   display: flex;
@@ -9,7 +8,14 @@ export const StyledProductCard = styled.div`
   width: 182px;
   padding: 10px;
 
+	transition: transform 0.2s;
+
+
 	box-shadow: 0px 4px 80px rgba(0, 0, 0, 0.12);
+
+	/* &:hover {
+		transform: scale(1.1);
+	} */
 
   & .image-wrapper {
     position: relative;
@@ -71,5 +77,7 @@ export const StyledProductCard = styled.div`
     font-weight: 300;
     font-size: 12px;
     line-height: 15px;
+		margin-bottom: 9px;
+
   }
 `;

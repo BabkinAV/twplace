@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { StyledProductCard } from './ProductCard.styles';
 
 import LinePrice from '../assets/images/LinePrice.svg';
+import AddToCartButton from './AddToCartButton/AddToCartButton';
 
 const ProductCard = ({
   productImgLink,
@@ -21,9 +22,11 @@ const ProductCard = ({
   return (
     <StyledProductCard>
       <div className="image-wrapper">
-        {discount && <div className='discount-wrapper'>
-					<p className="product-discount">-{discount}%</p>
-				</div>}
+        {discount && (
+          <div className="discount-wrapper">
+            <p className="product-discount">-{discount}%</p>
+          </div>
+        )}
         <Image
           src={productImgLink}
           width={160}
@@ -49,6 +52,9 @@ const ProductCard = ({
         </p>
       </div>
       <div className="title-wrapper">{productTitle}</div>
+      <div className="button-wrapper">
+        <AddToCartButton />
+      </div>
     </StyledProductCard>
   );
 };
