@@ -16,10 +16,20 @@ export const StyledProductCard = styled.div`
 	z-index: 5;
 	background-color: #fff;
 
-	&:hover {
-		transform: scale(1.2);
-		z-index: 10;
+	@media (hover) {
+		.button-wrapper {
+			opacity: 0;
+			transition: opacity 0.2s;
+		}
+		&:hover {
+			transform: scale(1.2);
+			z-index: 10;
+			.button-wrapper {
+				opacity: 1;
+			}
+		}
 	}
+
 
   & .image-wrapper {
     position: relative;
