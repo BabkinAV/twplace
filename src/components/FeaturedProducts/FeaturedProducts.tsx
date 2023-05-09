@@ -6,6 +6,7 @@ import { Product } from '../../types';
 import ProductCard from '../ProductCard/ProductCard';
 
 import featuredProductsData from '../../../data/dummyFeaturedProductsList.json';
+import ButtonOutlined from '../Buttons/ButtonOutlined/ButtonOutlined';
 
 const featuredProductsArr: Product[] = featuredProductsData;
 
@@ -26,6 +27,9 @@ const FeaturedProducts = () => {
           />
         ))}
       </div>
+			<div className='products__see-more'>
+					<ButtonOutlined />
+			</div>
     </StyledFeaturedProducts>
   );
 };

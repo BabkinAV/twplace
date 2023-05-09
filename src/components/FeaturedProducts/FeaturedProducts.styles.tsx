@@ -14,4 +14,9 @@ export const  StyledFeaturedProducts = styled.section`
 		row-gap: 26px;
 	}
 
+	& .products__see-more {
+		padding-top: 24px;
+		padding-bottom: 11px;
+	}
+
 `
