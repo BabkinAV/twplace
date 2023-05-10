@@ -86,7 +86,6 @@ export const StyledProductCard = styled.div`
   }
 
   & .title-wrapper {
-    font-family: 'Roboto';
     font-style: normal;
     font-weight: 300;
     font-size: 12px;

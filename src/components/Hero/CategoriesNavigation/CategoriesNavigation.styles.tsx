@@ -54,7 +54,7 @@ export const StyledCategoriesNavigation = styled.nav`
         }
 
 				&:hover span {
-					font-weight: 600;
+					font-weight: 700;
 				}
       }
     }

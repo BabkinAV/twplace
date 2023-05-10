@@ -28,7 +28,7 @@ const FeaturedProducts = () => {
         ))}
       </div>
 			<div className='products__see-more'>
-					<ButtonOutlined />
+				<ButtonOutlined className='products__see-more__btn'>Все товары</ButtonOutlined>
 			</div>
     </StyledFeaturedProducts>
   );

@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { StyledButtonOutlined } from './ButtonOutlined.styles';
 
-const ButtonOutlined = () => {
-  return <StyledButtonOutlined>ButtonOutlined</StyledButtonOutlined>;
+const ButtonOutlined = ({
+  children,
+  className,
+}: {
+  children?: ReactNode;
+  className?: string;
+}) => {
+  return (
+    <StyledButtonOutlined className={className}>
+      {children}
+    </StyledButtonOutlined>
+  );
 };
 
 export default ButtonOutlined;

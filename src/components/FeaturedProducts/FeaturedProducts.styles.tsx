@@ -17,6 +17,9 @@ export const  StyledFeaturedProducts = styled.section`
 	& .products__see-more {
 		padding-top: 24px;
 		padding-bottom: 11px;
+		text-align: right;
+
 	}
+
 
 `
