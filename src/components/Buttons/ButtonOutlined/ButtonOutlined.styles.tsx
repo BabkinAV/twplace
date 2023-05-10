@@ -23,7 +23,7 @@ export const StyledButtonOutlined = styled.button`
   &:hover,
   &:focus,
   &:focus-visible,
-	&:active {
+  &:active {
     box-shadow: none;
     color: white;
   }
