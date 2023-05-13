@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { StyledSeoText } from './SeoText.styles';
-import DownArrow from '../assets/downArrow.svg';
+import DownArrow from '../assets/images/downArrow.svg';
 import Image from 'next/image';
 
 const SeoText = () => {

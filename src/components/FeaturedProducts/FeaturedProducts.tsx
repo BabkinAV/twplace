@@ -6,7 +6,7 @@ import { Product } from '../../types';
 import ProductCard from '../ProductCard/ProductCard';
 
 import featuredProductsData from '../../../data/dummyFeaturedProductsList.json';
-import ButtonOutlined from '../Buttons/ButtonOutlined/ButtonOutlined';
+import ButtonOutlined from '../UI/Buttons/ButtonOutlined/ButtonOutlined';
 
 const featuredProductsArr: Product[] = featuredProductsData;
 

@@ -3,6 +3,10 @@ import { StyledFooter } from './Footer.styles';
 import Container from '../Container/Container';
 import Link from 'next/link';
 import FormFooter from './FormFooter/FormFooter';
+import VkIcon from '../../assets/images/VkIcon.svg';
+import FacebookIcon from '../../assets/images/FacebookIcon.svg';
+import InstagramIcon from '../../assets/images/InstagramIcon.svg';
+import ImageLink from '../../UI/ImageLink/ImageLink';
 
 const Footer = () => {
   return (
@@ -93,6 +97,41 @@ const Footer = () => {
           </div>
           <div className="footer__form-wrap">
             <FormFooter />
+            <div className='footer__social'>
+              <h4 className="footer__heading">Мы в соцсетях</h4>
+              <div className="footer__icons-wrap">
+                <ul className="footer__social-list">
+                  <li className="footer__social-item">
+                    <ImageLink
+                      src={VkIcon}
+                      altText="VK Icon"
+                      href="#"
+                      linkClassName="footer__social-link"
+                      imageClassName="footer__social-image"
+                    />
+                  </li>
+                  <li className="footer__social-item">
+                    <ImageLink
+                      src={FacebookIcon}
+                      altText="Facebook Icon"
+                      href="#"
+                      linkClassName="footer__social-link"
+                      imageClassName="footer__social-image"
+                    />
+                  </li>
+                  <li className="footer__social-item">
+                    <ImageLink
+                      src={InstagramIcon}
+                      altText="Instagram Icon"
+                      href="#"
+                      linkClassName="footer__social-link"
+                      imageClassName="footer__social-image"
+                    />
+                  </li>
+                </ul>
+                <div className="footer__copyright">&copy;2023, Andrey Babkin</div>
+              </div>
+            </div>
           </div>
         </div>
       </Container>

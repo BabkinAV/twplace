@@ -10,19 +10,17 @@ export const StyledFooter = styled.footer`
     display: flex;
 
     .footer__links {
-      border: 1px solid yellow;
       flex-grow: 1;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
     }
 
     .footer__form-wrap {
-      border: 1px solid orange;
       min-width: 400px;
     }
 
     .footer__list-wrap {
-			margin-top: 5px;
+      margin-top: 5px;
       .footer__heading {
         font-weight: 500;
         font-size: 16px;
@@ -32,6 +30,30 @@ export const StyledFooter = styled.footer`
         font-weight: 400;
         font-size: 14px;
         line-height: 27px;
+      }
+    }
+
+    .footer__form {
+      margin-bottom: 22px;
+    }
+
+    .footer__heading {
+      margin-bottom: 20px;
+    }
+
+    .footer__icons-wrap {
+      display: flex;
+      justify-content: space-between;
+
+      .footer__social-list {
+        display: flex;
+
+        .footer__social-item {
+          margin-right: 33px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
       }
     }
   }

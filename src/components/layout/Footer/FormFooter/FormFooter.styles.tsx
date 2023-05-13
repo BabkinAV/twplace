@@ -39,5 +39,8 @@ export const StyledFormFooter = styled.form`
         outline: none;
       }
     }
+		
   }
+
+	
 `;
