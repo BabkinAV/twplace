@@ -17,14 +17,15 @@ const Header = () => {
       <StyledRowDoubleColumns>
         <div className="column-left">
           <Hamburger />
-
-          <Logo />
+          <Link href="/">
+            <Logo />
+          </Link>
         </div>
         <div className="column-right">
           <div className="search_form-wrapper">
             <SearchForm />
           </div>
-          <div className='login_links-wrapper'>
+          <div className="login_links-wrapper">
             <Link href="#">
               <HeaderLink
                 imageSrc={UserIcon}
@@ -41,7 +42,7 @@ const Header = () => {
                 badgeCoord={[-3, 15]}
               />
             </Link>
-            <Link href="#">
+            <Link href="/cart">
               <HeaderLink
                 imageSrc={CartIcon}
                 altText="Cart Icon"
