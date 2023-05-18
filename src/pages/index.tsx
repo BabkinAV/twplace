@@ -7,9 +7,9 @@ import SeoText from '../components/SeoText/SeoText';
 export default function Home() {
   return (
     <>
-      <Hero />
+       <Hero />
       <FeaturedProducts />
-      <SeoText />
+      <SeoText /> 
     </>
   );
 }
