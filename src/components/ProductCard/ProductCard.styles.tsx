@@ -20,6 +20,7 @@ export const StyledProductCard = styled.div`
 		.button-wrapper {
 			opacity: 0;
 			transition: opacity 0.2s;
+			min-height: 32px;
 		}
 		&:hover {
 			transform: scale(1.2);

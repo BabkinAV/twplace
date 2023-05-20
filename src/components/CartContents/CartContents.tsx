@@ -15,7 +15,14 @@ const CartContents = () => {
           ))}
         </div>
       </div>
-			<Subtotal className="cart__subtotal" />
+      <Subtotal
+        className="cart__subtotal subtotal"
+        subTotal={3998}
+        productsInCartNumber={2}
+				discount={1000}
+				// deliveryAddr='ул. Ленина'
+				
+      />
     </StyledCartContents>
   );
 };

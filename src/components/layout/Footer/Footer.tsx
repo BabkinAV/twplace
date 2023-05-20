@@ -97,7 +97,7 @@ const Footer = () => {
           </div>
           <div className="footer__form-wrap">
             <FormFooter />
-            <div className='footer__social'>
+            <div className="footer__social">
               <h4 className="footer__heading">Мы в соцсетях</h4>
               <div className="footer__icons-wrap">
                 <ul className="footer__social-list">
@@ -129,7 +129,9 @@ const Footer = () => {
                     />
                   </li>
                 </ul>
-                <div className="footer__copyright">&copy;2023, Andrey Babkin</div>
+                <div className="footer__copyright">
+                  &copy;{new Date().getFullYear()}, Andrey Babkin
+                </div>
               </div>
             </div>
           </div>

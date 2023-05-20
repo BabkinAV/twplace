@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { StyledProductCard } from './ProductCard.styles';
 
 import LinePrice from '../assets/images/LinePrice.svg';
-import AddToCartButton from './AddToCartButton/AddToCartButton';
+import ButtonFilled from '../UI/Buttons/AddToCartButton/ButtonFilled';
 
 const ProductCard = ({
   productImgLink,
@@ -53,9 +53,10 @@ const ProductCard = ({
       </div>
       <div className="title-wrapper">{productTitle}</div>
       <div className="button-wrapper">
-        <AddToCartButton />
+        <ButtonFilled>В корзину</ButtonFilled>
       </div>
     </StyledProductCard>
+		
   );
 };
 
