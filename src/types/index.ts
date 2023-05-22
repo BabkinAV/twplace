@@ -12,5 +12,16 @@ export interface Product {
 		priceOld?: number,
 		discount?: number
 	},
-	imageLink: string
+	imageLink: string,
+	color: string,
+	size: Size
+}
+
+
+export enum Size {
+	S = 'S',
+	M = 'M',
+	L = 'L',
+	XL = 'XL'
+
 }

@@ -9,7 +9,7 @@ import featuredProductsData from '../../../data/dummyFeaturedProductsList.json';
 import ButtonOutlined from '../UI/Buttons/ButtonOutlined/ButtonOutlined';
 import Link from 'next/link';
 
-const featuredProductsArr: Product[] = featuredProductsData;
+const featuredProductsArr = featuredProductsData as Product[];
 
 const FeaturedProducts = () => {
   return (

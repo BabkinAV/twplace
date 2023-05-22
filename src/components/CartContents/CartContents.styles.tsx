@@ -6,9 +6,6 @@ export const StyledCartContents = styled.div`
 		padding-bottom: 20px;
 		gap: 70px;
 
-		.cart__items-wrapper {
-			border: 1px solid blue;
-		}
 
 		.cart__subtotal {
 			border: 1px solid orange;

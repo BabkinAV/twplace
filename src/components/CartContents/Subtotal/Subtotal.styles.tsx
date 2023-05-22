@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledSubtotal = styled.div`
-  padding: 10px 18px;
+  padding: 10px 18px 15px;
 
   .subtotal__item,
   .subtotal__heading {
