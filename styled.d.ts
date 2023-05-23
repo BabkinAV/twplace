@@ -8,7 +8,7 @@ declare module "styled-components" {
 		palette: {
 			backgroundGradient: string
 			colors: {
-				red: string;
+				red100: string;
 				grey100: string;
 			}
 		}

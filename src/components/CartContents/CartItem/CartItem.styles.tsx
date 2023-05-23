@@ -4,19 +4,27 @@ export const StyledCartItem = styled.div`
   display: flex;
   justify-content: flex-start;
 
-	border: 1px solid blue;
+  border: 1px solid blue;
 
+  margin-bottom: 26px;
 
-	margin-bottom: 26px;
+  padding: 27px 27px 27px 16px;
 
-	padding: 27px 27px 27px 16px;
+  & .cartItem__content-wrapper {
+    flex: 1 1 auto;
+  }
 
+  .cartItem__checkbox-wrapper {
+		margin-right: 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+  }
 
-
-	& .cartItem__content {
-		flex: 1 1 auto;
+	.deleteButton__wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
 	}
-
-	
 
 `;

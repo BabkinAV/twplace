@@ -62,7 +62,7 @@ export const StyledProductCard = styled.div`
         font-weight: 500;
         font-size: 14px;
         line-height: 16px;
-        color: ${props => props.theme.palette.colors.red};
+        color: ${props => props.theme.palette.colors.red100};
       }
       del {
         text-decoration: none;
