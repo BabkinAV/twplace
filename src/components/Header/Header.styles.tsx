@@ -15,4 +15,8 @@ export const StyledHeader = styled.header`
     justify-content: space-between;
     gap: 50px;
   }
+
+	.logo__link {
+		display: flex;
+	}
 `;

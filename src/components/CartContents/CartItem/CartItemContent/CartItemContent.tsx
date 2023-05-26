@@ -3,6 +3,7 @@ import { StyledCartItemContent } from './CartItemContent.styles';
 import { Product } from '../../../../types';
 import Image from 'next/image';
 import LinePrice from '../../../assets/images/LinePrice.svg'
+import Counter from '../../../UI/Counter/Counter';
 
 const CartItemContent = ({
   productItem,
@@ -49,9 +50,7 @@ const CartItemContent = ({
         <div className="cartItem__heading">
           <span>Количество</span>
         </div>
-        <div className="cartItem__text">
-          <span>{cartProductQuantity}</span>
-        </div>
+					<Counter count={cartProductQuantity} />
       </div>
       <div className="cartItem__price-wrapper">
         <div className="cartItem__heading">

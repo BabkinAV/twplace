@@ -17,7 +17,7 @@ const Header = () => {
       <StyledRowDoubleColumns>
         <div className="column-left">
           <Hamburger />
-          <Link href="/">
+          <Link href="/" className='logo__link'>
             <Logo />
           </Link>
         </div>
