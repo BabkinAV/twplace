@@ -30,8 +30,34 @@ export const StyledCartItemContent = styled.div`
     margin-right: 50px;
   }
 
-  .cartItem__prices {
+  .cartItem__price {
     display: flex;
     flex-direction: column;
+		align-items: flex-start;
+		ins {
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+      }
+      del {
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+        color: ${props => props.theme.palette.colors.grey100};
+
+        position: relative;
+
+        .price-line {
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
   }
 `;

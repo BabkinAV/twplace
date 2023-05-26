@@ -5,9 +5,11 @@ import { StyledCheckbox } from './Checkbox.styles';
 const Checkbox = ({
   checked,
   handleChange,
+	label
 }: {
   checked?: boolean;
   handleChange?: React.ChangeEventHandler<HTMLInputElement>;
+	label?: string
 }) => {
   return (
     <StyledCheckbox>
@@ -18,7 +20,7 @@ const Checkbox = ({
           onChange={handleChange}
           className="checkbox__input"
         />
-				Some label
+				{label}
       </label>
     </StyledCheckbox>
   );

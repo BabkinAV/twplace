@@ -2,6 +2,7 @@ import React from 'react';
 import { StyledCartItemContent } from './CartItemContent.styles';
 import { Product } from '../../../../types';
 import Image from 'next/image';
+import LinePrice from '../../../assets/images/LinePrice.svg'
 
 const CartItemContent = ({
   productItem,
@@ -56,9 +57,18 @@ const CartItemContent = ({
         <div className="cartItem__heading">
           <span>Цена</span>
         </div>
-        <div className="cartItem__text cartItem__prices">
-          <span>{productItem.price.priceCurrent}₽</span>
-          <span>{productItem.price.priceOld}₽</span>
+        <div className="cartItem__text cartItem__price">
+					{
+						productItem.price.priceOld ? (<>
+              <ins>{productItem.price.priceCurrent} ₽</ins>
+              <del>
+                {productItem.price.priceCurrent} ₽
+                <span className="price-line">
+                  <Image src={LinePrice} alt="strikethrough line" fill />
+                </span>
+              </del>
+            </>) : (null)
+					}
         </div>
       </div>
     </StyledCartItemContent>
