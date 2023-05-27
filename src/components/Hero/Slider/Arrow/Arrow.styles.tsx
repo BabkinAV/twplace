@@ -5,7 +5,7 @@ export const StyledArrow = styled.div.attrs(({side, inactive} : {side: string, i
 }))<{side: string, inactive?: boolean}>`
   width: 50px;
   height: 50px;
-  background: ${props => props.theme.palette.backgroundGradient};
+  background: ${props => props.theme.palette.gradients.backgroundGradient};
   position: relative;
   border-radius: 200px;
 

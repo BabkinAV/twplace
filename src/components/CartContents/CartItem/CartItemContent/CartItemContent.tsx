@@ -14,7 +14,6 @@ const CartItemContent = ({
 }) => {
   const [productCount, setProductCount] = useState(1);
   const handleCountModify = (modifier: 'inc' | 'dec' | number) => {
-    console.log('fired!');
     if (typeof modifier === 'number') {
       setProductCount(modifier);
     }

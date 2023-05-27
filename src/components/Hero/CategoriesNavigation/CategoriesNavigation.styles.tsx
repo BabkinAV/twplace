@@ -7,7 +7,7 @@ export const StyledCategoriesNavigation = styled.nav`
 
   .nav__header {
     padding: 10px 80px 10px 60px;
-    background: ${props => props.theme.palette.backgroundGradient};
+    background: ${props => props.theme.palette.gradients.backgroundGradient};
     color: #fff;
     font-weight: 500;
     font-size: 14px;

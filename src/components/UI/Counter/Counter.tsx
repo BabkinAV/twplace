@@ -11,7 +11,6 @@ const Counter = ({
   countModify: (modifier: 'inc' | 'dec' | number) => void;
 }) => {
   const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     if (e.target.value === '') {
       countModify(0);
     }

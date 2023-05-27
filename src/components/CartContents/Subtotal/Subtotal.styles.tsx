@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledSubtotal = styled.div`
   padding: 10px 18px 15px;
+	box-shadow:  ${props => props.theme.palette.shadows.borderShadow};
 
   .subtotal__item,
   .subtotal__heading {

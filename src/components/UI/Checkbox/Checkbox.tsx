@@ -5,14 +5,16 @@ import { StyledCheckbox } from './Checkbox.styles';
 const Checkbox = ({
   checked,
   handleChange,
-	label
+	label,
+	className
 }: {
   checked?: boolean;
   handleChange?: React.ChangeEventHandler<HTMLInputElement>;
-	label?: string
+	label?: string,
+	className?: string
 }) => {
   return (
-    <StyledCheckbox>
+    <StyledCheckbox className={className}>
       <label className="checkbox__label">
         <input
           type="checkbox"

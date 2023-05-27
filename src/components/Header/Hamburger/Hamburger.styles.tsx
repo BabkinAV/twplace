@@ -14,7 +14,7 @@ export const StyledHamburger = styled.button`
 	display: inline-block;
 	width: 77px;
 	height: 77px;
-	background: ${props => props.theme.palette.backgroundGradient};
+	background: ${props => props.theme.palette.gradients.backgroundGradient};
 
 /* main shadow */
 	box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.12);

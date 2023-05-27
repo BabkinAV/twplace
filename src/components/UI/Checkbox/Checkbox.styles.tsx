@@ -2,11 +2,14 @@ import styled from 'styled-components';
 import CheckIcon from '../../assets/images/CheckIcon.svg';
 
 export const StyledCheckbox = styled.div`
+	line-height: 20px;
   .checkbox__label {
     display: inline-block;
     cursor: pointer;
     position: relative;
-    font-size: 11px;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 20px;
 
     .checkbox__input {
       /* Add if not using autoprefixer */
@@ -34,16 +37,14 @@ export const StyledCheckbox = styled.div`
         content: url(${CheckIcon.src});
         border: solid 2px transparent;
 
-        background-image: ${props => props.theme.palette.backgroundGradient},
-          ${props => props.theme.palette.backgroundGradient};
+        background-image: ${props => props.theme.palette.gradients.backgroundGradient},
+          ${props => props.theme.palette.gradients.backgroundGradient};
 
         background-origin: border-box;
         background-clip: content-box, border-box;
         box-shadow: 2px 1000px 1px #fff inset;
-				vertical-align: top;
-				padding-bottom: 3px;
-				
-
+        vertical-align: top;
+        padding-bottom: 3px;
       }
     }
   }

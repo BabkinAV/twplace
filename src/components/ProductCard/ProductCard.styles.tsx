@@ -11,7 +11,7 @@ export const StyledProductCard = styled.div`
 	transition: transform 0.2s;
 
 
-	box-shadow: 0px 4px 80px rgba(0, 0, 0, 0.12);
+	box-shadow:  ${props => props.theme.palette.shadows.borderShadow};
 	position: relative;
 	z-index: 5;
 	background-color: #fff;

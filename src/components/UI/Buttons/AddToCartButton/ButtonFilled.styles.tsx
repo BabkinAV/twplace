@@ -5,7 +5,7 @@ export const StyledButtonFilled = styled.button`
   border: 0;
   width: 100%;
 	height: 100%;
-  background: ${props => props.theme.palette.backgroundGradient};
+  background: ${props => props.theme.palette.gradients.backgroundGradient};
   color: #fff;
   cursor: pointer;
   position: relative;

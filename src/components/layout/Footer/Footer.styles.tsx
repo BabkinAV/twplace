@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledFooter = styled.footer`
-  background: ${props => props.theme.palette.backgroundGradient};
+  background: ${props => props.theme.palette.gradients.backgroundGradient};
   color: #fff;
   padding-top: 40px;
   padding-bottom: 40px;

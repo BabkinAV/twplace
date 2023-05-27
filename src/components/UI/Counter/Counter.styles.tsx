@@ -4,8 +4,8 @@ export const StyledCounter = styled.div`
   display: flex;
 
   border: 1px solid transparent;
-  background-image: ${props => props.theme.palette.backgroundGradient},
-    ${props => props.theme.palette.backgroundGradient};
+  background-image: ${props => props.theme.palette.gradients.backgroundGradient},
+    ${props => props.theme.palette.gradients.backgroundGradient};
 
   background-origin: border-box;
   background-clip: content-box, border-box;
@@ -32,7 +32,7 @@ export const StyledCounter = styled.div`
 
   .counter__btn {
     border-radius: 0;
-    background: ${props => props.theme.palette.gradientPink};
+    background: ${props => props.theme.palette.gradients.gradientPink};
     color: inherit;
     border: none;
     padding: 0 6px;
