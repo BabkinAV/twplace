@@ -11,7 +11,7 @@ import productsData from '../../../../data/dummyFeaturedProductsList.json';
 
 const productsArr = productsData as Product[];
 
-const CartItem = () => {
+const CartItem = ({cartItem}: {cartItem: {product: Product, quantity: number}}) => {
   return (
     <StyledCartItem>
       <div className="cartItem__checkbox-wrapper">
@@ -19,8 +19,8 @@ const CartItem = () => {
       </div>
       <div className="cartItem__content-wrapper">
         <CartItemContent
-          productItem={productsArr[0]}
-          cartProductQuantity={23}
+          productItem={cartItem.product}
+          cartProductQuantity={cartItem.quantity}
         />
       </div>
       <div className="deleteButton__wrapper">

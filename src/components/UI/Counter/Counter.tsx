@@ -8,19 +8,49 @@ const Counter = ({
   countModify,
 }: {
   count: number;
-  countModify?: (direction: 'inc' | 'dec' | number) => void;
+  countModify: (modifier: 'inc' | 'dec' | number) => void;
 }) => {
+  const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+    if (e.target.value === '') {
+      countModify(0);
+    }
+
+    const newValue = parseInt(e.target.value);
+    console.log(newValue);
+    if (newValue > 0) {
+      countModify(newValue);
+    }
+  };
   return (
     <StyledCounter>
-      <button className="counter__btn counter__btn--dec">
+      <button
+        className="counter__btn counter__btn--dec"
+        onClick={() => {
+          countModify('dec');
+        }}
+      >
         <Image
           src={ArrowVerticalIcon}
           alt="Decrease quantity"
           className="counter__arrow counter__arrow--down"
         />
       </button>
-      <input type="text" defaultValue={1} className="counter__input" />
-      <button className="counter__btn counter__btn--inc">
+      <input
+        type="number"
+        value={count > 0 ? count : ''}
+        className="counter__input"
+        onChange={handleValueChange}
+        min="0"
+        max="99"
+        step={1}
+      />
+      <button
+        className="counter__btn counter__btn--inc"
+        onClick={() => {
+          countModify('inc');
+        }}
+      >
         <Image
           src={ArrowVerticalIcon}
           alt="Increase quantity"

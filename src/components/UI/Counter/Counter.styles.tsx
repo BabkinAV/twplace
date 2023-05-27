@@ -20,6 +20,14 @@ export const StyledCounter = styled.div`
     line-height: 16px;
     padding-top: 14px;
     padding-bottom: 14px;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+		appearance: inherit;
+		-moz-appearance: textfield;
+
   }
 
   .counter__btn {

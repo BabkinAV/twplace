@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyledCartItemContent } from './CartItemContent.styles';
 import { Product } from '../../../../types';
 import Image from 'next/image';
-import LinePrice from '../../../assets/images/LinePrice.svg'
+import LinePrice from '../../../assets/images/LinePrice.svg';
 import Counter from '../../../UI/Counter/Counter';
 
 const CartItemContent = ({
@@ -12,6 +12,18 @@ const CartItemContent = ({
   productItem: Product;
   cartProductQuantity: number;
 }) => {
+  const [productCount, setProductCount] = useState(1);
+  const handleCountModify = (modifier: 'inc' | 'dec' | number) => {
+    console.log('fired!');
+    if (typeof modifier === 'number') {
+      setProductCount(modifier);
+    }
+    if (modifier === 'inc') {
+      setProductCount(prevState => prevState + 1);
+    } else if (modifier === 'dec' && productCount > 1) {
+      setProductCount(prevState => prevState - 1);
+    }
+  };
   return (
     <StyledCartItemContent>
       <div className="cartItem__image-wrapper">
@@ -50,24 +62,24 @@ const CartItemContent = ({
         <div className="cartItem__heading">
           <span>Количество</span>
         </div>
-					<Counter count={cartProductQuantity} />
+        <Counter count={productCount} countModify={handleCountModify} />
       </div>
       <div className="cartItem__price-wrapper">
         <div className="cartItem__heading">
           <span>Цена</span>
         </div>
         <div className="cartItem__text cartItem__price">
-					{
-						productItem.price.priceOld ? (<>
+          {productItem.price.priceOld ? (
+            <>
               <ins>{productItem.price.priceCurrent} ₽</ins>
               <del>
-                {productItem.price.priceCurrent} ₽
+                {productItem.price.priceOld} ₽
                 <span className="price-line">
                   <Image src={LinePrice} alt="strikethrough line" fill />
                 </span>
               </del>
-            </>) : (null)
-					}
+            </>
+          ) : null}
         </div>
       </div>
     </StyledCartItemContent>
