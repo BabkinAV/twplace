@@ -17,6 +17,11 @@ export interface Product {
 	size: Size
 }
 
+export interface CartProduct  {
+	product: Product,
+	quantity: number
+}
+
 
 export enum Size {
 	S = 'S',

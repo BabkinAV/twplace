@@ -6,12 +6,15 @@ import IconButton from '../../UI/Buttons/IconButton/IconButton';
 import { Product } from '../../../types';
 
 import TrashIcon from '../../assets/images/TrashIcon.svg';
+import { useCart } from '../../../../store/context/cartContext';
 
-import productsData from '../../../../data/dummyFeaturedProductsList.json';
+const CartItem = ({
+  cartItem,
+}: {
+  cartItem: { product: Product; quantity: number };
+}) => {
+  const { deleteCartProduct } = useCart();
 
-const productsArr = productsData as Product[];
-
-const CartItem = ({cartItem}: {cartItem: {product: Product, quantity: number}}) => {
   return (
     <StyledCartItem>
       <div className="cartItem__checkbox-wrapper">
@@ -24,7 +27,11 @@ const CartItem = ({cartItem}: {cartItem: {product: Product, quantity: number}}) 
         />
       </div>
       <div className="deleteButton__wrapper">
-        <IconButton imageSrc={TrashIcon} title="Trash" />
+        <IconButton
+          imageSrc={TrashIcon}
+          title="Trash"
+          onClick={() => deleteCartProduct(cartItem.product.id)}
+        />
       </div>
     </StyledCartItem>
   );

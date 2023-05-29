@@ -1,10 +1,10 @@
-import React from 'react';
 import Image from 'next/image';
 
 import { StyledProductCard } from './ProductCard.styles';
 
 import LinePrice from '../assets/images/LinePrice.svg';
 import ButtonFilled from '../UI/Buttons/AddToCartButton/ButtonFilled';
+import { useCart } from '../../../store/context/cartContext';
 
 const ProductCard = ({
   productImgLink,
@@ -12,13 +12,16 @@ const ProductCard = ({
   priceCurrent,
   priceOld,
   discount,
+  productId,
 }: {
   productImgLink: string;
   productTitle: string;
   priceCurrent: number;
   priceOld?: number;
   discount?: number;
+  productId: string;
 }) => {
+  const { addCartProduct } = useCart();
   return (
     <StyledProductCard>
       <div className="image-wrapper">
@@ -53,10 +56,11 @@ const ProductCard = ({
       </div>
       <div className="title-wrapper">{productTitle}</div>
       <div className="button-wrapper">
-        <ButtonFilled>В корзину</ButtonFilled>
+        <ButtonFilled onClick={() => addCartProduct(productId)}>
+          В корзину
+        </ButtonFilled>
       </div>
     </StyledProductCard>
-		
   );
 };
 

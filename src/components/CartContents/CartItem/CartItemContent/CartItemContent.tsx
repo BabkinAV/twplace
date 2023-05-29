@@ -61,7 +61,7 @@ const CartItemContent = ({
         <div className="cartItem__heading">
           <span>Количество</span>
         </div>
-        <Counter count={productCount} countModify={handleCountModify} />
+        <Counter count={cartProductQuantity} countModify={handleCountModify} />
       </div>
       <div className="cartItem__price-wrapper">
         <div className="cartItem__heading">

@@ -1,17 +1,18 @@
-import React from 'react';
 import Link from 'next/link';
-import { StyledHeader } from './Header.styles';
 import Hamburger from './Hamburger/Hamburger';
+import { StyledHeader } from './Header.styles';
+import HeaderLink from './HeaderLink/HeaderLink';
 import Logo from './Logo/Logo';
 import SearchForm from './Search/SearchForm';
-import HeaderLink from './HeaderLink/HeaderLink';
 
-import UserIcon from '../assets/images/UserIcon.svg';
-import HeartIcon from '../assets/images/HeartIcon.svg';
+import { useCart } from '../../../store/context/cartContext';
 import CartIcon from '../assets/images/CartIcon.svg';
+import HeartIcon from '../assets/images/HeartIcon.svg';
+import UserIcon from '../assets/images/UserIcon.svg';
 import StyledRowDoubleColumns from '../layout/RowDoubleColumns/RowDoubleColumns';
 
 const Header = () => {
+	const {cartProducts} = useCart()
   return (
     <StyledHeader>
       <StyledRowDoubleColumns>
@@ -47,7 +48,7 @@ const Header = () => {
                 imageSrc={CartIcon}
                 altText="Cart Icon"
                 subTitle="Корзина"
-                badgeCounter={1}
+                badgeCounter={cartProducts.length}
                 badgeCoord={[0, 10]}
               />
             </Link>

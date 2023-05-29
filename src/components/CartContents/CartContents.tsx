@@ -1,34 +1,31 @@
-import React, { useState } from 'react';
+import { useCart } from '../../../store/context/cartContext';
+import Checkbox from '../UI/Checkbox/Checkbox';
 import { StyledCartContents } from './CartContents.styles';
 import CartItem from './CartItem/CartItem';
 import Subtotal from './Subtotal/Subtotal';
-import { Product } from '../../types';
-import productsData from '../../../data/dummyFeaturedProductsList.json';
-import Checkbox from '../UI/Checkbox/Checkbox';
-
-const productsArr = productsData as Product[];
-
-const demoData = productsArr.slice(0, 3).map((el, idx) => {
-  return { product: el, quantity: 1 };
-});
 
 const CartContents = () => {
-  const [cartProducts, setCartProducts] = useState(demoData);
+  const { cartProducts } = useCart();
 
   return (
     <StyledCartContents className="cart">
-      <h2 className='cart__header'>Корзина</h2>
+      <h2 className="cart__header">Корзина</h2>
       <div className="cart__select-all select-all">
         <Checkbox label="Выбрать все" className="select-all__checkbox" />
       </div>
       <div className="cart__contents">
-        <div className="cart__items-wrapper">
-          <div className="cart__items">
-            {cartProducts.map((el, idx) => (
-              <CartItem cartItem={el} key={el.product.id} />
-            ))}
+        {cartProducts.length > 0 ? (
+          <div className="cart__items-wrapper">
+            <div className="cart__items">
+              {cartProducts.map((el, idx) => (
+                <CartItem cartItem={el} key={el.product.id} />
+              ))}
+            </div>
           </div>
-        </div>
+        ) : (
+          <p>В корзине сейчас пусто</p>
+        )}
+
         <div className="cart__subtotal--wrapper">
           <Subtotal
             className="cart__subtotal subtotal"
