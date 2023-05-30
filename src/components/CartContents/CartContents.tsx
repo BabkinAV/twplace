@@ -29,9 +29,22 @@ const CartContents = () => {
         <div className="cart__subtotal--wrapper">
           <Subtotal
             className="cart__subtotal subtotal"
-            subTotal={3998}
-            productsInCartNumber={2}
-            discount={1000}
+            subTotal={cartProducts.reduce(
+              (prev, curr) =>
+                prev + curr.product.price.priceCurrent * curr.quantity,
+              0
+            )}
+            productsInCartNumber={cartProducts.length}
+            discount={cartProducts.reduce(
+              (prev, curr) =>
+                prev +
+                (curr.product.price.priceOld
+                  ? curr.product.price.priceOld -
+                    curr.product.price.priceCurrent
+                  : 0) *
+                  curr.quantity,
+              0
+            )}
             // deliveryAddr='ул. Ленина'
           />
         </div>

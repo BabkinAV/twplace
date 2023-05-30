@@ -39,7 +39,7 @@ const Header = () => {
                 imageSrc={HeartIcon}
                 altText="Heart Icon"
                 subTitle="Избранное"
-                badgeCounter={1}
+                badgeCounter={0}
                 badgeCoord={[-3, 15]}
               />
             </Link>

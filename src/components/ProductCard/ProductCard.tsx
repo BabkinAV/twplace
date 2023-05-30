@@ -50,7 +50,7 @@ const ProductCard = ({
               </del>
             </>
           ) : (
-            <span>{priceCurrent}</span>
+            <span>{priceCurrent} ₽</span>
           )}
         </p>
       </div>
