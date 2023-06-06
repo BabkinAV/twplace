@@ -6,7 +6,7 @@ import productsData from '../../data/dummyFeaturedProductsList.json';
 
 const productsArr = productsData as Product[];
 
-const demoData = productsArr.slice(0, 3).map((el, idx) => {
+const demoData = productsArr.slice(0, 3).map((el, _idx) => {
   return { product: el, quantity: 1 };
 });
 
@@ -17,7 +17,7 @@ const modifyProductArrQuantity = (
   modifier: 'inc' | 'dec' | number
 ) => {
   return cartArr.map(cartProduct => {
-    if (cartProduct.product.id === changedProductId) {
+    if (cartProduct.product._id === changedProductId) {
       let newQuantity;
       if (typeof modifier !== 'number') {
         if (modifier === 'inc') {
@@ -46,17 +46,17 @@ const CartContext = createContext<cartContextType>({
 export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cartProducts, setCartProducts] = useState<CartProduct[]>(demoData);
+  const [cartProducts, setCartProducts] = useState<CartProduct[]>([]);
 
-  const addCartProduct = (id: string) => {
-    if (cartProducts.find(cartItem => cartItem.product.id === id)) {
+  const addCartProduct = (_id: string) => {
+    if (cartProducts.find(cartItem => cartItem.product._id === _id)) {
       setCartProducts(prevCart => {
-        let newCart = modifyProductArrQuantity(prevCart, id, 'inc');
+        let newCart = modifyProductArrQuantity(prevCart, _id, 'inc');
         return newCart;
       });
     } else {
       setCartProducts(prevCart => {
-        const newCartItem = productsArr.find(product => product.id === id);
+        const newCartItem = productsArr.find(product => product._id === _id);
         if (newCartItem) {
           return [...prevCart, { product: newCartItem, quantity: 1 }];
         } else {
@@ -67,17 +67,17 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const deleteCartProduct = (id: string) => {
+  const deleteCartProduct = (_id: string) => {
     setCartProducts(prevCartArr =>
-      prevCartArr.filter(cartProductsItem => cartProductsItem.product.id !== id)
+      prevCartArr.filter(cartProductsItem => cartProductsItem.product._id !== _id)
     );
   };
   const changeCartProductQuantity = (
-    id: string,
+    _id: string,
     dir: 'inc' | 'dec' | number
   ) => {
     setCartProducts(prev => {
-      return modifyProductArrQuantity(prev, id, dir);
+      return modifyProductArrQuantity(prev, _id, dir);
     });
   };
   const value = {

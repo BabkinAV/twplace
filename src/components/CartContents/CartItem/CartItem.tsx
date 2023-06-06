@@ -30,7 +30,7 @@ const CartItem = ({
         <IconButton
           imageSrc={TrashIcon}
           title="Trash"
-          onClick={() => deleteCartProduct(cartItem.product.id)}
+          onClick={() => deleteCartProduct(cartItem.product._id)}
         />
       </div>
     </StyledCartItem>

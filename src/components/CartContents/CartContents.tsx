@@ -18,7 +18,7 @@ const CartContents = () => {
           <div className="cart__items-wrapper">
             <div className="cart__items">
               {cartProducts.map((el, idx) => (
-                <CartItem cartItem={el} key={el.product.id} />
+                <CartItem cartItem={el} key={el.product._id} />
               ))}
             </div>
           </div>

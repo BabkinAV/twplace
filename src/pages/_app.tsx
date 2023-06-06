@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app';
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import { ThemeProvider } from 'styled-components';
 import { defaultTheme } from '../components/themes/defaultTheme';
 import Layout from '../components/layout/Layout/Layout';
@@ -11,6 +12,11 @@ const roboto = Roboto({
   weight: ['300', '400', '500', '700', '900'],
   style: ['normal', 'italic'],
   subsets: ['latin', 'cyrillic'],
+});
+
+const client = new ApolloClient({
+  uri: 'http://localhost:8080/graphql',
+  cache: new InMemoryCache(),
 });
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -27,13 +33,15 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ThemeProvider theme={defaultTheme}>
+      <ApolloProvider client={client}>
+        <ThemeProvider theme={defaultTheme}>
           <CartProvider>
             <Layout>
               <Component {...pageProps} />
             </Layout>
           </CartProvider>
-      </ThemeProvider>
+        </ThemeProvider>
+      </ApolloProvider>
     </>
   );
 }

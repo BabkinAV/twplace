@@ -54,7 +54,7 @@ const CartItemContent = ({
         <Counter
           count={cartProductQuantity}
           countModify={modifier =>
-            changeCartProductQuantity(productItem.id, modifier)
+            changeCartProductQuantity(productItem._id, modifier)
           }
         />
       </div>
