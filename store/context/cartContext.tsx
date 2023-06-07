@@ -2,13 +2,11 @@ import { ReactNode, createContext, useContext, useState } from 'react';
 import { CartProduct, Product } from '../../src/types';
 import { cartContextType } from '../../src/types/cartContextType';
 
+import { ApolloError, useLazyQuery } from '@apollo/client';
 import productsData from '../../data/dummyFeaturedProductsList.json';
+import { GET_PRODUCT } from '../../src/queries/productQueries';
 
-const productsArr = productsData as Product[];
 
-const demoData = productsArr.slice(0, 3).map((el, _idx) => {
-  return { product: el, quantity: 1 };
-});
 
 // helper function to update quantity of product in array
 const modifyProductArrQuantity = (
@@ -21,12 +19,12 @@ const modifyProductArrQuantity = (
       let newQuantity;
       if (typeof modifier !== 'number') {
         if (modifier === 'inc') {
-					newQuantity = cartProduct.quantity + 1
-				} else if (modifier === 'dec' && cartProduct.quantity > 1) {
-					newQuantity = cartProduct.quantity - 1
-				} else {
-					newQuantity = cartProduct.quantity
-				}
+          newQuantity = cartProduct.quantity + 1;
+        } else if (modifier === 'dec' && cartProduct.quantity > 1) {
+          newQuantity = cartProduct.quantity - 1;
+        } else {
+          newQuantity = cartProduct.quantity;
+        }
       } else {
         newQuantity = modifier;
       }
@@ -47,6 +45,10 @@ export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartProducts, setCartProducts] = useState<CartProduct[]>([]);
+  const [getProduct, { loading, error, data }] = useLazyQuery<
+    { product: Product },
+    { productId: string }
+  >(GET_PRODUCT);
 
   const addCartProduct = (_id: string) => {
     if (cartProducts.find(cartItem => cartItem.product._id === _id)) {
@@ -55,21 +57,34 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         return newCart;
       });
     } else {
-      setCartProducts(prevCart => {
-        const newCartItem = productsArr.find(product => product._id === _id);
-        if (newCartItem) {
-          return [...prevCart, { product: newCartItem, quantity: 1 }];
-        } else {
-          console.log('No such product!');
-          return prevCart;
-        }
-      });
+      getProduct({
+        variables: {
+          productId: _id,
+        },
+      })
+        .then(result => {
+          if (result.data) {
+            let newCartProduct = result.data.product;
+
+            setCartProducts(prevCart => [
+              ...prevCart,
+              { product: newCartProduct, quantity: 1 },
+            ]);
+          } else {
+            console.log('failed to fetch product!');
+          }
+        })
+        .catch((error: ApolloError) => {
+          console.log('Error occured!', error.message);
+        });
     }
   };
 
   const deleteCartProduct = (_id: string) => {
     setCartProducts(prevCartArr =>
-      prevCartArr.filter(cartProductsItem => cartProductsItem.product._id !== _id)
+      prevCartArr.filter(
+        cartProductsItem => cartProductsItem.product._id !== _id
+      )
     );
   };
   const changeCartProductQuantity = (

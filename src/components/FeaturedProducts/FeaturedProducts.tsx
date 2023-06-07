@@ -1,4 +1,4 @@
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { Product } from '../../types';
 import { StyledFeaturedProducts } from './FeaturedProducts.styles';
 
@@ -14,8 +14,6 @@ const FeaturedProducts = () => {
   const { loading, error, data } = useQuery<{ products: Product[] }>(
     GET_PRODUCTS
   );
-
-  console.log(data);
 
   return (
     <StyledFeaturedProducts>
