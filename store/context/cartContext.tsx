@@ -3,7 +3,6 @@ import { CartProduct, Product } from '../../src/types';
 import { cartContextType } from '../../src/types/cartContextType';
 
 import { ApolloError, useLazyQuery } from '@apollo/client';
-import productsData from '../../data/dummyFeaturedProductsList.json';
 import { GET_PRODUCT } from '../../src/queries/productQueries';
 
 
@@ -12,7 +11,7 @@ import { GET_PRODUCT } from '../../src/queries/productQueries';
 const modifyProductArrQuantity = (
   cartArr: CartProduct[],
   changedProductId: string,
-  modifier: 'inc' | 'dec' | number
+  modifier: 'inc' | 'dec' | number	
 ) => {
   return cartArr.map(cartProduct => {
     if (cartProduct.product._id === changedProductId) {

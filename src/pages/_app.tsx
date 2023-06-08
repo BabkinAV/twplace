@@ -15,13 +15,14 @@ const roboto = Roboto({
 });
 
 const client = new ApolloClient({
-  uri: 'http://localhost:8080/graphql',
+  uri: process.env.NEXT_PUBLIC_BACKEND_ADDRESS,
   cache: new InMemoryCache(),
 });
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
+		
       <style jsx global>{`
         html {
           font-family: ${roboto.style.fontFamily};
