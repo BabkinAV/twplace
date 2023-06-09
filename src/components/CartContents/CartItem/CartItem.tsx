@@ -1,19 +1,25 @@
-import React from 'react';
+import { Product } from '../../../types';
+import IconButton from '../../UI/Buttons/IconButton/IconButton';
 import Checkbox from '../../UI/Checkbox/Checkbox';
 import { StyledCartItem } from './CartItem.styles';
 import CartItemContent from './CartItemContent/CartItemContent';
-import IconButton from '../../UI/Buttons/IconButton/IconButton';
-import { Product } from '../../../types';
 
-import TrashIcon from '../../assets/images/TrashIcon.svg';
 import { useCart } from '../../../../store/context/cartContext';
+import { cartProductsVar } from '../../../cache/cache';
+import TrashIcon from '../../assets/images/TrashIcon.svg';
 
 const CartItem = ({
   cartItem,
 }: {
   cartItem: { product: Product; quantity: number };
 }) => {
-  const { deleteCartProduct } = useCart();
+  const handleDeleteCartProduct = (productId: string) => {
+    cartProductsVar(
+      cartProductsVar().filter(
+        cartProductsItem => cartProductsItem.product._id !== productId
+      )
+    );
+  };
 
   return (
     <StyledCartItem>
@@ -30,7 +36,7 @@ const CartItem = ({
         <IconButton
           imageSrc={TrashIcon}
           title="Trash"
-          onClick={() => deleteCartProduct(cartItem.product._id)}
+          onClick={() => handleDeleteCartProduct(cartItem.product._id)}
         />
       </div>
     </StyledCartItem>

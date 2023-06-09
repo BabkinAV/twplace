@@ -1,3 +1,4 @@
+import { useReactiveVar } from '@apollo/client';
 import Link from 'next/link';
 import Hamburger from './Hamburger/Hamburger';
 import { StyledHeader } from './Header.styles';
@@ -5,14 +6,15 @@ import HeaderLink from './HeaderLink/HeaderLink';
 import Logo from './Logo/Logo';
 import SearchForm from './Search/SearchForm';
 
-import { useCart } from '../../../store/context/cartContext';
+import { cartProductsVar } from '../../cache/cache';
 import CartIcon from '../assets/images/CartIcon.svg';
 import HeartIcon from '../assets/images/HeartIcon.svg';
 import UserIcon from '../assets/images/UserIcon.svg';
 import StyledRowDoubleColumns from '../layout/RowDoubleColumns/RowDoubleColumns';
 
 const Header = () => {
-	const {cartProducts} = useCart()
+	const cartProducts = useReactiveVar(cartProductsVar);
+
   return (
     <StyledHeader>
       <StyledRowDoubleColumns>

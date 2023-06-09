@@ -13,6 +13,7 @@ const ProductCard = ({
   priceOld,
   discount,
   productId,
+	onAddToCartClick
 }: {
   productImgLink: string;
   productTitle: string;
@@ -20,8 +21,9 @@ const ProductCard = ({
   priceOld?: number;
   discount?: number;
   productId: string;
+  onAddToCartClick: () => void;
 }) => {
-  const { addCartProduct } = useCart();
+  // const { addCartProduct } = useCart();
   return (
     <StyledProductCard>
       <div className="image-wrapper">
@@ -56,7 +58,7 @@ const ProductCard = ({
       </div>
       <div className="title-wrapper">{productTitle}</div>
       <div className="button-wrapper">
-        <ButtonFilled onClick={() => addCartProduct(productId)}>
+        <ButtonFilled onClick={onAddToCartClick}>
           В корзину
         </ButtonFilled>
       </div>

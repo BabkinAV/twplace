@@ -1,11 +1,13 @@
-import { useCart } from '../../../store/context/cartContext';
+import { useReactiveVar } from '@apollo/client';
+import { cartProductsVar } from '../../cache/cache';
 import Checkbox from '../UI/Checkbox/Checkbox';
 import { StyledCartContents } from './CartContents.styles';
 import CartItem from './CartItem/CartItem';
 import Subtotal from './Subtotal/Subtotal';
 
+
 const CartContents = () => {
-  const { cartProducts } = useCart();
+	const cartProducts = useReactiveVar(cartProductsVar);
 
   return (
     <StyledCartContents className="cart">

@@ -1,12 +1,13 @@
+import { ApolloClient, ApolloProvider } from '@apollo/client';
 import type { AppProps } from 'next/app';
-import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
-import { ThemeProvider } from 'styled-components';
-import { defaultTheme } from '../components/themes/defaultTheme';
-import Layout from '../components/layout/Layout/Layout';
 import { Roboto } from 'next/font/google';
-import '../styles/reset.css';
 import Head from 'next/head';
+import { ThemeProvider } from 'styled-components';
 import { CartProvider } from '../../store/context/cartContext';
+import { cache } from '../cache/cache';
+import Layout from '../components/layout/Layout/Layout';
+import { defaultTheme } from '../components/themes/defaultTheme';
+import '../styles/reset.css';
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700', '900'],
@@ -16,8 +17,10 @@ const roboto = Roboto({
 
 const client = new ApolloClient({
   uri: process.env.NEXT_PUBLIC_BACKEND_ADDRESS,
-  cache: new InMemoryCache(),
+  cache,
 });
+
+
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
