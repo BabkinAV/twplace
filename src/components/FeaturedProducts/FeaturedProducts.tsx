@@ -7,12 +7,12 @@ import ProductCard from '../ProductCard/ProductCard';
 
 import ButtonOutlined from '../UI/Buttons/ButtonOutlined/ButtonOutlined';
 
-import { GET_PRODUCTS } from '../../queries/productQueries';
+import { GET_FEATURED_PRODUCTS } from '../../queries/productQueries';
 import { cartProductsVar } from '../../cache/cache';
 
 const FeaturedProducts = () => {
-  const { loading, error, data } = useQuery<{ products: Product[] }>(
-    GET_PRODUCTS
+  const { loading, error, data } = useQuery<{ featuredProducts: Product[] }>(
+    GET_FEATURED_PRODUCTS
   );
   const handleAddToCart = (product: Product) => {
 		// TODO: Add duplicates handling logic here
@@ -26,7 +26,7 @@ const FeaturedProducts = () => {
         {loading && <p>Загрузка...</p>}
         {!loading &&
           !error &&
-          data?.products.map(product => (
+          data?.featuredProducts.map(product => (
             <ProductCard
               productImgLink={product.imageLink}
               productTitle={product.title}

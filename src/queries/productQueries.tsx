@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
-export const GET_PRODUCTS = gql`
-  query getProducts {
-    products {
+export const GET_FEATURED_PRODUCTS = gql`
+  query getFeaturedProducts {
+    featuredProducts {
       _id
       title
       price {

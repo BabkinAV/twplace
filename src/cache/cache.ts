@@ -8,6 +8,7 @@ export const cartProductsVar = makeVar<CartProduct[]>([]);
 // and creating @isInCart Local-only field for ProductItems 
 
 
+
 export const cache = new InMemoryCache({
   typePolicies: {
     Query: {
