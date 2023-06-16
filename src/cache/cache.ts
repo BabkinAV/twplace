@@ -1,13 +1,23 @@
-import { CartProduct } from '../types';
-import {makeVar, InMemoryCache, } from '@apollo/client'
-
+import { CartProduct, Product } from '../types';
+import { makeVar, InMemoryCache } from '@apollo/client';
 
 export const cartProductsVar = makeVar<CartProduct[]>([]);
 
-// TODO: consider changing cartProduct type to => {cartItemId, quantity}
-// and creating @isInCart Local-only field for ProductItems 
+export const addToCartProducts = (product: Product) => {
+  const cartProducts = [...cartProductsVar()];
+  const existingProductIdx = cartProducts.findIndex(
+    el => el.product._id === product._id
+  );
 
-
+  if (existingProductIdx !== -1) {
+    cartProducts[existingProductIdx].quantity = ++cartProducts[
+      existingProductIdx
+    ].quantity;
+  } else {
+    cartProducts.push({ product, quantity: 1 });
+  }
+  cartProductsVar(cartProducts);
+};
 
 export const cache = new InMemoryCache({
   typePolicies: {
@@ -16,9 +26,9 @@ export const cache = new InMemoryCache({
         cartItems: {
           read() {
             return cartProductsVar();
-          }
-        }
-      }
-    }
-  }
+          },
+        },
+      },
+    },
+  },
 });

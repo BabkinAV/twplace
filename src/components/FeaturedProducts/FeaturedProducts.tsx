@@ -8,16 +8,12 @@ import ProductCard from '../ProductCard/ProductCard';
 import ButtonOutlined from '../UI/Buttons/ButtonOutlined/ButtonOutlined';
 
 import { GET_FEATURED_PRODUCTS } from '../../queries/productQueries';
-import { cartProductsVar } from '../../cache/cache';
+import { addToCartProducts } from '../../cache/cache';
 
 const FeaturedProducts = () => {
   const { loading, error, data } = useQuery<{ featuredProducts: Product[] }>(
     GET_FEATURED_PRODUCTS
   );
-  const handleAddToCart = (product: Product) => {
-		// TODO: Add duplicates handling logic here
-    cartProductsVar([...cartProductsVar(), { product, quantity: 1 }]);
-  };
 
   return (
     <StyledFeaturedProducts>
@@ -35,7 +31,7 @@ const FeaturedProducts = () => {
               discount={product.price.discount}
               productId={product._id}
               key={product._id}
-              onAddToCartClick={() => handleAddToCart(product)}
+              onAddToCartClick={() => addToCartProducts(product)}
             />
           ))}
       </div>
