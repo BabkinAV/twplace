@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import { useCart } from '../../../../../store/context/cartContext';
 import { Product } from '../../../../types';
 import Counter from '../../../UI/Counter/Counter';
 import LinePrice from '../../../assets/images/LinePrice.svg';
 import { StyledCartItemContent } from './CartItemContent.styles';
+import { cartProductsVar } from '../../../../cache/cache';
 
 const CartItemContent = ({
   productItem,
@@ -12,7 +12,21 @@ const CartItemContent = ({
   productItem: Product;
   cartProductQuantity: number;
 }) => {
-  const { changeCartProductQuantity } = useCart();
+	// TODO: Handle increase by number and below 0:
+  const handleChangeProductQuantity = (
+    _id: string,
+    dir: 'inc' | 'dec' | number
+  ) => {
+    const cartProdtucts = cartProductsVar();
+    cartProductsVar(
+      cartProdtucts.map(el =>
+        el.product._id === _id
+          ? { ...el, quantity: dir === 'inc' ? ++el.quantity : --el.quantity }
+          : el
+      )
+    );
+  };
+
   return (
     <StyledCartItemContent>
       <div className="cartItem__image-wrapper">
@@ -54,7 +68,7 @@ const CartItemContent = ({
         <Counter
           count={cartProductQuantity}
           countModify={modifier =>
-            changeCartProductQuantity(productItem._id, modifier)
+            handleChangeProductQuantity(productItem._id, modifier)
           }
         />
       </div>
