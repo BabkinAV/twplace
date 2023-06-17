@@ -6,7 +6,7 @@ import HeaderLink from './HeaderLink/HeaderLink';
 import Logo from './Logo/Logo';
 import SearchForm from './Search/SearchForm';
 
-import { cartProductsVar } from '../../cache/cache';
+import { cartProductsVar } from '../../cache/cartProducts/cartProductsVar';
 import CartIcon from '../assets/images/CartIcon.svg';
 import HeartIcon from '../assets/images/HeartIcon.svg';
 import UserIcon from '../assets/images/UserIcon.svg';

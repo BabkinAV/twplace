@@ -1,5 +1,5 @@
 import { useReactiveVar } from '@apollo/client';
-import { cartProductsVar } from '../../cache/cache';
+import { cartProductsVar } from '../../cache/cartProducts/cartProductsVar';
 import Checkbox from '../UI/Checkbox/Checkbox';
 import { StyledCartContents } from './CartContents.styles';
 import CartItem from './CartItem/CartItem';

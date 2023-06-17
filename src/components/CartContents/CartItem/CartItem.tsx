@@ -4,7 +4,7 @@ import Checkbox from '../../UI/Checkbox/Checkbox';
 import { StyledCartItem } from './CartItem.styles';
 import CartItemContent from './CartItemContent/CartItemContent';
 
-import { cartProductsVar } from '../../../cache/cache';
+import { deleteCartProduct } from '../../../cache/cartProducts/cartProductsVar';
 import TrashIcon from '../../assets/images/TrashIcon.svg';
 
 const CartItem = ({
@@ -12,14 +12,6 @@ const CartItem = ({
 }: {
   cartItem: { product: Product; quantity: number };
 }) => {
-  const handleDeleteCartProduct = (productId: string) => {
-    cartProductsVar(
-      cartProductsVar().filter(
-        cartProductsItem => cartProductsItem.product._id !== productId
-      )
-    );
-  };
-
   return (
     <StyledCartItem>
       <div className="cartItem__checkbox-wrapper">
@@ -35,7 +27,7 @@ const CartItem = ({
         <IconButton
           imageSrc={TrashIcon}
           title="Trash"
-          onClick={() => handleDeleteCartProduct(cartItem.product._id)}
+          onClick={() => deleteCartProduct(cartItem.product._id)}
         />
       </div>
     </StyledCartItem>

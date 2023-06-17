@@ -4,7 +4,6 @@ import { StyledProductCard } from './ProductCard.styles';
 
 import LinePrice from '../assets/images/LinePrice.svg';
 import ButtonFilled from '../UI/Buttons/AddToCartButton/ButtonFilled';
-import { useCart } from '../../../store/context/cartContext';
 
 const ProductCard = ({
   productImgLink,

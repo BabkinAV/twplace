@@ -8,7 +8,7 @@ import ProductCard from '../ProductCard/ProductCard';
 import ButtonOutlined from '../UI/Buttons/ButtonOutlined/ButtonOutlined';
 
 import { GET_FEATURED_PRODUCTS } from '../../queries/productQueries';
-import { addToCartProducts } from '../../cache/cache';
+import { addToCartProducts } from '../../cache/cartProducts/cartProductsVar';
 
 const FeaturedProducts = () => {
   const { loading, error, data } = useQuery<{ featuredProducts: Product[] }>(
