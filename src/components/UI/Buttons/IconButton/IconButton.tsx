@@ -1,18 +1,22 @@
-import React from 'react';
-import { StyledIconButton } from './IconButton.styles';
 import Image from 'next/image';
+import { StyledIconButton } from './IconButton.styles';
 
 const IconButton = ({
   onClick,
-	title,
-	imageSrc
+  title,
+  imageSrc,
+	borderColor
 }: {
   onClick?: () => void;
   imageSrc: string;
   title: string;
+  borderColor?: string;
 }) => {
   return (
-    <StyledIconButton onClick={onClick}>
+    <StyledIconButton
+      onClick={onClick}
+      borderColor={borderColor}
+    >
       <Image src={imageSrc} alt={`${title} Icon`} />
     </StyledIconButton>
   );

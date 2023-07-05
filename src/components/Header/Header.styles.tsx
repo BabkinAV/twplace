@@ -14,6 +14,11 @@ export const StyledHeader = styled.header`
     align-items: center;
     justify-content: space-between;
     gap: 50px;
+		.login__button {
+			background: 0;
+			border: 0;
+			padding: 0;
+		}
   }
 
 	.logo__link {

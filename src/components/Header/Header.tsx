@@ -7,6 +7,7 @@ import Logo from './Logo/Logo';
 import SearchForm from './Search/SearchForm';
 
 import { cartProductsVar } from '../../cache/cartProducts/cartProductsVar';
+import { modalIsShownVar } from '../../cache/ModalISShown/modalIsShownVar';
 import CartIcon from '../assets/images/CartIcon.svg';
 import HeartIcon from '../assets/images/HeartIcon.svg';
 import UserIcon from '../assets/images/UserIcon.svg';
@@ -29,13 +30,13 @@ const Header = () => {
             <SearchForm />
           </div>
           <div className="login_links-wrapper">
-            <Link href="#">
+            <button className='login__button' onClick={()=>modalIsShownVar(true)}>
               <HeaderLink
                 imageSrc={UserIcon}
                 altText="User Icon"
                 subTitle="Войти"
               />
-            </Link>
+            </button>
             <Link href="#">
               <HeaderLink
                 imageSrc={HeartIcon}

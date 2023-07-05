@@ -1,3 +1,4 @@
+import { useTheme } from 'styled-components';
 import { Product } from '../../../types';
 import IconButton from '../../UI/Buttons/IconButton/IconButton';
 import Checkbox from '../../UI/Checkbox/Checkbox';
@@ -12,6 +13,7 @@ const CartItem = ({
 }: {
   cartItem: { product: Product; quantity: number };
 }) => {
+	const theme = useTheme();
   return (
     <StyledCartItem>
       <div className="cartItem__checkbox-wrapper">
@@ -28,6 +30,7 @@ const CartItem = ({
           imageSrc={TrashIcon}
           title="Trash"
           onClick={() => deleteCartProduct(cartItem.product._id)}
+					borderColor={theme.palette.colors.red100}
         />
       </div>
     </StyledCartItem>
