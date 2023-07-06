@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyledSubtotal } from './Subtotal.styles';
-import ButtonFilled from '../../UI/Buttons/AddToCartButton/ButtonFilled';
+import ButtonFilled from '../../UI/Buttons/ButtonFilled/ButtonFilled';
 
 const Subtotal = ({
   className,

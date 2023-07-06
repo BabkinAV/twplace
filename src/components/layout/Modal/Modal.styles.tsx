@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledModalLogin = styled.div`
+export const StyledModal = styled.div`
   .modal {
     position: fixed;
     position: fixed; /* Stay in place */
@@ -21,6 +21,7 @@ export const StyledModalLogin = styled.div`
       padding: 20px;
       border: 1px solid #888;
       width: 50%;
+			max-width: 684px;
       position: relative;
     }
 

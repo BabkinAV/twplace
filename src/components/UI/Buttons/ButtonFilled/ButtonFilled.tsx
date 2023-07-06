@@ -3,12 +3,18 @@ import { StyledButtonFilled } from './ButtonFilled.styles';
 
 const ButtonFilled = ({
   children,
-	onClick
+  onClick,
+  className,
 }: {
   children: ReactNode;
   onClick?: () => void;
+  className?: string;
 }) => {
-  return <StyledButtonFilled onClick={onClick}>{children}</StyledButtonFilled>;
+  return (
+    <StyledButtonFilled onClick={onClick} className={className}>
+      {children}
+    </StyledButtonFilled>
+  );
 };
 
 export default ButtonFilled;

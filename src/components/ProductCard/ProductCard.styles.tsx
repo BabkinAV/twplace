@@ -96,5 +96,9 @@ export const StyledProductCard = styled.div`
   }
 	& .button-wrapper {
 		margin-top: auto;
+		.product-card__button {
+			width: 100%;
+			height: 100%;
+		}
 	}
 `;

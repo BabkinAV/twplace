@@ -1,15 +1,14 @@
-import { useState } from 'react';
 import { useReactiveVar } from '@apollo/client';
-import { StyledModalLogin } from './ModalLogin.styles';
-import { modalIsShownVar } from '../../../../cache/ModalISShown/modalIsShownVar';
+import { ReactNode } from 'react';
+import { modalIsShownVar } from '../../../cache/ModalISShown/modalIsShownVar';
+import { StyledModal } from './Modal.styles';
 
-const ModalLogin = () => {
-  // const [modalIsShown, setModalIsShown] = useState(true);
+const Modal = ({ children }: { children: ReactNode }) => {
   const modalIsShown = useReactiveVar(modalIsShownVar);
   return (
     <>
       {modalIsShown && (
-        <StyledModalLogin>
+        <StyledModal>
           <div
             className="modal modal--login"
             onClick={() => modalIsShownVar(false)}
@@ -18,13 +17,13 @@ const ModalLogin = () => {
               <span className="close" onClick={() => modalIsShownVar(false)}>
                 &times;
               </span>
-              <p>Modal content 1</p>
+              <div>{children}</div>
             </div>
           </div>
-        </StyledModalLogin>
+        </StyledModal>
       )}
     </>
   );
 };
 
-export default ModalLogin;
+export default Modal;
