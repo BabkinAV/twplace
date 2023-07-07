@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 
-export const StyledButtonFilled = styled.button`
+export const StyledButtonFilledLight = styled.button`
   /* min-height: 32px; */
   border: 0;
   width: min-content;
 	height: min-content;
-  background: ${props => props.theme.palette.gradients.backgroundGradient};
-  color: #fff;
+  background: ${props => props.theme.palette.gradients.gradientLight};
+  color: #000;
+	border-radius: 4px;
   cursor: pointer;
   position: relative;
 	text-align: center;
+
 
   font-weight: 500;
   font-size: 14px;
@@ -24,12 +26,6 @@ export const StyledButtonFilled = styled.button`
     right: 0;
   }
 
-  &:hover:after {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-  &:active:after {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
 
   &:focus-visible,
   :focus {

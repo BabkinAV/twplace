@@ -17,7 +17,7 @@ const Modal = ({ children }: { children: ReactNode }) => {
               <span className="close" onClick={() => modalIsShownVar(false)}>
                 &times;
               </span>
-              <div>{children}</div>
+              <div className="modal__box">{children}</div>
             </div>
           </div>
         </StyledModal>

@@ -5,7 +5,7 @@ import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 import { cache } from '../cache/cache';
 import Layout from '../components/layout/Layout/Layout';
-import { defaultTheme } from '../components/themes/defaultTheme';
+import { defaultTheme } from '../themes/defaultTheme';
 import '../styles/reset.css';
 
 const roboto = Roboto({

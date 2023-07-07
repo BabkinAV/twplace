@@ -20,7 +20,7 @@ export const StyledModal = styled.div`
       margin: auto;
       padding: 20px;
       border: 1px solid #888;
-      width: 50%;
+      width: 75%;
 			max-width: 684px;
       position: relative;
     }

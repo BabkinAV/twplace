@@ -14,6 +14,7 @@ declare module 'styled-components' {
       gradients: {
         backgroundGradient: string;
         gradientPink: string;
+				gradientLight: string;
       };
     };
   }

@@ -15,6 +15,7 @@ export const defaultTheme: DefaultTheme = {
         'linear-gradient(96.78deg, #f64d4d -57.09%, #4d5ef6 101.17%)',
       gradientPink:
         'linear-gradient(211.73deg,rgba(52, 85, 216, 0.1) -46.71%, rgba(255, 67, 67, 0.1) 121.33%)',
+			gradientLight: ' linear-gradient(144deg, rgba(246, 77, 77, 0.20) 0%, rgba(77, 94, 246, 0.20) 100%)'
     },
   },
 };
