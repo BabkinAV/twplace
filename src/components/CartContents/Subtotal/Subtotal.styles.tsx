@@ -45,5 +45,11 @@ export const StyledSubtotal = styled.div`
 		height: 50px;
 	}
 
+	.subtotal__button {
+		width: 100%;
+		padding-top: 17px;
+		padding-bottom: 17px;
+	}
+
 
 `;

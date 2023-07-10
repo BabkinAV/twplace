@@ -54,7 +54,7 @@ const Subtotal = ({
         </div>
       </div>
       <div className="subtotal__button--wrapper">
-        <ButtonFilled>Оформить заказ</ButtonFilled>
+        <ButtonFilled className='subtotal__button'>Оформить заказ</ButtonFilled>
       </div>
     </StyledSubtotal>
   );
