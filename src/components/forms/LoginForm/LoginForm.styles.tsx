@@ -32,6 +32,7 @@ export const StyledLoginForm = styled.form`
       justify-content: space-between;
       margin-bottom: 22px;
       align-items: center;
+			position: relative;
 
       .login-form__label {
         color: #000;
@@ -56,6 +57,13 @@ export const StyledLoginForm = styled.form`
           font-weight: 300;
         }
       }
+			.input__icon {
+				position: absolute;
+				right: 5px;
+				top: 50%;
+				transform: translateY(-50%);
+				cursor: pointer;
+			}
     }
 
     &__text {
