@@ -9,15 +9,17 @@ const HeaderLink = ({
   subTitle,
   badgeCounter,
   badgeCoord,
+	onClick
 }: {
   imageSrc: string;
   altText: string;
   subTitle: string;
   badgeCounter?: number;
   badgeCoord?: [topOffset: number, rightOffset: number];
+	onClick?: ()=>void
 }) => {
   return (
-    <StyledHeaderLink badgeCoord={badgeCoord}>
+    <StyledHeaderLink badgeCoord={badgeCoord} onClick={onClick}>
       <Image src={imageSrc} alt={altText} />
       {badgeCounter && badgeCounter > 0 ? (
         <div className="badgeCounter">

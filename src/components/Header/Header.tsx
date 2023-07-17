@@ -8,20 +8,24 @@ import SearchForm from './Search/SearchForm';
 
 import { cartProductsVar } from '../../cache/cartProducts/cartProductsVar';
 import { modalIsShownVar } from '../../cache/ModalISShown/modalIsShownVar';
+import { isUserAuthenticatedVar } from '../../cache/userIsAuthenticated/isUserAuthenticatedVar';
+
 import CartIcon from '../assets/images/CartIcon.svg';
 import HeartIcon from '../assets/images/HeartIcon.svg';
 import UserIcon from '../assets/images/UserIcon.svg';
 import StyledRowDoubleColumns from '../layout/RowDoubleColumns/RowDoubleColumns';
+import ExitIcon from '../assets/images/ExitIcon.svg';
 
 const Header = () => {
-	const cartProducts = useReactiveVar(cartProductsVar);
+  const cartProducts = useReactiveVar(cartProductsVar);
+  const isUserAuthenticated = useReactiveVar(isUserAuthenticatedVar);
 
   return (
     <StyledHeader>
       <StyledRowDoubleColumns>
         <div className="column-left">
           <Hamburger />
-          <Link href="/" className='logo__link'>
+          <Link href="/" className="logo__link">
             <Logo />
           </Link>
         </div>
@@ -30,12 +34,24 @@ const Header = () => {
             <SearchForm />
           </div>
           <div className="login_links-wrapper">
-            <button className='login__button' onClick={()=>modalIsShownVar(true)}>
-              <HeaderLink
-                imageSrc={UserIcon}
-                altText="User Icon"
-                subTitle="Войти"
-              />
+            <button
+              className="login__button"
+            >
+              {isUserAuthenticated ? (
+                <HeaderLink
+                  imageSrc={ExitIcon}
+                  altText="Logout Icon"
+                  subTitle="Выйти"
+									onClick={() => isUserAuthenticatedVar(false)}
+                />
+              ) : (
+                <HeaderLink
+                  imageSrc={UserIcon}
+                  altText="User Icon"
+                  subTitle="Войти"
+									onClick={() => modalIsShownVar(true)}
+                />
+              )}
             </button>
             <Link href="#">
               <HeaderLink

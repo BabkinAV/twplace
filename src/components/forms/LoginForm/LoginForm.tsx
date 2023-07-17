@@ -4,6 +4,8 @@ import ButtonFilled from '../../UI/Buttons/ButtonFilled/ButtonFilled';
 import ButtonFilledLight from '../../UI/Buttons/ButtonFilledLight/ButtonFilledLight';
 import { StyledLoginForm } from './LoginForm.styles';
 import EyeIcon from '../../assets/images/EyeIcon.svg';
+import { isUserAuthenticatedVar } from '../../../cache/userIsAuthenticated/isUserAuthenticatedVar';
+import { modalIsShownVar } from '../../../cache/ModalISShown/modalIsShownVar';
 
 const LoginForm = () => {
   // Providing unique label ids for the inputs: https://react.dev/reference/react-dom/components/input#providing-a-label-for-an-input
@@ -14,8 +16,14 @@ const LoginForm = () => {
 
   const [inputType, setInputType] = useState<'password' | 'text'>('password');
 
+	const formSubmissionHandler = (event: React.FormEvent) => {
+		event.preventDefault();
+		isUserAuthenticatedVar(true);
+		modalIsShownVar(false);
+	}
+
   return (
-    <StyledLoginForm className="login-form">
+    <StyledLoginForm className="login-form" onSubmit={formSubmissionHandler}>
       <h2 className="login-form__header">Вход</h2>
 
       <div className="login-form__container--inputs">
