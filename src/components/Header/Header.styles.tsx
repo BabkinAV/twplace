@@ -14,7 +14,8 @@ export const StyledHeader = styled.header`
     align-items: center;
     justify-content: space-between;
     gap: 50px;
-		.login__button {
+		.login__button,
+		.logout__button {
 			background: 0;
 			border: 0;
 			padding: 0;

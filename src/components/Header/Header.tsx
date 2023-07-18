@@ -15,6 +15,7 @@ import HeartIcon from '../assets/images/HeartIcon.svg';
 import UserIcon from '../assets/images/UserIcon.svg';
 import StyledRowDoubleColumns from '../layout/RowDoubleColumns/RowDoubleColumns';
 import ExitIcon from '../assets/images/ExitIcon.svg';
+import OrderIcon from '../assets/images/OrderIcon.svg';
 
 const Header = () => {
   const cartProducts = useReactiveVar(cartProductsVar);
@@ -34,25 +35,35 @@ const Header = () => {
             <SearchForm />
           </div>
           <div className="login_links-wrapper">
-            <button
-              className="login__button"
-            >
-              {isUserAuthenticated ? (
-                <HeaderLink
-                  imageSrc={ExitIcon}
-                  altText="Logout Icon"
-                  subTitle="Выйти"
-									onClick={() => isUserAuthenticatedVar(false)}
-                />
-              ) : (
+            {isUserAuthenticated ? (
+              <>
+                <button className="logout__button">
+                  <HeaderLink
+                    imageSrc={ExitIcon}
+                    altText="Logout Icon"
+                    subTitle="Выйти"
+                    onClick={() => isUserAuthenticatedVar(false)}
+                  />
+                </button>
+								<Link href="/orders">
+                  <HeaderLink
+                    imageSrc={OrderIcon}
+                    altText="Order Icon"
+                    subTitle="Заказы"
+                  />
+                </Link>
+              </>
+            ) : (
+              <button className="login__button">
                 <HeaderLink
                   imageSrc={UserIcon}
                   altText="User Icon"
                   subTitle="Войти"
-									onClick={() => modalIsShownVar(true)}
+                  onClick={() => modalIsShownVar(true)}
                 />
-              )}
-            </button>
+              </button>
+            )}
+
             <Link href="#">
               <HeaderLink
                 imageSrc={HeartIcon}
