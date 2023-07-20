@@ -1,26 +1,49 @@
+import { useLazyQuery } from '@apollo/client';
 import Image from 'next/image';
 import { useId, useState } from 'react';
+import { modalIsShownVar } from '../../../cache/ModalISShown/modalIsShownVar';
+import { isUserAuthenticatedVar } from '../../../cache/userIsAuthenticated/isUserAuthenticatedVar';
+import { USER_LOGIN } from '../../../queries/authQueries';
 import ButtonFilled from '../../UI/Buttons/ButtonFilled/ButtonFilled';
 import ButtonFilledLight from '../../UI/Buttons/ButtonFilledLight/ButtonFilledLight';
-import { StyledLoginForm } from './LoginForm.styles';
 import EyeIcon from '../../assets/images/EyeIcon.svg';
-import { isUserAuthenticatedVar } from '../../../cache/userIsAuthenticated/isUserAuthenticatedVar';
-import { modalIsShownVar } from '../../../cache/ModalISShown/modalIsShownVar';
+import { StyledLoginForm } from './LoginForm.styles';
 
 const LoginForm = () => {
   // Providing unique label ids for the inputs: https://react.dev/reference/react-dom/components/input#providing-a-label-for-an-input
   const emailInputId = useId();
   const passwordInputId = useId();
+  const [getLoginData, { loading, error, data }] = useLazyQuery<{
+    login: {
+      token: string;
+      userId: string;
+    };
+  }>(USER_LOGIN);
 
   //Hide/Show password https://dev.to/annaqharder/hideshow-password-in-react-513a
 
   const [inputType, setInputType] = useState<'password' | 'text'>('password');
 
-	const formSubmissionHandler = (event: React.FormEvent) => {
-		event.preventDefault();
-		isUserAuthenticatedVar(true);
-		modalIsShownVar(false);
-	}
+  const formSubmissionHandler = (event: React.FormEvent) => {
+    event.preventDefault();
+    // isUserAuthenticatedVar(true);
+    // modalIsShownVar(false);
+
+		const target = event.target as typeof event.target & {
+      email: { value: string };
+      password: { value: string };
+    }
+		getLoginData({
+      variables: { email: target.email.value, password: target.password.value },
+      onCompleted: ({ login }) => {
+        console.log('token: ', login.token);
+        console.log('userId: ', login.userId);
+      },
+			onError: (error) => {
+				console.log('An error occured');
+			}
+    });
+  };
 
   return (
     <StyledLoginForm className="login-form" onSubmit={formSubmissionHandler}>
@@ -53,7 +76,7 @@ const LoginForm = () => {
           <Image
             src={EyeIcon}
             alt="Показать пароль"
-						title="Показать пароль"
+            title="Показать пароль"
             className="input__icon"
             onClick={() => setInputType('text')}
           />
