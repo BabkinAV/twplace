@@ -10,7 +10,7 @@ export const StyledLoginForm = styled.form`
       font-weight: 400;
       line-height: normal;
       margin-bottom: 30px;
-			margin-top: 31px;
+      margin-top: 31px;
     }
     &__container {
       &--inputs {
@@ -19,11 +19,12 @@ export const StyledLoginForm = styled.form`
         padding-left: 18px;
       }
       &--buttons {
-        margin-top: 50px;
+        position: relative;
+        padding-top: 50px;
         display: flex;
         flex-direction: column;
         align-items: center;
-				margin-bottom: 44px;
+        margin-bottom: 44px;
       }
     }
 
@@ -32,7 +33,7 @@ export const StyledLoginForm = styled.form`
       justify-content: space-between;
       margin-bottom: 22px;
       align-items: center;
-			position: relative;
+      position: relative;
 
       .login-form__label {
         color: #000;
@@ -50,20 +51,20 @@ export const StyledLoginForm = styled.form`
         font-style: normal;
         line-height: normal;
         border-radius: 4px;
-				padding: 6px 10px;
+        padding: 6px 10px;
         border: 1px solid ${props => props.theme.palette.colors.grey100};
-				font-weight: 400;
+        font-weight: 400;
         &::placeholder {
           font-weight: 300;
         }
       }
-			.input__icon {
-				position: absolute;
-				right: 5px;
-				top: 50%;
-				transform: translateY(-50%);
-				cursor: pointer;
-			}
+      .input__icon {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+      }
     }
 
     &__text {
@@ -83,6 +84,14 @@ export const StyledLoginForm = styled.form`
       &--light {
         padding: 6px 7px;
       }
+    }
+    &__errors {
+      color: ${props => props.theme.palette.colors.red100};
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+
+      top: 0;
     }
   }
 `;

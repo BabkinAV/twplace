@@ -1,6 +1,7 @@
 import { useLazyQuery } from '@apollo/client';
 import Image from 'next/image';
 import { useId, useState } from 'react';
+import { useCookies } from 'react-cookie';
 import { modalIsShownVar } from '../../../cache/ModalISShown/modalIsShownVar';
 import { isUserAuthenticatedVar } from '../../../cache/userIsAuthenticated/isUserAuthenticatedVar';
 import { USER_LOGIN } from '../../../queries/authQueries';
@@ -23,27 +24,25 @@ const LoginForm = () => {
   //Hide/Show password https://dev.to/annaqharder/hideshow-password-in-react-513a
 
   const [inputType, setInputType] = useState<'password' | 'text'>('password');
+	const [cookies, setCookie] = useCookies(['token'])
 
   const formSubmissionHandler = (event: React.FormEvent) => {
     event.preventDefault();
-    // isUserAuthenticatedVar(true);
-    // modalIsShownVar(false);
 
-		const target = event.target as typeof event.target & {
+    const target = event.target as typeof event.target & {
       email: { value: string };
       password: { value: string };
-    }
-		getLoginData({
+    };
+    getLoginData({
       variables: { email: target.email.value, password: target.password.value },
       onCompleted: ({ login }) => {
-        console.log('token: ', login.token);
-        console.log('userId: ', login.userId);
+        isUserAuthenticatedVar(true);
+        modalIsShownVar(false);
+				setCookie('token', login.token, {path: '/', maxAge: 3600})
       },
-			onError: (error) => {
-				console.log('An error occured');
-			}
     });
   };
+
 
   return (
     <StyledLoginForm className="login-form" onSubmit={formSubmissionHandler}>
@@ -83,7 +82,14 @@ const LoginForm = () => {
         </div>
       </div>
       <div className="login-form__container--buttons">
-        <ButtonFilled className="login-form__button--dark">Войти</ButtonFilled>
+        {error && (
+          <p className="login-form__errors">
+            Произошла ошибка ({error.message})
+          </p>
+        )}
+        <ButtonFilled className="login-form__button--dark" type="submit">
+          Войти
+        </ButtonFilled>
         <p className="login-form__text">Забыли пароль?</p>
         <ButtonFilledLight className="login-form__button--light">
           Зарегистрироваться

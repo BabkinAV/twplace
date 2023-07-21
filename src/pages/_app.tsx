@@ -1,23 +1,13 @@
-import { useCallback, useEffect, useState } from 'react';
-import {
-  ApolloClient,
-  ApolloProvider,
-  NormalizedCacheObject,
-  InMemoryCache,
-} from '@apollo/client';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { CookiesProvider } from 'react-cookie';
 import type { AppProps } from 'next/app';
 import { Roboto } from 'next/font/google';
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 import { schema } from '../cache/cache';
 import Layout from '../components/layout/Layout/Layout';
-import { defaultTheme } from '../themes/defaultTheme';
 import '../styles/reset.css';
-import {
-  persistCache,
-  LocalStorageWrapper,
-  CachePersistor,
-} from 'apollo3-cache-persist';
+import { defaultTheme } from '../themes/defaultTheme';
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700', '900'],
@@ -37,7 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
   // useEffect(() => {
   //   async function init() {
   //     const cache = new InMemoryCache(schema);
-	// 		let newPersistor = new CachePersistor({
+  // 		let newPersistor = new CachePersistor({
   //       cache,
   //       storage: new LocalStorageWrapper(window.localStorage),
   //       debug: true,
@@ -45,7 +35,7 @@ export default function App({ Component, pageProps }: AppProps) {
   //     });
 
   //     await newPersistor.restore();
-	// 		setPersistor(newPersistor);
+  // 		setPersistor(newPersistor);
   //     setClient(
   //       new ApolloClient({
   //         cache,
@@ -56,7 +46,7 @@ export default function App({ Component, pageProps }: AppProps) {
   //   init().catch(console.error);
   // }, []);
 
-	// const clearCache = useCallback(() => {
+  // const clearCache = useCallback(() => {
   //   if (!persistor) {
   //     return;
   //   }
@@ -83,13 +73,15 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ApolloProvider client={client}>
-        <ThemeProvider theme={defaultTheme}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </ThemeProvider>
-      </ApolloProvider>
+      <CookiesProvider>
+        <ApolloProvider client={client}>
+          <ThemeProvider theme={defaultTheme}>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </ThemeProvider>
+        </ApolloProvider>
+      </CookiesProvider>
     </>
   );
 }
