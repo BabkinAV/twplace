@@ -5,7 +5,7 @@ import { StyledHeader } from './Header.styles';
 import HeaderLink from './HeaderLink/HeaderLink';
 import Logo from './Logo/Logo';
 import SearchForm from './Search/SearchForm';
-
+import { useCookies } from 'react-cookie';
 import { cartProductsVar } from '../../cache/cartProducts/cartProductsVar';
 import { modalIsShownVar } from '../../cache/ModalISShown/modalIsShownVar';
 import { isUserAuthenticatedVar } from '../../cache/userIsAuthenticated/isUserAuthenticatedVar';
@@ -20,6 +20,11 @@ import OrderIcon from '../assets/images/OrderIcon.svg';
 const Header = () => {
   const cartProducts = useReactiveVar(cartProductsVar);
   const isUserAuthenticated = useReactiveVar(isUserAuthenticatedVar);
+	const [cookies, setCookie, removeCookie] = useCookies(['token']);
+	const logoutHandler = () => {
+		isUserAuthenticatedVar(false);
+		removeCookie('token');
+	}
 
   return (
     <StyledHeader>
@@ -42,7 +47,7 @@ const Header = () => {
                     imageSrc={ExitIcon}
                     altText="Logout Icon"
                     subTitle="Выйти"
-                    onClick={() => isUserAuthenticatedVar(false)}
+                    onClick={logoutHandler}
                   />
                 </button>
 								<Link href="/orders">

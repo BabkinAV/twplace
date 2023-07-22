@@ -24,7 +24,7 @@ const LoginForm = () => {
   //Hide/Show password https://dev.to/annaqharder/hideshow-password-in-react-513a
 
   const [inputType, setInputType] = useState<'password' | 'text'>('password');
-	const [cookies, setCookie] = useCookies(['token'])
+  const [cookies, setCookie] = useCookies(['token']);
 
   const formSubmissionHandler = (event: React.FormEvent) => {
     event.preventDefault();
@@ -38,11 +38,10 @@ const LoginForm = () => {
       onCompleted: ({ login }) => {
         isUserAuthenticatedVar(true);
         modalIsShownVar(false);
-				setCookie('token', login.token, {path: '/', maxAge: 3600})
+        setCookie('token', login.token, { path: '/', maxAge: 3600 });
       },
     });
   };
-
 
   return (
     <StyledLoginForm className="login-form" onSubmit={formSubmissionHandler}>
