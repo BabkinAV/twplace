@@ -86,7 +86,7 @@ const LoginForm = () => {
             Произошла ошибка ({error.message})
           </p>
         )}
-        <ButtonFilled className="login-form__button--dark" type="submit">
+        <ButtonFilled className="login-form__button--dark" type="submit" loading={loading}>
           Войти
         </ButtonFilled>
         <p className="login-form__text">Забыли пароль?</p>

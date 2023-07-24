@@ -39,4 +39,11 @@ export const StyledButtonFilled = styled.button`
   &:focus:not(:focus-visible) {
     outline: none;
   }
+
+	.spinner {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
 `;

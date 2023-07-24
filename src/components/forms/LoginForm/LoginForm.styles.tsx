@@ -79,6 +79,7 @@ export const StyledLoginForm = styled.form`
       &--dark {
         padding: 14px 74px;
         margin-bottom: 47px;
+				min-width: 200px;
       }
 
       &--light {
