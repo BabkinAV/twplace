@@ -20,76 +20,72 @@ import OrderIcon from '../assets/images/OrderIcon.svg';
 const Header = () => {
   const cartProducts = useReactiveVar(cartProductsVar);
   const isUserAuthenticated = useReactiveVar(isUserAuthenticatedVar);
-	const [cookies, setCookie, removeCookie] = useCookies(['token']);
-	const logoutHandler = () => {
-		isUserAuthenticatedVar(false);
-		removeCookie('token');
-	}
+  const [cookies, setCookie, removeCookie] = useCookies(['token']);
+  const logoutHandler = () => {
+    isUserAuthenticatedVar(false);
+    removeCookie('token');
+  };
 
   return (
     <StyledHeader>
-      <StyledRowDoubleColumns>
-        <div className="column-left">
-          <Hamburger />
-          <Link href="/" className="logo__link">
-            <Logo />
-          </Link>
-        </div>
-        <div className="column-right">
-          <div className="search_form-wrapper">
-            <SearchForm />
-          </div>
-          <div className="login_links-wrapper">
-            {isUserAuthenticated ? (
-              <>
-                <button className="logout__button">
-                  <HeaderLink
-                    imageSrc={ExitIcon}
-                    altText="Logout Icon"
-                    subTitle="Выйти"
-                    onClick={logoutHandler}
-                  />
-                </button>
-								<Link href="/orders">
-                  <HeaderLink
-                    imageSrc={OrderIcon}
-                    altText="Order Icon"
-                    subTitle="Заказы"
-                  />
-                </Link>
-              </>
-            ) : (
-              <button className="login__button">
-                <HeaderLink
-                  imageSrc={UserIcon}
-                  altText="User Icon"
-                  subTitle="Войти"
-                  onClick={() => modalIsShownVar(true)}
-                />
-              </button>
-            )}
+      <div className="column-left">
+        <Hamburger />
+        <Link href="/" className="logo__link">
+          <Logo />
+        </Link>
+      </div>
+      <div className="search_form-wrapper">
+        <SearchForm />
+      </div>
+      <div className="login_links-wrapper">
+        {isUserAuthenticated ? (
+          <>
+            <button className="logout__button">
+              <HeaderLink
+                imageSrc={ExitIcon}
+                altText="Logout Icon"
+                subTitle="Выйти"
+                onClick={logoutHandler}
+              />
+            </button>
+            <Link href="/orders">
+              <HeaderLink
+                imageSrc={OrderIcon}
+                altText="Order Icon"
+                subTitle="Заказы"
+              />
+            </Link>
+          </>
+        ) : (
+          <button className="login__button">
+            <HeaderLink
+              imageSrc={UserIcon}
+              altText="User Icon"
+              subTitle="Войти"
+              onClick={() => modalIsShownVar(true)}
+            />
+          </button>
+        )}
 
-            <Link href="#">
-              <HeaderLink
-                imageSrc={HeartIcon}
-                altText="Heart Icon"
-                subTitle="Избранное"
-                badgeCounter={0}
-                badgeCoord={[-3, 15]}
-              />
-            </Link>
-            <Link href="/cart">
-              <HeaderLink
-                imageSrc={CartIcon}
-                altText="Cart Icon"
-                subTitle="Корзина"
-                badgeCounter={cartProducts.length}
-                badgeCoord={[0, 10]}
-              />
-            </Link>
-          </div>
-        </div>
-      </StyledRowDoubleColumns>
+        <Link href="#">
+          <HeaderLink
+            imageSrc={HeartIcon}
+            altText="Heart Icon"
+            subTitle="Избранное"
+            badgeCounter={0}
+            badgeCoord={[-3, 15]}
+          />
+        </Link>
+        <Link href="/cart">
+          <HeaderLink
+            imageSrc={CartIcon}
+            altText="Cart Icon"
+            subTitle="Корзина"
+            badgeCounter={cartProducts.length}
+            badgeCoord={[0, 10]}
+          />
+        </Link>
+      </div>
     </StyledHeader>
   );
 };

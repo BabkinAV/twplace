@@ -18,4 +18,11 @@ export const defaultTheme: DefaultTheme = {
 			gradientLight: ' linear-gradient(144deg, rgba(246, 77, 77, 0.20) 0%, rgba(77, 94, 246, 0.20) 100%)'
     },
   },
+	breakpoints: {
+		xxl: 1400,
+		xl: 1200,
+		lg: 992,
+		md: 768,
+		sm: 576,
+	}
 };

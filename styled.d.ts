@@ -1,5 +1,7 @@
 import 'styled-components';
 
+type Breakpoint = 'xxl' | 'xl' | 'lg' | 'md' | 'sm';
+
 declare module 'styled-components' {
   export interface DefaultTheme {
     name: string;
@@ -14,8 +16,11 @@ declare module 'styled-components' {
       gradients: {
         backgroundGradient: string;
         gradientPink: string;
-				gradientLight: string;
+        gradientLight: string;
       };
+    };
+    breakpoints: {
+      [breakpoint in Breakpoint]: number;
     };
   }
 }

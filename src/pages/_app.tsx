@@ -1,10 +1,13 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import { CookiesProvider } from 'react-cookie';
+import jwtDecode from 'jwt-decode';
 import type { AppProps } from 'next/app';
 import { Roboto } from 'next/font/google';
 import Head from 'next/head';
+import { useEffect } from 'react';
+import { CookiesProvider, useCookies } from 'react-cookie';
 import { ThemeProvider } from 'styled-components';
 import { schema } from '../cache/cache';
+import { isUserAuthenticatedVar } from '../cache/userIsAuthenticated/isUserAuthenticatedVar';
 import Layout from '../components/layout/Layout/Layout';
 import '../styles/reset.css';
 import { defaultTheme } from '../themes/defaultTheme';
@@ -21,6 +24,21 @@ const client = new ApolloClient({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+
+	const [cookies] = useCookies(['token']);
+	useEffect(() => {
+		if (cookies.token) {
+			const decodedToken = jwtDecode<{userId: string, email: string, iat: number, exp: number}>(cookies.token);
+			isUserAuthenticatedVar(true);
+			if (decodedToken.exp *1000 > Date.now()) {
+				isUserAuthenticatedVar(true);
+			} else {
+				isUserAuthenticatedVar(false);
+			}
+		}
+		
+	
+	}, [cookies.token])
   // const [client, setClient] = useState<ApolloClient<NormalizedCacheObject>>();
   // const [persistor, setPersistor] =
   //   useState<CachePersistor<NormalizedCacheObject>>();
