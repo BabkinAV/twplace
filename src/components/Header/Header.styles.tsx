@@ -5,8 +5,12 @@ export const StyledHeader = styled.header`
   padding-bottom: 18px;
 
 	display: grid;
-	max-width: 1366px;
 	gap: 20px;
+
+	@media screen and (max-width: ${props => props.theme.breakpoints.sm}px) {
+		gap: 0;
+		row-gap: 20px;
+	}
 
 	grid-template-columns: 296px 1fr min-content;
 
@@ -66,5 +70,6 @@ export const StyledHeader = styled.header`
 			grid-column: 1/-1;
 		}
 	}
+
 
 `;

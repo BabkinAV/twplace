@@ -7,14 +7,12 @@ import Slider from './Slider/Slider';
 const Hero = () => {
   return (
     <StyledHero>
-      <StyledRowDoubleColumns>
-        <div className="column-left">
+        <div className="hero__navigation-wrapper">
           <CategoriesNavigation />
         </div>
-        <div className="column-right">
+        <div className="hero__slider-wrapper">
           <Slider />
         </div>
-      </StyledRowDoubleColumns>
     </StyledHero>
   );
 };

@@ -31,9 +31,13 @@ export const StyledCategoriesNavigation = styled.nav`
     padding-left: 62px;
 
     .nav__list {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 13px;
+
+      @media screen and (max-width: ${props => props.theme.breakpoints.xxl}px) {
+				gap: 7px
+      }
 
       .nav__link {
         position: relative;
@@ -50,12 +54,11 @@ export const StyledCategoriesNavigation = styled.nav`
           font-weight: 300;
           font-size: 14px;
           line-height: 16px;
-
         }
 
-				&:hover span {
-					font-weight: 700;
-				}
+        &:hover span {
+          font-weight: 700;
+        }
       }
     }
   }
