@@ -1,21 +1,20 @@
 import { useReactiveVar } from '@apollo/client';
 import Link from 'next/link';
+import { useCookies } from 'react-cookie';
+import { modalIsShownVar } from '../../cache/ModalISShown/modalIsShownVar';
+import { cartProductsVar } from '../../cache/cartProducts/cartProductsVar';
+import { isUserAuthenticatedVar } from '../../cache/userIsAuthenticated/isUserAuthenticatedVar';
 import Hamburger from './Hamburger/Hamburger';
 import { StyledHeader } from './Header.styles';
 import HeaderLink from './HeaderLink/HeaderLink';
 import Logo from './Logo/Logo';
 import SearchForm from './Search/SearchForm';
-import { useCookies } from 'react-cookie';
-import { cartProductsVar } from '../../cache/cartProducts/cartProductsVar';
-import { modalIsShownVar } from '../../cache/ModalISShown/modalIsShownVar';
-import { isUserAuthenticatedVar } from '../../cache/userIsAuthenticated/isUserAuthenticatedVar';
 
 import CartIcon from '../assets/images/CartIcon.svg';
-import HeartIcon from '../assets/images/HeartIcon.svg';
-import UserIcon from '../assets/images/UserIcon.svg';
-import StyledRowDoubleColumns from '../layout/RowDoubleColumns/RowDoubleColumns';
 import ExitIcon from '../assets/images/ExitIcon.svg';
+import HeartIcon from '../assets/images/HeartIcon.svg';
 import OrderIcon from '../assets/images/OrderIcon.svg';
+import UserIcon from '../assets/images/UserIcon.svg';
 
 const Header = () => {
   const cartProducts = useReactiveVar(cartProductsVar);
@@ -28,7 +27,7 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <div className="column-left">
+      <div className="logo-wrapper">
         <Hamburger />
         <Link href="/" className="logo__link">
           <Logo />

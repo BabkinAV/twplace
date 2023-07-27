@@ -10,41 +10,15 @@ export const StyledHeader = styled.header`
 
 	grid-template-columns: 296px 1fr min-content;
 
-	& .column-left {
+	& .logo-wrapper {
 		display: flex;
     flex: 1 0 auto;
 	}
 
-
-
-
-    /* display: flex;
-    align-items: center;
-    max-width: 1366px;
-
-    width: 100%;
-    justify-content: space-between;
-		gap: 20px;
- 
-
-	& .column-left {
-    display: flex;
-    max-width: 296px;
-    flex: 1 0 auto;
-  }
-
-  & .column-right {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex: 1 1 auto;
-    gap: 10px;
-  } */
-
   & .search_form-wrapper {
     width: 100%;
-    margin-right: 43px;
 		order: 1;
+		align-self: center;
   }
 
   & .login_links-wrapper {
@@ -59,10 +33,6 @@ export const StyledHeader = styled.header`
       border: 0;
       padding: 0;
     }
-  }
-
-  .logo__link {
-    /* display: flex; */
   }
 
   @media screen and (max-width: ${props => props.theme.breakpoints.xl}px) {
@@ -87,10 +57,13 @@ export const StyledHeader = styled.header`
 
 	}
 
-	@media screen and (max-width: ${props => props.theme.breakpoints.sm}px) {
+	@media screen and (max-width: ${props => props.theme.breakpoints.md}px) {
 		& .login_links-wrapper {
 			grid-column: 1/-1;
 			justify-content: space-between;
+		}
+		& .logo-wrapper {
+			grid-column: 1/-1;
 		}
 	}
 
