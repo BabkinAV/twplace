@@ -5,7 +5,7 @@ export const StyledProductCard = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 182px;
+  /* width: 100%; */
   padding: 10px;
 
 	transition: transform 0.2s;

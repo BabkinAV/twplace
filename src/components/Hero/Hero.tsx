@@ -1,7 +1,5 @@
-import React from 'react';
-import { StyledHero } from './Hero.styles';
-import StyledRowDoubleColumns from '../layout/RowDoubleColumns/RowDoubleColumns';
 import CategoriesNavigation from './CategoriesNavigation/CategoriesNavigation';
+import { StyledHero } from './Hero.styles';
 import Slider from './Slider/Slider';
 
 const Hero = () => {

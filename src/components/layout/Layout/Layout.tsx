@@ -20,7 +20,7 @@ const Layout = ({ children }: { children?: ReactNode }) => {
         <Header />
         <main>{children}</main>
       </Container>
-      <Footer />
+      {/* <Footer /> */}
     </StyledLayout>
   );
 };
