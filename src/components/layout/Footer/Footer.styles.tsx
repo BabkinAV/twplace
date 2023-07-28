@@ -5,15 +5,21 @@ export const StyledFooter = styled.footer`
   color: #fff;
   padding-top: 40px;
   padding-bottom: 40px;
-	margin-top: auto;
+  margin-top: auto;
 
   & .footer__content {
     display: flex;
 
     .footer__links {
+      margin-right: 15px;
       flex-grow: 1;
       display: grid;
+      gap: 15px;
       grid-template-columns: 1fr 1fr 1fr;
+      @media screen and (max-width: ${props => props.theme.breakpoints.sm}px) {
+				display: flex;
+				flex-direction: column;
+      }
     }
 
     .footer__form-wrap {
@@ -30,7 +36,9 @@ export const StyledFooter = styled.footer`
       .footer__item {
         font-weight: 400;
         font-size: 14px;
-        line-height: 27px;
+        line-height: 17px;
+        padding-top: 5px;
+        padding-bottom: 5px;
       }
     }
 
@@ -40,6 +48,9 @@ export const StyledFooter = styled.footer`
 
     .footer__heading {
       margin-bottom: 20px;
+			@media screen and (max-width: ${props => props.theme.breakpoints.lg}px) {
+				
+			}
     }
 
     .footer__icons-wrap {
@@ -56,6 +67,17 @@ export const StyledFooter = styled.footer`
           justify-content: center;
         }
       }
+    }
+  }
+  @media screen and (max-width: ${props => props.theme.breakpoints.lg}px) {
+    & .footer__content {
+      flex-direction: column;
+      .footer__form-wrap {
+        margin-top: 20px;
+      }
+			.footer__heading {
+				margin-bottom: 5px;
+			}
     }
   }
 `;

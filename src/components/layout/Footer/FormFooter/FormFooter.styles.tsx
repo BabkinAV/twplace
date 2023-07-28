@@ -20,10 +20,10 @@ export const StyledFormFooter = styled.form`
       font-size: 14px;
       line-height: 16px;
 
-			padding-top: 8px;
-			padding-bottom: 8px;
-			padding-right: 26px;
-			padding-left: 24px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-right: 26px;
+      padding-left: 24px;
 
       &:active {
         outline: none;
@@ -38,9 +38,15 @@ export const StyledFormFooter = styled.form`
       &:focus:not(:focus-visible) {
         outline: none;
       }
-    }
-		
-  }
 
-	
+      &::placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #fff;
+        opacity: 0.65; /* Firefox */
+      }
+			@media screen and (max-width: ${props => props.theme.breakpoints.sm}px) {
+				width: 100%;
+			}
+    }
+  }
 `;
