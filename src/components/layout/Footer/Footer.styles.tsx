@@ -48,9 +48,6 @@ export const StyledFooter = styled.footer`
 
     .footer__heading {
       margin-bottom: 20px;
-			@media screen and (max-width: ${props => props.theme.breakpoints.lg}px) {
-				
-			}
     }
 
     .footer__icons-wrap {
@@ -74,6 +71,7 @@ export const StyledFooter = styled.footer`
       flex-direction: column;
       .footer__form-wrap {
         margin-top: 20px;
+				min-width: unset;
       }
 			.footer__heading {
 				margin-bottom: 5px;

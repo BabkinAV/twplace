@@ -15,6 +15,14 @@ export const StyledCartContents = styled.div`
     grid-template-columns: 3fr 1fr;
     padding-bottom: 20px;
     gap: 70px;
+		@media screen and (max-width: ${props => props.theme.breakpoints.xxl}px) {
+			gap: 40px	
+		}
+		@media screen and (max-width: ${props => props.theme.breakpoints.xl}px) {
+			display: flex;
+			flex-direction: column;
+			gap: 30px;
+		}
 
   }
 `;

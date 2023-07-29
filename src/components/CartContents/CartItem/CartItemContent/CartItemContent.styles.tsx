@@ -1,8 +1,18 @@
 import styled from 'styled-components';
 
 export const StyledCartItemContent = styled.div`
-  display: flex;
-  width: 100%;
+  /* display: flex; */
+	display: grid;
+	grid-template-columns: min-content minmax(min-content, 2fr) repeat(4, minmax(min-content, 1fr));
+	@media screen and (max-width: ${props => props.theme.breakpoints.md}px) {
+		grid-template-columns: repeat(4, minmax(min-content, 1fr));
+	}
+	@media screen and (max-width: ${props => props.theme.breakpoints.sm}px) {
+		grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 2fr)
+	}
+	
+	gap: 20px;
+
   .cartItem__heading {
     font-style: normal;
     font-weight: 300;
@@ -19,15 +29,16 @@ export const StyledCartItemContent = styled.div`
   .cartItem__image-wrapper {
     margin-right: 38px;
     width: 100px;
+		@media screen and (max-width: ${props => props.theme.breakpoints.xl}px) {
+			margin-right: 0px;	
+		}
   }
   .cartItem__title-wrapper {
     max-width: 150px;
-  }
-  .cartItem__title-wrapper,
-  .cartItem__color-wrapper,
-  .cartItem__size-wrapper,
-  .cartItem__quantity-wrapper {
-    margin-right: 50px;
+		@media screen and (max-width: ${props => props.theme.breakpoints.md}px) {
+			max-width: unset;
+			grid-column: 2 / -1;
+		}
   }
 
   .cartItem__price {
@@ -36,12 +47,14 @@ export const StyledCartItemContent = styled.div`
     align-items: flex-start;
     ins {
       text-decoration: none;
+			white-space: nowrap; 
       font-weight: 400;
       font-size: 16px;
       line-height: 19px;
     }
     del {
       text-decoration: none;
+			white-space: nowrap; 
       font-weight: 400;
       font-size: 12px;
       line-height: 14px;

@@ -45,7 +45,7 @@ export const StyledFormFooter = styled.form`
         opacity: 0.65; /* Firefox */
       }
 			@media screen and (max-width: ${props => props.theme.breakpoints.sm}px) {
-				width: 100%;
+				width: 80%;
 			}
     }
   }

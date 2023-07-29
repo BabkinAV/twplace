@@ -43,6 +43,8 @@ export const StyledSubtotal = styled.div`
 
 	.subtotal__button--wrapper {
 		height: 50px;
+		max-width: 280px;
+    margin: 0 auto;
 	}
 
 	.subtotal__button {

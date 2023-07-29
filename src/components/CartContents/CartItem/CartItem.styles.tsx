@@ -18,6 +18,9 @@ export const StyledCartItem = styled.div`
 
   .cartItem__checkbox-wrapper {
 		margin-right: 20px;
+		@media screen and (max-width: ${props => props.theme.breakpoints.xl}px) {
+			margin-right: 0px;
+		}
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -25,6 +28,8 @@ export const StyledCartItem = styled.div`
 
 	.deleteButton__wrapper {
 		display: flex;
+		min-width: 30px;
+		margin-left: 20px;
 		flex-direction: column;
 		justify-content: flex-end;
 	}

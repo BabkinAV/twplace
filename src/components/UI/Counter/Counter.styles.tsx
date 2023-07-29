@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const StyledCounter = styled.div`
   display: flex;
+	width: 90px;
+	justify-content: space-between;
 
   border: 1px solid transparent;
   background-image: ${props => props.theme.palette.gradients.backgroundGradient},
