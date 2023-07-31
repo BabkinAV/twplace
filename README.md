@@ -25,8 +25,6 @@ Ecommerce website created for selling various outfit and apparel items.
 
 ## TODO (will be implemented in the future):
 
-- Mobile layout (high priority)
-
 - New user registration
 
 - Items filtering and/or searching functionality

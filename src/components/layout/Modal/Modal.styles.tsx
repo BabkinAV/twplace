@@ -21,6 +21,9 @@ export const StyledModal = styled.div`
       padding: 20px;
       border: 1px solid #888;
       width: 75%;
+			@media screen and (max-width: ${props => props.theme.breakpoints.lg}px) {
+				width: 90%;
+			}
 			max-width: 684px;
       position: relative;
     }

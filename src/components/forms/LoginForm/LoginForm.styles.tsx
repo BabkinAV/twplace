@@ -14,9 +14,9 @@ export const StyledLoginForm = styled.form`
     }
     &__container {
       &--inputs {
-        margin-left: 90px;
-        margin-right: 148px;
-        padding-left: 18px;
+        max-width: 400px;
+        margin: 0 auto;
+        padding-right: 18px;
       }
       &--buttons {
         position: relative;
@@ -29,8 +29,8 @@ export const StyledLoginForm = styled.form`
     }
 
     &__group {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: minmax(min-content, 100px) 300px;
       margin-bottom: 22px;
       align-items: center;
       position: relative;
@@ -45,7 +45,7 @@ export const StyledLoginForm = styled.form`
 
       .login-form__input {
         flex: 1;
-        max-width: 296px;
+        /* max-width: 296px; */
         height: 28px;
         font-size: 14px;
         font-style: normal;
@@ -61,8 +61,7 @@ export const StyledLoginForm = styled.form`
       .input__icon {
         position: absolute;
         right: 5px;
-        top: 50%;
-        transform: translateY(-50%);
+        bottom: 7px;
         cursor: pointer;
       }
     }
@@ -79,7 +78,7 @@ export const StyledLoginForm = styled.form`
       &--dark {
         padding: 14px 74px;
         margin-bottom: 47px;
-				min-width: 200px;
+        min-width: 200px;
       }
 
       &--light {
@@ -94,5 +93,24 @@ export const StyledLoginForm = styled.form`
 
       top: 0;
     }
+  }
+  @media screen and (max-width: ${props => props.theme.breakpoints.sm}px) {
+		.login-form {
+			&__container {
+				&--inputs {
+					padding-right: 0;
+					.login-form__input  {
+						width: 100%;
+						margin-top: 15px;
+					}
+				}
+			}
+			&__group {
+				display: flex;
+				flex-direction: column;
+
+			}
+			
+		}
   }
 `;
