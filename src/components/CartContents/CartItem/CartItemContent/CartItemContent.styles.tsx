@@ -27,7 +27,7 @@ export const StyledCartItemContent = styled.div`
     line-height: 14px;
   }
   .cartItem__image-wrapper {
-    margin-right: 38px;
+    margin-right: 18px;
     width: 100px;
 		@media screen and (max-width: ${props => props.theme.breakpoints.xl}px) {
 			margin-right: 0px;	
@@ -40,6 +40,13 @@ export const StyledCartItemContent = styled.div`
 			grid-column: 2 / -1;
 		}
   }
+
+	.cartItem__price-wrapper {
+		margin-left: 16px;
+		@media screen and (max-width: ${props => props.theme.breakpoints.md}px) {
+			margin-left: 0px;
+		}
+	}
 
   .cartItem__price {
     display: flex;
