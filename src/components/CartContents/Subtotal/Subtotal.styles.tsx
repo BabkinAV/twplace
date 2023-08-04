@@ -53,5 +53,12 @@ export const StyledSubtotal = styled.div`
 		padding-bottom: 17px;
 	}
 
+	.subtotal__error-text{
+		padding-top: 10px;
+		color: red;
+		display: flex;
+		justify-content: center;
+	}
+
 
 `;

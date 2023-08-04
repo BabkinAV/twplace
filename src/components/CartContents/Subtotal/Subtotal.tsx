@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyledSubtotal } from './Subtotal.styles';
 import ButtonFilled from '../../UI/Buttons/ButtonFilled/ButtonFilled';
+import { ApolloError } from '@apollo/client/errors';
 
 const Subtotal = ({
   className,
@@ -9,6 +10,9 @@ const Subtotal = ({
   discount,
   deliveryAddr,
   billingMethod,
+  handlePlaceOrderButtonClick,
+  placeOrderMutationInProgress,
+  placeOrderError,
 }: {
   className: string;
   subTotal: number;
@@ -16,6 +20,9 @@ const Subtotal = ({
   discount: number;
   deliveryAddr?: string;
   billingMethod?: string;
+  placeOrderMutationInProgress: boolean;
+  placeOrderError?: ApolloError;
+  handlePlaceOrderButtonClick: () => void;
 }) => {
   return (
     <StyledSubtotal className={className}>
@@ -53,8 +60,19 @@ const Subtotal = ({
           </span>
         </div>
       </div>
-      <div className="subtotal__button--wrapper">
-        <ButtonFilled className='subtotal__button'>Оформить заказ</ButtonFilled>
+      <div className="subtotal__submit">
+        <div className="subtotal__button--wrapper">
+          <ButtonFilled
+            className="subtotal__button"
+            onClick={handlePlaceOrderButtonClick}
+            loading={placeOrderMutationInProgress}
+          >
+            Оформить заказ
+          </ButtonFilled>
+        </div>
+				{placeOrderError && (
+          <p className="subtotal__error-text">{placeOrderError.message}</p>
+        )}
       </div>
     </StyledSubtotal>
   );

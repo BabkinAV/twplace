@@ -1,4 +1,5 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import jwtDecode from 'jwt-decode';
 import type { AppProps } from 'next/app';
 import { Roboto } from 'next/font/google';
@@ -17,6 +18,8 @@ const roboto = Roboto({
   style: ['normal', 'italic'],
   subsets: ['latin', 'cyrillic'],
 });
+
+
 
 const client = new ApolloClient({
   uri: process.env.NEXT_PUBLIC_BACKEND_ADDRESS,
