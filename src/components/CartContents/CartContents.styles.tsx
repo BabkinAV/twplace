@@ -29,8 +29,19 @@ export const StyledCartContents = styled.div`
     margin-top: 100px;
 		margin-bottom: 100px;
 
+		display: flex;
+		flex-direction: column;
+		align-items: center;
     &__text {
       text-align: center;
     }
+		&__wrapper {
+			margin-top: 20px;
+		}
+		&__button {
+			min-width: max-content;
+			padding: 20px 50px;
+		}
+
   }
 `;

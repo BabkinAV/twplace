@@ -9,8 +9,11 @@ import { StyledCartContents } from './CartContents.styles';
 import CartItem from './CartItem/CartItem';
 import Subtotal from './Subtotal/Subtotal';
 import { useState } from 'react';
+import ButtonFilled from '../UI/Buttons/ButtonFilled/ButtonFilled';
+import { useRouter } from 'next/router';
 
 const CartContents = () => {
+	const router = useRouter();
   const cartProducts = useReactiveVar(cartProductsVar);
   const [cookies] = useCookies(['token']);
   const [orderNumber, setOrderNumber] = useState<string>('');
@@ -26,10 +29,11 @@ const CartContents = () => {
       },
     },
     onCompleted: (data, err) => {
-			// TODO: Validate orders in return data object https://www.apollographql.com/docs/react/data/mutations/#options
-			
-      setOrderNumber(data.placeOrder.orderId);
-      cartProductsVar([]);
+
+      if (data.placeOrder) {
+        setOrderNumber(data.placeOrder.orderId);
+        cartProductsVar([]);
+      }
     },
   });
 
@@ -95,8 +99,16 @@ const CartContents = () => {
           </div>
         </>
       ) : (
-        <div className="order-confirmation ">
-          <p className='order-confirmation__text'>Заказ {orderNumber} оформлен! Спасибо.</p>
+        <div className="order-confirmation">
+          <p className="order-confirmation__text">
+            Заказ {orderNumber} оформлен! Спасибо.
+          </p>
+					<div className='order-confirmation__wrapper'>
+						<ButtonFilled className='order-confirmation__button' onClick={()=>router.push('/')}>
+							Назад
+						</ButtonFilled>
+					</div>
+
         </div>
       )}
     </StyledCartContents>

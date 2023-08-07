@@ -38,7 +38,11 @@ const LoginForm = () => {
       onCompleted: ({ login }) => {
         isUserAuthenticatedVar(true);
         modalIsShownVar(false);
-        setCookie('token', login.token, { path: '/', maxAge: 3600 });
+        setCookie('token', login.token, {
+          path: '/',
+          maxAge: 3600,
+          sameSite: 'strict',
+        });
       },
     });
   };
@@ -86,7 +90,11 @@ const LoginForm = () => {
             Произошла ошибка ({error.message})
           </p>
         )}
-        <ButtonFilled className="login-form__button--dark" type="submit" loading={loading}>
+        <ButtonFilled
+          className="login-form__button--dark"
+          type="submit"
+          loading={loading}
+        >
           Войти
         </ButtonFilled>
         <p className="login-form__text">Забыли пароль?</p>

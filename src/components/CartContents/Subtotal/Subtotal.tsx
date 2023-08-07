@@ -70,8 +70,10 @@ const Subtotal = ({
             Оформить заказ
           </ButtonFilled>
         </div>
-				{placeOrderError && (
-          <p className="subtotal__error-text">{placeOrderError.message}</p>
+        {placeOrderError && (
+          <p className="subtotal__error-text">
+            Возникла ошибка при оформлении заказа ({placeOrderError.message})
+          </p>
         )}
       </div>
     </StyledSubtotal>
