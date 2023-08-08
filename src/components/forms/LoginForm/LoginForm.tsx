@@ -11,9 +11,6 @@ import EyeIcon from '../../assets/images/EyeIcon.svg';
 import { StyledLoginForm } from './LoginForm.styles';
 
 const LoginForm = () => {
-  // Providing unique label ids for the inputs: https://react.dev/reference/react-dom/components/input#providing-a-label-for-an-input
-  const emailInputId = useId();
-  const passwordInputId = useId();
   const [getLoginData, { loading, error, data }] = useLazyQuery<{
     login: {
       token: string;
@@ -53,26 +50,26 @@ const LoginForm = () => {
 
       <div className="login-form__container--inputs">
         <div className="login-form__group">
-          <label className="login-form__label" htmlFor={emailInputId}>
+          <label className="login-form__label" htmlFor="loginEmail">
             E-mail
           </label>
           <input
             type="email"
             name="email"
             className="login-form__input"
-            id={emailInputId}
+            id="loginEmail"
             placeholder="Введите Email"
           />
         </div>
         <div className="login-form__group">
-          <label className="login-form__label" htmlFor={passwordInputId}>
+          <label className="login-form__label" htmlFor="loginPassword">
             Пароль
           </label>
           <input
             type={inputType}
             name="password"
             className="login-form__input"
-            id={passwordInputId}
+            id="loginPassword"
             placeholder="Введите пароль"
           />
           <Image
@@ -80,7 +77,11 @@ const LoginForm = () => {
             alt="Показать пароль"
             title="Показать пароль"
             className="input__icon"
-            onClick={() => setInputType('text')}
+            onClick={() =>
+              setInputType(prevInputType =>
+                prevInputType === 'text' ? 'password' : 'text'
+              )
+            }
           />
         </div>
       </div>

@@ -25,9 +25,8 @@ export const StyledHeaderLink = styled.div<StyledHeaderLinkProps>`
     width: 12px;
     background-color: red;
     position: absolute;
-		top: ${p => p.badgeCoord ? p.badgeCoord[0] : '0'}px;
-    right: ${p => p.badgeCoord ? p.badgeCoord[1] : '0'}px;
-		
+    top: ${p => (p.badgeCoord ? p.badgeCoord[0] : '0')}px;
+    right: ${p => (p.badgeCoord ? p.badgeCoord[1] : '0')}px;
   }
   & .badgeCounter span {
     font-size: 7px;
@@ -40,4 +39,6 @@ export const StyledHeaderLink = styled.div<StyledHeaderLinkProps>`
     line-height: 8px;
     font-style: normal;
   }
+
+ 
 `;

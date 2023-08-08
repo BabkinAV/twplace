@@ -3,6 +3,8 @@ import { useMutation } from '@apollo/client';
 import { useReactiveVar } from '@apollo/client';
 import { useCookies } from 'react-cookie';
 import { cartProductsVar } from '../../cache/cartProducts/cartProductsVar';
+import { isUserAuthenticatedVar } from '../../cache/userIsAuthenticated/isUserAuthenticatedVar';
+import { modalIsShownVar } from '../../cache/ModalISShown/modalIsShownVar';
 import { PLACE_ORDER } from '../../mutations/orderMutations';
 import Checkbox from '../UI/Checkbox/Checkbox';
 import { StyledCartContents } from './CartContents.styles';
@@ -15,6 +17,7 @@ import { useRouter } from 'next/router';
 const CartContents = () => {
 	const router = useRouter();
   const cartProducts = useReactiveVar(cartProductsVar);
+	const isUserAuthenticated = useReactiveVar(isUserAuthenticatedVar);
   const [cookies] = useCookies(['token']);
   const [orderNumber, setOrderNumber] = useState<string>('');
   const [placeOrder, { loading, error }] = useMutation<{
@@ -38,6 +41,9 @@ const CartContents = () => {
   });
 
   const handlePlaceOrder = () => {
+		if (!isUserAuthenticated) {
+			return modalIsShownVar(true)
+		}
     const orderItemsArr = cartProducts.map(el => {
       return { productId: el.product._id, quantity: el.quantity };
     });

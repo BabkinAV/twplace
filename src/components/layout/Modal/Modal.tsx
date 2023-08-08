@@ -1,10 +1,19 @@
 import { useReactiveVar } from '@apollo/client';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { modalIsShownVar } from '../../../cache/ModalISShown/modalIsShownVar';
 import { StyledModal } from './Modal.styles';
 
 const Modal = ({ children }: { children: ReactNode }) => {
   const modalIsShown = useReactiveVar(modalIsShownVar);
+	useEffect(() => {
+		const close = (e:KeyboardEvent) => {
+			if(e.key === 'Escape'){
+				modalIsShownVar(false)
+			}
+		}
+		window.addEventListener('keydown', close)
+	return () => window.removeEventListener('keydown', close)
+},[])
   return (
     <>
       {modalIsShown && (

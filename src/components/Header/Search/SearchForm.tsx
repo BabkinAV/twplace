@@ -5,7 +5,7 @@ import SearchButton from '../SearchButton/SearchButton';
 const SearchForm = () => {
   return (
     <StyledSearchForm>
-      <input type="text" />
+      <input type="text" id="searchItem"/>
 			<SearchButton />
     </StyledSearchForm>
   );

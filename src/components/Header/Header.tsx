@@ -47,7 +47,7 @@ const Header = () => {
                 onClick={logoutHandler}
               />
             </button>
-            <Link href="/orders">
+            <Link href="/orders" className='header__link'>
               <HeaderLink
                 imageSrc={OrderIcon}
                 altText="Order Icon"
@@ -66,7 +66,7 @@ const Header = () => {
           </button>
         )}
 
-        <Link href="#">
+        <Link href="#" className='header__link'>
           <HeaderLink
             imageSrc={HeartIcon}
             altText="Heart Icon"
@@ -75,7 +75,7 @@ const Header = () => {
             badgeCoord={[-3, 15]}
           />
         </Link>
-        <Link href="/cart">
+        <Link href="/cart" className='header__link'>
           <HeaderLink
             imageSrc={CartIcon}
             altText="Cart Icon"
