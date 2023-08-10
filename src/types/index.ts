@@ -30,3 +30,16 @@ export enum Size {
 	XL = 'XL'
 
 }
+
+export interface Order {
+	_id: string;
+	userId: string;
+	total: number;
+	createdAt: string;
+	products: {
+		product: Product;
+		quantity: number;
+		refProductId: string
+	}[];
+	
+}
