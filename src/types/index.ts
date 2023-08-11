@@ -39,6 +39,7 @@ export interface Order {
 	products: {
 		product: Product;
 		quantity: number;
+		totalProductPrice: number;
 		refProductId: string
 	}[];
 	

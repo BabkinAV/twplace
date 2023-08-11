@@ -9,7 +9,9 @@ export const GET_ORDERS = gql`
         products {
             refProductId
             quantity
+						totalProductPrice
             product {
+								_id
                 title
                 color
                 imageLink

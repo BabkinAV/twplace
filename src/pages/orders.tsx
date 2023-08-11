@@ -19,7 +19,6 @@ const Orders = () => {
 
   return (
     <section className="section-orders">
-      <h2>Заказы</h2>
       {loading && <p>Данные загружаются</p>}
       {error && <p>Ошибка в получении данных</p>}
       {!loading && data?.orders && <OrdersContents orderArr={data.orders}/>}

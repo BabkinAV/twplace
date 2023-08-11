@@ -6,11 +6,9 @@ import OrderItem from './OrderItem/OrderItem';
 const OrdersContents = ({ orderArr }: { orderArr: Order[] }) => {
   return (
     <StyledOrdersContents className="order__contents">
-      <p>Orders list</p>
+			 <h2 className='orders__heading'>Заказы</h2>
       {orderArr.map(el => (
-        <div key={el._id} className="order__item">
-          <OrderItem order={el} />
-        </div>
+        <OrderItem order={el} key={el._id} className='order__item'/>
       ))}
     </StyledOrdersContents>
   );

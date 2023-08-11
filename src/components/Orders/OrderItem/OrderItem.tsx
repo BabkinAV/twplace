@@ -1,32 +1,52 @@
 import React from 'react';
 import { Order } from '../../../types';
 import Image from 'next/image';
+import { parseOrderDate } from '../../../helpers/parseOrderDate';
+import { StyledOrderItem } from './OrderItem.styles';
 
-const OrderItem = ({ order }: { order: Order }) => {
-  const date = new Date(parseInt(order.createdAt)).toLocaleString();
+const OrderItem = ({
+  order,
+  className,
+}: {
+  order: Order;
+  className: string;
+}) => {
   return (
-    <div>
-      <h3>
-        Заказ № {order._id} от {date}
+    <StyledOrderItem className={className}>
+      <h3 className="order__heading">
+        Заказ № {order._id}{' '}
+        <span className="order__date">
+          {' '}
+          от {parseOrderDate(order.createdAt)}
+        </span>
       </h3>
-      <div>
+      <div className="order__wrapper">
         {order.products.map(el => (
-          <>
+          <div key={el.product._id} className="order__contents">
             <Image
               src={el.product.imageLink}
               alt={el.product.title}
-              width={100}
-              height={100}
+              width={80}
+              height={80}
+              className="product__image"
             />
-            {el.product.title}{' | '}Размер: {el.product.size}{' | '} Цвет:{' '}
-            {el.product.color}{' | '}Количество: {el.quantity} {' | '} Цена 1шт:{' '}
-            {el.product.price.priceCurrent}Р
-            <hr />
-          </>
+            <div className="product__title">{el.product.title}</div>
+            <div className="product__size">{el.product.size}</div>
+            <div className="product__color">{el.product.color}</div>
+            <div className="product__quantity">{el.quantity}</div>
+            <div className="product__price product__price--item">
+              {el.product.price.priceCurrent}Р
+            </div>
+            <div className="product__price product__price--item">
+              {el.totalProductPrice}Р
+            </div>
+          </div>
         ))}
       </div>
-      <h4>Сумма {order.total}Р</h4>
-    </div>
+			<div className='order__total'>
+			Сумма <span className='order__price'>{order.total}Р</span>
+			</div>
+    </StyledOrderItem>
   );
 };
 
