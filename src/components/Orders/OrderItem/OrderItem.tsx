@@ -20,16 +20,19 @@ const OrderItem = ({
           от {parseOrderDate(order.createdAt)}
         </span>
       </h3>
-      <div className="order__wrapper">
+      <ul className="product__list">
         {order.products.map(el => (
-          <div key={el.product._id} className="order__contents">
-            <Image
-              src={el.product.imageLink}
-              alt={el.product.title}
-              width={80}
-              height={80}
-              className="product__image"
-            />
+          <li key={el.product._id} className="product__item">
+
+            <div className="product__image">
+							<Image
+								src={el.product.imageLink}
+								alt={el.product.title}
+								width={80}
+								height={80}
+								className="product__image"
+							/>
+						</div>
             <div className="product__title">{el.product.title}</div>
             <div className="product__size">{el.product.size}</div>
             <div className="product__color">{el.product.color}</div>
@@ -40,9 +43,9 @@ const OrderItem = ({
             <div className="product__price product__price--item">
               {el.totalProductPrice}Р
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
 			<div className='order__total'>
 			Сумма <span className='order__price'>{order.total}Р</span>
 			</div>

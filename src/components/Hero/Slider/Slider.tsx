@@ -93,6 +93,7 @@ const Slider = () => {
 							sizes="(max-width: 1920px) 100vw,
 							70vw"
               fill
+							priority
             />
           </div>
         ))}

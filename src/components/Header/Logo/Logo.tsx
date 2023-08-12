@@ -6,7 +6,7 @@ import logoImg from '../../assets/images/logo.png';
 const Logo = () => {
   return (
     <StyledLogo>
-      <Image src={logoImg} alt="TWplace" />
+      <Image src={logoImg} alt="TWplace" priority/>
     </StyledLogo>
   );
 };

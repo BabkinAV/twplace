@@ -37,7 +37,7 @@ const LoginForm = () => {
         modalIsShownVar(false);
         setCookie('token', login.token, {
           path: '/',
-          maxAge: 3600,
+          maxAge: 86400,
           sameSite: 'strict',
         });
       },
