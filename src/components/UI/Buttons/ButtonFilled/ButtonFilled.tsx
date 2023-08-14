@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 import { StyledButtonFilled } from './ButtonFilled.styles';
 import Spinner from '../../Spinner/Spinner';
 
@@ -10,7 +10,7 @@ const ButtonFilled = ({
   loading,
 }: {
   children: ReactNode;
-  onClick?: () => void;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   className?: string;
   type?: 'submit' | 'button' | 'reset';
   loading?: boolean;

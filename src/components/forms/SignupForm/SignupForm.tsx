@@ -1,6 +1,6 @@
 import { useLazyQuery } from '@apollo/client';
 import Image from 'next/image';
-import { MouseEventHandler, useState } from 'react';
+import { MouseEventHandler, useId, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import { modalIsShownVar } from '../../../cache/ModalISShown/modalIsShownVar';
 import { isUserAuthenticatedVar } from '../../../cache/userIsAuthenticated/isUserAuthenticatedVar';
@@ -8,15 +8,15 @@ import { USER_LOGIN } from '../../../queries/authQueries';
 import ButtonFilled from '../../UI/Buttons/ButtonFilled/ButtonFilled';
 import ButtonFilledLight from '../../UI/Buttons/ButtonFilledLight/ButtonFilledLight';
 import EyeIcon from '../../assets/images/EyeIcon.svg';
-import { StyledLoginForm } from './LoginForm.styles';
+import { StyledSignupForm } from './SignupForm.styles';
 
-const LoginForm = ({
-  onSignupButtonClick,
+const SignupForm = ({
+  onLoginButtonClick,
 }: {
-  onSignupButtonClick: MouseEventHandler<HTMLButtonElement>;
+  onLoginButtonClick: MouseEventHandler<HTMLButtonElement>;
 }) => {
   const [getLoginData, { loading, error, data }] = useLazyQuery<{
-    login: {
+    signup: {
       token: string;
       userId: string;
     };
@@ -36,10 +36,10 @@ const LoginForm = ({
     };
     getLoginData({
       variables: { email: target.email.value, password: target.password.value },
-      onCompleted: ({ login }) => {
+      onCompleted: ({ signup }) => {
         isUserAuthenticatedVar(true);
         modalIsShownVar(false);
-        setCookie('token', login.token, {
+        setCookie('token', signup.token, {
           path: '/',
           maxAge: 86400,
           sameSite: 'strict',
@@ -49,31 +49,31 @@ const LoginForm = ({
   };
 
   return (
-    <StyledLoginForm className="login-form" onSubmit={formSubmissionHandler}>
-      <h2 className="login-form__header">Вход</h2>
+    <StyledSignupForm className="signup-form" onSubmit={formSubmissionHandler}>
+      <h2 className="signup-form__header">Регистрация</h2>
 
-      <div className="login-form__container--inputs">
-        <div className="login-form__group">
-          <label className="login-form__label" htmlFor="loginEmail">
+      <div className="signup-form__container--inputs">
+        <div className="signup-form__group">
+          <label className="signup-form__label" htmlFor="signupEmail">
             E-mail
           </label>
           <input
             type="email"
             name="email"
-            className="login-form__input"
-            id="loginEmail"
+            className="signup-form__input"
+            id="signupEmail"
             placeholder="Введите Email"
           />
         </div>
-        <div className="login-form__group">
-          <label className="login-form__label" htmlFor="loginPassword">
+        <div className="signup-form__group">
+          <label className="signup-form__label" htmlFor="signupPassword">
             Пароль
           </label>
           <input
             type={inputType}
             name="password"
-            className="login-form__input"
-            id="loginPassword"
+            className="signup-form__input"
+            id="signupPassword"
             placeholder="Введите пароль"
           />
           <Image
@@ -88,31 +88,54 @@ const LoginForm = ({
             }
           />
         </div>
+        <div className="signup-form__group">
+          <label className="signup-form__label" htmlFor="signupPasswordConfirmation">
+            Подтвердите пароль
+          </label>
+          <input
+            type={inputType}
+            name="password"
+            className="signup-form__input"
+            id="signupPasswordConfirmation"
+            placeholder="Подтвердите пароль"
+          />
+          <Image
+            src={EyeIcon}
+            alt="Показать пароль"
+            title="Показать пароль"
+            className="input__icon"
+            onClick={() =>
+              setInputType(prevInputType =>
+                prevInputType === 'text' ? 'password' : 'text'
+              )
+            }
+          />
+        </div>
       </div>
-      <div className="login-form__container--buttons">
+      <div className="signup-form__container--buttons">
         {error && (
-          <p className="login-form__errors">
+          <p className="signup-form__errors">
             Произошла ошибка ({error.message})
           </p>
         )}
         <ButtonFilled
-          className="login-form__button--dark"
+          className="signup-form__button--dark"
           type="submit"
           loading={loading}
         >
-          Войти
+          Зарегистрироваться
         </ButtonFilled>
-        <p className="login-form__text">Забыли пароль?</p>
+        <p className="signup-form__text">Уже есть учетная запись?</p>
         <ButtonFilledLight
-          className="login-form__button--light"
-          onClick={onSignupButtonClick}
+          className="signup-form__button--light"
+          onClick={onLoginButtonClick}
 					buttonType='button'
         >
-          Зарегистрироваться
+          Войти
         </ButtonFilledLight>
       </div>
-    </StyledLoginForm>
+    </StyledSignupForm>
   );
 };
 
-export default LoginForm;
+export default SignupForm;
