@@ -38,16 +38,16 @@ const OrderItem = ({
             <div className="product__color">{el.product.color}</div>
             <div className="product__quantity">{el.quantity}</div>
             <div className="product__price product__price--item">
-              {el.product.price.priceCurrent}Р
+              {el.product.price.priceCurrent}₽
             </div>
             <div className="product__price product__price--item">
-              {el.totalProductPrice}Р
+              {el.totalProductPrice}₽
             </div>
           </li>
         ))}
       </ul>
 			<div className='order__total'>
-			Сумма <span className='order__price'>{order.total}Р</span>
+			Сумма <span className='order__price'>{order.total}₽</span>
 			</div>
     </StyledOrderItem>
   );
