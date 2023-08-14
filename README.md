@@ -19,6 +19,8 @@ Ecommerce website created for selling various outfit and apparel items.
 
 **Backend code**: [https://github.com/BabkinAV/twplace-be](https://github.com/BabkinAV/twplace-be)
 
+- Order placement and history view
+
 - Add to cart and remove from cart functionality
 
 - Custom carousel component
@@ -30,8 +32,6 @@ Ecommerce website created for selling various outfit and apparel items.
 - Items filtering and/or searching functionality
 
 - Add items to favourites 
-
-- Order placement and history view
 
 - Responsive megamenu
 
