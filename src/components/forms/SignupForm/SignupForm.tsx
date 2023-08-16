@@ -1,49 +1,58 @@
-import { useLazyQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import Image from 'next/image';
-import { MouseEventHandler, useId, useState } from 'react';
+import { MouseEventHandler, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import { modalIsShownVar } from '../../../cache/ModalISShown/modalIsShownVar';
 import { isUserAuthenticatedVar } from '../../../cache/userIsAuthenticated/isUserAuthenticatedVar';
-import { USER_LOGIN } from '../../../queries/authQueries';
+import { USER_SIGNUP } from '../../../mutations/authMutations';
 import ButtonFilled from '../../UI/Buttons/ButtonFilled/ButtonFilled';
 import ButtonFilledLight from '../../UI/Buttons/ButtonFilledLight/ButtonFilledLight';
 import EyeIcon from '../../assets/images/EyeIcon.svg';
 import { StyledSignupForm } from './SignupForm.styles';
 
 const SignupForm = ({
-  onLoginButtonClick,
+	handleFormChange
 }: {
-  onLoginButtonClick: MouseEventHandler<HTMLButtonElement>;
+	handleFormChange: () => void;
 }) => {
-  const [getLoginData, { loading, error, data }] = useLazyQuery<{
+  const [getSignupData, { loading, error }] = useMutation<{
     signup: {
       token: string;
       userId: string;
     };
-  }>(USER_LOGIN);
+  }>(USER_SIGNUP);
 
   //Hide/Show password https://dev.to/annaqharder/hideshow-password-in-react-513a
 
   const [inputType, setInputType] = useState<'password' | 'text'>('password');
   const [cookies, setCookie] = useCookies(['token']);
 
-  const formSubmissionHandler = (event: React.FormEvent) => {
+  const formSubmissionHandler = async (event: React.FormEvent) => {
     event.preventDefault();
 
     const target = event.target as typeof event.target & {
       email: { value: string };
-      password: { value: string };
+      signupPassword: { value: string };
+      signupPasswordConfirmation: { value: string };
     };
-    getLoginData({
-      variables: { email: target.email.value, password: target.password.value },
+    getSignupData({
+      variables: {
+        email: target.email.value,
+        password: target.signupPassword.value,
+        passwordConfirmation: target.signupPasswordConfirmation.value,
+      },
       onCompleted: ({ signup }) => {
         isUserAuthenticatedVar(true);
         modalIsShownVar(false);
+				handleFormChange();
         setCookie('token', signup.token, {
           path: '/',
           maxAge: 86400,
           sameSite: 'strict',
         });
+      },
+      onError: (error) => {
+        console.log(error);
       },
     });
   };
@@ -89,7 +98,10 @@ const SignupForm = ({
           />
         </div>
         <div className="signup-form__group">
-          <label className="signup-form__label" htmlFor="signupPasswordConfirmation">
+          <label
+            className="signup-form__label"
+            htmlFor="signupPasswordConfirmation"
+          >
             Подтвердите пароль
           </label>
           <input
@@ -128,8 +140,8 @@ const SignupForm = ({
         <p className="signup-form__text">Уже есть учетная запись?</p>
         <ButtonFilledLight
           className="signup-form__button--light"
-          onClick={onLoginButtonClick}
-					buttonType='button'
+          onClick={handleFormChange}
+          buttonType="button"
         >
           Войти
         </ButtonFilledLight>

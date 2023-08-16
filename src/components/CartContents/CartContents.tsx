@@ -15,9 +15,9 @@ import ButtonFilled from '../UI/Buttons/ButtonFilled/ButtonFilled';
 import { useRouter } from 'next/router';
 
 const CartContents = () => {
-	const router = useRouter();
+  const router = useRouter();
   const cartProducts = useReactiveVar(cartProductsVar);
-	const isUserAuthenticated = useReactiveVar(isUserAuthenticatedVar);
+  const isUserAuthenticated = useReactiveVar(isUserAuthenticatedVar);
   const [cookies] = useCookies(['token']);
   const [orderNumber, setOrderNumber] = useState<string>('');
   const [placeOrder, { loading, error }] = useMutation<{
@@ -31,19 +31,21 @@ const CartContents = () => {
         authorization: 'Bearer ' + cookies.token,
       },
     },
-    onCompleted: (data, err) => {
-
+    onCompleted: data => {
       if (data.placeOrder) {
         setOrderNumber(data.placeOrder.orderId);
         cartProductsVar([]);
       }
     },
+    onError: error => {
+      console.log(error);
+    },
   });
 
   const handlePlaceOrder = () => {
-		if (!isUserAuthenticated) {
-			return modalIsShownVar(true)
-		}
+    if (!isUserAuthenticated) {
+      return modalIsShownVar(true);
+    }
     const orderItemsArr = cartProducts.map(el => {
       return { productId: el.product._id, quantity: el.quantity };
     });
@@ -109,12 +111,14 @@ const CartContents = () => {
           <p className="order-confirmation__text">
             Заказ {orderNumber} оформлен! Спасибо.
           </p>
-					<div className='order-confirmation__wrapper'>
-						<ButtonFilled className='order-confirmation__button' onClick={()=>router.push('/')}>
-							Назад
-						</ButtonFilled>
-					</div>
-
+          <div className="order-confirmation__wrapper">
+            <ButtonFilled
+              className="order-confirmation__button"
+              onClick={() => router.push('/')}
+            >
+              Назад
+            </ButtonFilled>
+          </div>
         </div>
       )}
     </StyledCartContents>

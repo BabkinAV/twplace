@@ -15,7 +15,7 @@ Ecommerce website created for selling various outfit and apparel items.
 
 - Data fetching from Express GraphQL API
 
-- Authorization and logout via Express GraphQL API
+- Authorization, new user registration and logout via Express GraphQL API
 
 **Backend code**: [https://github.com/BabkinAV/twplace-be](https://github.com/BabkinAV/twplace-be)
 
@@ -26,8 +26,6 @@ Ecommerce website created for selling various outfit and apparel items.
 - Custom carousel component
 
 ## TODO (will be implemented in the future):
-
-- New user registration
 
 - Items filtering and/or searching functionality
 

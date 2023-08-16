@@ -11,9 +11,9 @@ import EyeIcon from '../../assets/images/EyeIcon.svg';
 import { StyledLoginForm } from './LoginForm.styles';
 
 const LoginForm = ({
-  onSignupButtonClick,
+  handleFormChange,
 }: {
-  onSignupButtonClick: MouseEventHandler<HTMLButtonElement>;
+  handleFormChange: () => void;
 }) => {
   const [getLoginData, { loading, error, data }] = useLazyQuery<{
     login: {
@@ -105,7 +105,7 @@ const LoginForm = ({
         <p className="login-form__text">Забыли пароль?</p>
         <ButtonFilledLight
           className="login-form__button--light"
-          onClick={onSignupButtonClick}
+          onClick={handleFormChange}
 					buttonType='button'
         >
           Зарегистрироваться

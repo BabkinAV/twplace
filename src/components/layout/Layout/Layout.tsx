@@ -15,9 +15,11 @@ const Layout = ({ children }: { children?: ReactNode }) => {
     <StyledLayout className="layout">
       <Modal>
         {isSignupForm ? (
-          <SignupForm onLoginButtonClick={() => setIsSignupForm(false)}/>
+          <SignupForm
+            handleFormChange={() => setIsSignupForm(false)}
+          />
         ) : (
-          <LoginForm onSignupButtonClick={() => setIsSignupForm(true)} />
+          <LoginForm handleFormChange={() => setIsSignupForm(true)} />
         )}
       </Modal>
       <Container>
