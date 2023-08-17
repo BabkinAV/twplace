@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
-export const StyledArrow = styled.div.attrs(({side, inactive} : {side: string, inactive: boolean}) => ({
+export const StyledArrow = styled.button.attrs(({side, inactive} : {side: string, inactive: boolean}) => ({
   className: side + (inactive ? ' inactive' : ''),
 }))<{side: string, inactive?: boolean}>`
   width: 50px;
   height: 50px;
+	border: none;
   background: ${props => props.theme.palette.gradients.backgroundGradient};
   position: relative;
   border-radius: 200px;

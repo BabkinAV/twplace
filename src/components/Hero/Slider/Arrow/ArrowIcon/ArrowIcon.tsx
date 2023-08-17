@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ArrowIcon = ({inactive} : {inactive?: boolean}) => {
+const ArrowIcon = ({ inactive }: { inactive?: boolean }) => {
   return (
     <div className="arrow__icon">
       <svg
