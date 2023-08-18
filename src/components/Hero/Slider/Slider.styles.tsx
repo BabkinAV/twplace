@@ -15,7 +15,7 @@ export const StyledSlider = styled.div`
     top: 50%;
 		transform: translateY(-50%);
     width: 100%;
-    z-index: 100;
+    z-index: 1;
   }
 
   & .slide-list {

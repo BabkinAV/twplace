@@ -6,6 +6,8 @@ export const StyledFooter = styled.footer`
   padding-top: 40px;
   padding-bottom: 40px;
   margin-top: auto;
+	margin-left: calc(100% - 100vw);
+	padding-left: calc(100vw - 100%);
 
   & .footer__content {
     display: flex;
