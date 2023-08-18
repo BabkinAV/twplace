@@ -27,6 +27,7 @@ export const StyledSearchForm = styled.form`
     flex-grow: 2;
     /* And hide the input's outline, so the form looks like the outline */
     border: none;
+		padding-left: 8px;
   }
 
   /* remove the input focus blue box, it will be in the wrong place. */

@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 import { StyledSearchForm } from './SearchForm.styles';
 import SearchButton from '../SearchButton/SearchButton';
+import { useRouter } from 'next/router';
 
 const SearchForm = () => {
+  const router = useRouter();
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    router.push('/search');
+  };
   return (
-    <StyledSearchForm>
-      <input type="text" id="searchItem"/>
-			<SearchButton />
+    <StyledSearchForm onSubmit={handleSubmit}>
+      <input type="text" id="searchItem" />
+      <SearchButton />
     </StyledSearchForm>
   );
 };

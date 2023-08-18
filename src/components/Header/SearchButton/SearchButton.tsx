@@ -4,7 +4,7 @@ import { StyledSearchButton } from './SearchButton.styles'
 
 const SearchButton = () => {
 	return (
-		<StyledSearchButton>Искать</StyledSearchButton>
+		<StyledSearchButton type='submit'>Искать</StyledSearchButton>
 	)
 }
 

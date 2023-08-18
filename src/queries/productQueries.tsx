@@ -33,3 +33,20 @@ export const GET_PRODUCT = gql`
     }
   }
 `;
+
+export const SEARCH_PRODUCTS = gql`
+  query productSearch($searchStr: String!) {
+    productSearch(searchStr: $searchStr) {
+      _id
+      title
+      color
+      imageLink
+      size
+      price {
+        priceCurrent
+        priceOld
+        discount
+      }
+    }
+  }
+`;
