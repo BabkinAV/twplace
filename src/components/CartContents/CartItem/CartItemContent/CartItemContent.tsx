@@ -1,24 +1,22 @@
 import Image from 'next/image';
 import { cartProductsVar, changeCartProductQuantity } from '../../../../cache/cartProducts/cartProductsVar';
-import { Product } from '../../../../types';
+import { CartProduct, Product } from '../../../../types';
 import Counter from '../../../UI/Counter/Counter';
 import LinePrice from '../../../assets/images/LinePrice.svg';
 import { StyledCartItemContent } from './CartItemContent.styles';
 
 const CartItemContent = ({
-  productItem,
-  cartProductQuantity,
+  cartItem,
 }: {
-  productItem: Product;
-  cartProductQuantity: number;
+  cartItem: CartProduct;
 }) => {
 
   return (
     <StyledCartItemContent>
       <div className="cartItem__image-wrapper">
         <Image
-          src={productItem.imageLink}
-          alt={`${productItem.title} image`}
+          src={cartItem.imageLink}
+          alt={`${cartItem.title} image`}
           width={100}
           height={100}
         />
@@ -28,7 +26,7 @@ const CartItemContent = ({
           <span>Наименование товара</span>
         </div>
         <div className="cartItem__text">
-          <span>{productItem.title}</span>
+          <span>{cartItem.title}</span>
         </div>
       </div>
       <div className="cartItem__color-wrapper">
@@ -36,7 +34,7 @@ const CartItemContent = ({
           <span>Цвет</span>
         </div>
         <div className="cartItem__text">
-          <span>{productItem.color}</span>
+          <span>{cartItem.color}</span>
         </div>
       </div>
       <div className="cartItem__size-wrapper">
@@ -44,7 +42,7 @@ const CartItemContent = ({
           <span>Размер</span>
         </div>
         <div className="cartItem__text">
-          <span>{productItem.size}</span>
+          <span>{cartItem.size}</span>
         </div>
       </div>
       <div className="cartItem__quantity-wrapper">
@@ -52,9 +50,9 @@ const CartItemContent = ({
           <span>Количество</span>
         </div>
         <Counter
-          count={cartProductQuantity}
+          count={cartItem.quantity}
           countModify={modifier =>
-            changeCartProductQuantity(productItem._id, modifier)
+            changeCartProductQuantity(cartItem._id, modifier)
           }
         />
       </div>
@@ -63,11 +61,11 @@ const CartItemContent = ({
           <span>Цена</span>
         </div>
         <div className="cartItem__text cartItem__price">
-          {productItem.price.priceOld ? (
+          {cartItem.price.priceOld ? (
             <>
-              <ins>{productItem.price.priceCurrent} ₽</ins>
+              <ins>{cartItem.price.priceCurrent} ₽</ins>
               <del>
-                {productItem.price.priceOld} ₽
+                {cartItem.price.priceOld} ₽
                 <span className="price-line">
                   <Image src={LinePrice} alt="strikethrough line" fill />
                 </span>
@@ -75,7 +73,7 @@ const CartItemContent = ({
             </>
           ) : (
             <div className="price__default">
-              {productItem.price.priceCurrent} ₽
+              {cartItem.price.priceCurrent} ₽
             </div>
           )}
         </div>

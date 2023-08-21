@@ -13,10 +13,12 @@ import Subtotal from './Subtotal/Subtotal';
 import { useState } from 'react';
 import ButtonFilled from '../UI/Buttons/ButtonFilled/ButtonFilled';
 import { useRouter } from 'next/router';
+import useSelect from '../../hooks/useSelect';
 
 const CartContents = () => {
   const router = useRouter();
   const cartProducts = useReactiveVar(cartProductsVar);
+
   const isUserAuthenticated = useReactiveVar(isUserAuthenticatedVar);
   const [cookies] = useCookies(['token']);
   const [orderNumber, setOrderNumber] = useState<string>('');
@@ -47,7 +49,7 @@ const CartContents = () => {
       return modalIsShownVar(true);
     }
     const orderItemsArr = cartProducts.map(el => {
-      return { productId: el.product._id, quantity: el.quantity };
+      return { productId: el._id, quantity: el.quantity };
     });
     placeOrder({
       variables: {
@@ -56,6 +58,11 @@ const CartContents = () => {
     });
   };
 
+  // TODO: Make a custom hook on selected elements handle
+
+  const [isSelected, isAllSelected, handleSelectClick, handleSelectAllClick] =
+    useSelect(cartProducts);
+
   return (
     <StyledCartContents className="cart">
       {!orderNumber ? (
@@ -63,16 +70,31 @@ const CartContents = () => {
           <h2 className="cart__header">Корзина</h2>
           {cartProducts.length > 0 && (
             <div className="cart__select-all select-all">
-              <Checkbox label="Выбрать все" className="select-all__checkbox" />
+              <Checkbox
+                label="Выбрать все"
+                className="select-all__checkbox"
+								checked={isAllSelected}
+                handleChange={event => handleSelectAllClick(event)}
+              />
             </div>
           )}
           <div className="cart__contents">
             {cartProducts.length > 0 ? (
               <div className="cart__items-wrapper">
                 <div className="cart__items">
-                  {cartProducts.map((el, idx) => (
-                    <CartItem cartItem={el} key={el.product._id} />
-                  ))}
+                  {cartProducts.map((el, idx) => {
+                    const isItemSelected = isSelected(el._id);
+                    return (
+                      <CartItem
+                        cartItem={el}
+                        key={el._id}
+                        handleIsSelectedChange={event =>
+                          handleSelectClick(event, el._id)
+                        }
+                        isSelected={isItemSelected}
+                      />
+                    );
+                  })}
                 </div>
               </div>
             ) : (
@@ -84,16 +106,15 @@ const CartContents = () => {
                 className="cart__subtotal subtotal"
                 subTotal={cartProducts.reduce(
                   (prev, curr) =>
-                    prev + curr.product.price.priceCurrent * curr.quantity,
+                    prev + curr.price.priceCurrent * curr.quantity,
                   0
                 )}
                 productsInCartNumber={cartProducts.length}
                 discount={cartProducts.reduce(
                   (prev, curr) =>
                     prev +
-                    (curr.product.price.priceOld
-                      ? curr.product.price.priceOld -
-                        curr.product.price.priceCurrent
+                    (curr.price.priceOld
+                      ? curr.price.priceOld - curr.price.priceCurrent
                       : 0) *
                       curr.quantity,
                   0

@@ -1,35 +1,39 @@
 import { useTheme } from 'styled-components';
-import { Product } from '../../../types';
+import { CartProduct } from '../../../types';
 import IconButton from '../../UI/Buttons/IconButton/IconButton';
 import Checkbox from '../../UI/Checkbox/Checkbox';
 import { StyledCartItem } from './CartItem.styles';
 import CartItemContent from './CartItemContent/CartItemContent';
 
+import { ChangeEventHandler } from 'react';
 import { deleteCartProduct } from '../../../cache/cartProducts/cartProductsVar';
 import TrashIcon from '../../assets/images/TrashIcon.svg';
 
 const CartItem = ({
   cartItem,
+	isSelected,
+	handleIsSelectedChange
 }: {
-  cartItem: { product: Product; quantity: number };
+  cartItem: CartProduct;
+	isSelected: boolean,
+	handleIsSelectedChange: ChangeEventHandler<HTMLInputElement>
 }) => {
 	const theme = useTheme();
   return (
     <StyledCartItem>
       <div className="cartItem__checkbox-wrapper">
-        <Checkbox />
+        <Checkbox checked={isSelected} handleChange={handleIsSelectedChange}/>
       </div>
       <div className="cartItem__content-wrapper">
         <CartItemContent
-          productItem={cartItem.product}
-          cartProductQuantity={cartItem.quantity}
+          cartItem={cartItem}
         />
       </div>
       <div className="deleteButton__wrapper">
         <IconButton
           imageSrc={TrashIcon}
           title="Trash"
-          onClick={() => deleteCartProduct(cartItem.product._id)}
+          onClick={() => deleteCartProduct(cartItem._id)}
 					borderColor={theme.palette.colors.red100}
         />
       </div>

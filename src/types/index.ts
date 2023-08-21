@@ -17,8 +17,7 @@ export interface Product {
 	size: Size
 }
 
-export interface CartProduct  {
-	product: Product,
+export interface CartProduct extends Product {
 	quantity: number
 }
 

@@ -6,7 +6,7 @@ export const cartProductsVar = makeVar<CartProduct[]>([]);
 export const addToCartProducts = (product: Product) => {
   const cartProducts = [...cartProductsVar()];
   const existingProductIdx = cartProducts.findIndex(
-    el => el.product._id === product._id
+    el => el._id === product._id
   );
 
   if (existingProductIdx !== -1) {
@@ -14,7 +14,7 @@ export const addToCartProducts = (product: Product) => {
       existingProductIdx
     ].quantity;
   } else {
-    cartProducts.push({ product, quantity: 1 });
+    cartProducts.push({ ...product, quantity: 1 });
   }
   cartProductsVar(cartProducts);
 };
@@ -22,7 +22,7 @@ export const addToCartProducts = (product: Product) => {
 export const deleteCartProduct = (productId: string) => {
   cartProductsVar(
     cartProductsVar().filter(
-      cartProductsItem => cartProductsItem.product._id !== productId
+      cartProductsItem => cartProductsItem._id !== productId
     )
   );
 };
@@ -35,7 +35,7 @@ export const changeCartProductQuantity = (
 	const cartArr = cartProductsVar();
 	cartProductsVar(
 		cartArr.map(cartProduct => {
-			if (cartProduct.product._id === _id) {
+			if (cartProduct._id === _id) {
 				let newQuantity;
 				if (typeof modifier !== 'number') {
 					if (modifier === 'inc') {

@@ -6,12 +6,12 @@ const Checkbox = ({
   checked,
   handleChange,
 	label,
-	className
+	className, 
 }: {
   checked?: boolean;
   handleChange?: React.ChangeEventHandler<HTMLInputElement>;
 	label?: string,
-	className?: string
+	className?: string,
 }) => {
   return (
     <StyledCheckbox className={className}>
