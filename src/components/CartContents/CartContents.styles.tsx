@@ -9,6 +9,23 @@ export const StyledCartContents = styled.div`
       margin-left: 16px;
     }
     margin-bottom: 30px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		min-height: 48px;
+		@media screen and (max-width: ${props => props.theme.breakpoints.sm}px) {
+			flex-direction: column-reverse;
+			align-items: flex-start;
+			min-height: 80px;
+			&__checkbox {
+				margin-top: 8px;
+			}
+
+			&__button {
+				align-self: flex-end;
+			}
+
+		}
   }
   .cart__contents {
     display: grid;
@@ -44,4 +61,7 @@ export const StyledCartContents = styled.div`
 		}
 
   }
+	.cart__subtotal--wrapper {
+		margin-top: 78px;
+	}
 `;

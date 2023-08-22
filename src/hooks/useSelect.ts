@@ -12,18 +12,19 @@ const useSelect = <T extends WithId>(
   itemsArr: T[]
 ): [
   isSelected: (_id: string) => boolean,
+	selected: readonly string[],
 	isAllSelected: boolean,
-  handleSelectClick: (
+  onSelect: (
     event: React.ChangeEvent<HTMLInputElement>,
     name: string
   ) => void,
-  handleSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void,
+  onSelectAll: (event: React.ChangeEvent<HTMLInputElement>) => void,
+	onDeleteSelected: () => void
+	
 ] => {
   const [selected, setSelected] = useState<readonly string[]>([]);
 
-	console.log('selected: ', selected);
-
-  const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onSelectAll = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
       const newSelected = itemsArr.map(n => n._id);
       setSelected(newSelected);
@@ -32,7 +33,7 @@ const useSelect = <T extends WithId>(
     setSelected([]);
   };
 
-  const handleSelectClick = (
+  const onSelect = (
     event: React.ChangeEvent<HTMLInputElement>,
     _id: string
   ) => {
@@ -57,11 +58,12 @@ const useSelect = <T extends WithId>(
 
   const isSelected = (_id: string) => selected.indexOf(_id) !== -1;
 
+
 	const isAllSelected = itemsArr.length > 0 && selected.length === itemsArr.length;
 
-	// TODO: implement onItemDelete method for seledted state
+	const onDeleteSelected = () => setSelected([]);
 
-  return [isSelected, isAllSelected,  handleSelectClick, handleSelectAllClick];
+  return [isSelected, selected,  isAllSelected,  onSelect, onSelectAll, onDeleteSelected ];
 };
 
 export default useSelect;

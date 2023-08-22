@@ -102,7 +102,7 @@ const LoginForm = ({
         >
           Войти
         </ButtonFilled>
-        <p className="login-form__text">Забыли пароль?</p>
+        <p className="login-form__text">Нет учетной записи?</p>
         <ButtonFilledLight
           className="login-form__button--light"
           onClick={handleFormChange}

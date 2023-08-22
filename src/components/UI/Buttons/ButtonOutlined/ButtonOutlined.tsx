@@ -8,7 +8,7 @@ const ButtonOutlined = ({
 }: {
   children?: ReactNode;
   className?: string;
-	onClick?: () => void
+	onClick?: React.MouseEventHandler<HTMLButtonElement>
 }) => {
   return (
     <StyledButtonOutlined className={className} onClick={onClick}>

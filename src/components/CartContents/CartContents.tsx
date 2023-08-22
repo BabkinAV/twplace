@@ -14,6 +14,7 @@ import { useState } from 'react';
 import ButtonFilled from '../UI/Buttons/ButtonFilled/ButtonFilled';
 import { useRouter } from 'next/router';
 import useSelect from '../../hooks/useSelect';
+import ButtonOutlined from '../UI/Buttons/ButtonOutlined/ButtonOutlined';
 
 const CartContents = () => {
   const router = useRouter();
@@ -36,7 +37,6 @@ const CartContents = () => {
     onCompleted: data => {
       if (data.placeOrder) {
         setOrderNumber(data.placeOrder.orderId);
-        cartProductsVar([]);
       }
     },
     onError: error => {
@@ -58,29 +58,47 @@ const CartContents = () => {
     });
   };
 
-  // TODO: Make a custom hook on selected elements handle
+  const [
+    isSelected,
+    selected,
+    isAllSelected,
+    onSelect,
+    onSelectAll,
+    onDeleteSelected,
+  ] = useSelect(cartProducts);
 
-  const [isSelected, isAllSelected, handleSelectClick, handleSelectAllClick] =
-    useSelect(cartProducts);
+  const handleDeleteSelectedClick = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+    cartProductsVar(cartProducts.filter(el => selected.indexOf(el._id) === -1));
 
+    onDeleteSelected();
+  };
   return (
     <StyledCartContents className="cart">
       {!orderNumber ? (
         <>
           <h2 className="cart__header">Корзина</h2>
-          {cartProducts.length > 0 && (
-            <div className="cart__select-all select-all">
-              <Checkbox
-                label="Выбрать все"
-                className="select-all__checkbox"
-								checked={isAllSelected}
-                handleChange={event => handleSelectAllClick(event)}
-              />
-            </div>
-          )}
+
           <div className="cart__contents">
             {cartProducts.length > 0 ? (
               <div className="cart__items-wrapper">
+                {cartProducts.length > 0 && (
+                  <div className="cart__select-all select-all">
+                    <Checkbox
+                      label="Выбрать все"
+                      className="select-all__checkbox"
+                      checked={isAllSelected}
+                      handleChange={event => onSelectAll(event)}
+                    />
+                    {selected.length > 0 && (
+                      <ButtonOutlined onClick={handleDeleteSelectedClick} className='select-all__button'>
+                        Удалить выбранное
+                      </ButtonOutlined>
+                    )}
+                  </div>
+                )}
                 <div className="cart__items">
                   {cartProducts.map((el, idx) => {
                     const isItemSelected = isSelected(el._id);
@@ -89,7 +107,7 @@ const CartContents = () => {
                         cartItem={el}
                         key={el._id}
                         handleIsSelectedChange={event =>
-                          handleSelectClick(event, el._id)
+                          onSelect(event, el._id)
                         }
                         isSelected={isItemSelected}
                       />
