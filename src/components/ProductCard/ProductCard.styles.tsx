@@ -23,9 +23,14 @@ export const StyledProductCard = styled.div`
 		z-index: 50;
 		transform: scale(0.7);
 		cursor: pointer;
-		display: none;
-  }
+		@media (pointer:fine) {
+			display: none;
+	}
 
+  }
+	
+
+	
 	&:hover .add-favorite__button {
 		display: block;
 		
