@@ -9,12 +9,7 @@ const ProductGallery = ({ productsArr }: { productsArr: Product[] }) => {
     <StyledProductGallery className="products__gallery">
       {productsArr.map(product => (
         <ProductCard
-          productImgLink={product.imageLink}
-          productTitle={product.title}
-          priceCurrent={product.price.priceCurrent}
-          priceOld={product.price.priceOld}
-          discount={product.price.discount}
-          productId={product._id}
+          product={product}
           key={product._id}
           onAddToCartClick={() => addToCartProducts(product)}
         />

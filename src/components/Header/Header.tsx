@@ -15,9 +15,11 @@ import ExitIcon from '../assets/images/ExitIcon.svg';
 import HeartIcon from '../assets/images/HeartIcon.svg';
 import OrderIcon from '../assets/images/OrderIcon.svg';
 import UserIcon from '../assets/images/UserIcon.svg';
+import { favoriteProductsVar } from '../../cache/favoriteProducts/favoriteProductsVar';
 
 const Header = () => {
   const cartProducts = useReactiveVar(cartProductsVar);
+	const favoriteProducts = useReactiveVar(favoriteProductsVar)
   const isUserAuthenticated = useReactiveVar(isUserAuthenticatedVar);
   const [cookies, setCookie, removeCookie] = useCookies(['token']);
   const logoutHandler = () => {
@@ -66,12 +68,12 @@ const Header = () => {
           </button>
         )}
 
-        <Link href="#" className='header__link'>
+        <Link href="/favorite" className='header__link'>
           <HeaderLink
             imageSrc={HeartIcon}
             altText="Heart Icon"
             subTitle="Избранное"
-            badgeCounter={0}
+            badgeCounter={favoriteProducts.length}
             badgeCoord={[-3, 15]}
           />
         </Link>

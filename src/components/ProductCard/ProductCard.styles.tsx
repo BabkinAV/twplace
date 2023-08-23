@@ -4,7 +4,6 @@ export const StyledProductCard = styled.div`
   display: flex;
   flex-direction: column;
 
-  /* width: 100%; */
   padding: 10px;
 
   transition: transform 0.2s;
@@ -13,6 +12,24 @@ export const StyledProductCard = styled.div`
   position: relative;
   z-index: 5;
   background-color: #fff;
+
+  .add-favorite__button {
+    background: 0;
+    border: 0;
+    padding: 0;
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		z-index: 50;
+		transform: scale(0.7);
+		cursor: pointer;
+		display: none;
+  }
+
+	&:hover .add-favorite__button {
+		display: block;
+		
+	}
 
   @media (hover: hover) and (pointer: fine) {
     .button-wrapper {
@@ -91,7 +108,7 @@ export const StyledProductCard = styled.div`
   }
   & .button-wrapper {
     margin-top: auto;
-		min-height: 32px;
+    min-height: 32px;
     .product-card__button {
       width: 100%;
       height: 100%;
