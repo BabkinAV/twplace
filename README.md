@@ -25,13 +25,10 @@ Ecommerce website created for selling various outfit and apparel items.
 
 - Custom carousel component
 
-## TODO (will be implemented in the future):
+- products search
 
-- Items filtering and/or searching functionality
+- add products to favorites
 
-- Add items to favourites 
-
-- Responsive megamenu
 
 ## Tech used / dependencies
 
