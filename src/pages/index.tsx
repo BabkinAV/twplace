@@ -30,7 +30,7 @@ export default function Home() {
         loading={newProducts.loading}
         error={newProducts.error}
         featuredProducts={newProducts.data?.products}
-				title='Успей купить'
+				title='Новинки'
       />
       <SeoText />
     </>
