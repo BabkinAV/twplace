@@ -6,6 +6,7 @@ import { StyledProductsSection } from './ProductsSection.styles';
 import ButtonOutlined from '../UI/Buttons/ButtonOutlined/ButtonOutlined';
 
 import ProductGallery from '../layout/ProductGallery/ProductGallery';
+import Spinner from '../UI/Spinner/Spinner';
 
 const ProductsSection = ({
   loading,
@@ -22,7 +23,7 @@ const ProductsSection = ({
     <StyledProductsSection>
       <h3 className="products__title">{title}</h3>
       <div className="products__gallery">
-        {loading && <p>Загрузка...</p>}
+        {loading && <Spinner fill='black'/>}
         {!loading && !error && featuredProducts && (
           <ProductGallery productsArr={featuredProducts} />
         )}

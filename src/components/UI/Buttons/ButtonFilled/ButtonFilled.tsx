@@ -20,7 +20,7 @@ const ButtonFilled = ({
       {loading ? (
         <>
           <span>&nbsp;</span>
-          <Spinner />
+          <Spinner fill='black'/>
         </>
       ) : (
         children
