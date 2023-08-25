@@ -15,7 +15,7 @@ const CartItemContent = ({
     <StyledCartItemContent>
       <div className="cartItem__image-wrapper">
         <Image
-          src={cartItem.imageLink}
+          src={process.env.NEXT_PUBLIC_STATIC_ADDRESS + cartItem.imageLink}
           alt={`${cartItem.title} image`}
           width={100}
           height={100}

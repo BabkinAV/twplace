@@ -1,24 +1,26 @@
 import { ApolloError } from '@apollo/client';
 
 import { Product } from '../../types';
-import { StyledFeaturedProducts } from './FeaturedProducts.styles';
+import { StyledProductsSection } from './ProductsSection.styles';
 
 import ButtonOutlined from '../UI/Buttons/ButtonOutlined/ButtonOutlined';
 
 import ProductGallery from '../layout/ProductGallery/ProductGallery';
 
-const FeaturedProducts = ({
+const ProductsSection = ({
   loading,
   error,
   featuredProducts,
+	title
 }: {
   loading: boolean;
   error?: ApolloError;
   featuredProducts?: Product[];
+	title: string;
 }) => {
   return (
-    <StyledFeaturedProducts>
-      <h3 className="products__title">Успей купить</h3>
+    <StyledProductsSection>
+      <h3 className="products__title">{title}</h3>
       <div className="products__gallery">
         {loading && <p>Загрузка...</p>}
         {!loading && !error && featuredProducts && (
@@ -30,8 +32,8 @@ const FeaturedProducts = ({
           Все товары
         </ButtonOutlined>
       </div>
-    </StyledFeaturedProducts>
+    </StyledProductsSection>
   );
 };
 
-export default FeaturedProducts;
+export default ProductsSection;

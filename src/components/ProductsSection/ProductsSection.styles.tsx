@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const  StyledFeaturedProducts = styled.section`
+export const  StyledProductsSection = styled.section`
 	margin-top: 30px;
 
 

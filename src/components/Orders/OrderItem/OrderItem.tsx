@@ -26,7 +26,7 @@ const OrderItem = ({
 
             <div className="product__image">
 							<Image
-								src={el.product.imageLink}
+								src={process.env.NEXT_PUBLIC_STATIC_ADDRESS + el.product.imageLink}
 								alt={el.product.title}
 								width={80}
 								height={80}
@@ -36,10 +36,10 @@ const OrderItem = ({
             <div className="product__title">{el.product.title}</div>
             <div className="product__size">{el.product.size}</div>
             <div className="product__color">{el.product.color}</div>
-            <div className="product__quantity">{el.quantity}</div>
             <div className="product__price product__price--item">
               {el.product.price.priceCurrent}₽
             </div>
+            <div className="product__quantity">{el.quantity} шт.</div>
             <div className="product__price product__price--item">
               {el.totalProductPrice}₽
             </div>

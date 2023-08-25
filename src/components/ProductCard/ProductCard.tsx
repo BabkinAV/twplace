@@ -50,7 +50,7 @@ const ProductCard = ({
           </div>
         )}
         <Image
-          src={product.imageLink}
+          src={process.env.NEXT_PUBLIC_STATIC_ADDRESS + product.imageLink}
           width={160}
           height={160}
           alt={product.title}

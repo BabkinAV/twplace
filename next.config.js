@@ -5,6 +5,9 @@ const nextConfig = {
 	compiler: {
     styledComponents: true,
   },
+	images: {
+    domains: [process.env.IMAGE_DOMAIN],
+  },
 }
 
 module.exports = nextConfig
