@@ -19,29 +19,29 @@ const roboto = Roboto({
   subsets: ['latin', 'cyrillic'],
 });
 
-
-
 const client = new ApolloClient({
   uri: process.env.NEXT_PUBLIC_BACKEND_ADDRESS,
   cache: new InMemoryCache(schema),
 });
 
 export default function App({ Component, pageProps }: AppProps) {
-
-	const [cookies] = useCookies(['token']);
-	useEffect(() => {
-		if (cookies.token) {
-			const decodedToken = jwtDecode<{userId: string, email: string, iat: number, exp: number}>(cookies.token);
-			isUserAuthenticatedVar(true);
-			if (decodedToken.exp *1000 > Date.now()) {
-				isUserAuthenticatedVar(true);
-			} else {
-				isUserAuthenticatedVar(false);
-			}
-		}
-		
-	
-	}, [cookies.token])
+  const [cookies] = useCookies(['token']);
+  useEffect(() => {
+    if (cookies.token) {
+      const decodedToken = jwtDecode<{
+        userId: string;
+        email: string;
+        iat: number;
+        exp: number;
+      }>(cookies.token);
+      isUserAuthenticatedVar(true);
+      if (decodedToken.exp * 1000 > Date.now()) {
+        isUserAuthenticatedVar(true);
+      } else {
+        isUserAuthenticatedVar(false);
+      }
+    }
+  }, [cookies.token]);
   // const [client, setClient] = useState<ApolloClient<NormalizedCacheObject>>();
   // const [persistor, setPersistor] =
   //   useState<CachePersistor<NormalizedCacheObject>>();
@@ -93,6 +93,28 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="description" content="TwPlace e-shop" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content="Интернет-магазин по продаже одежды и аксессуаров"
+        />
+        <meta
+          name="keywords"
+          content="магазин, одежда, аксессуары, футболка, чехол"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="Russian" />
+        <meta property="og:title" content="twplace" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://twplace.vercel.app/" />
+        <meta
+          property="og:image"
+          content="https://drive.google.com/uc?id=1lbwu9zfgkg_esnxh4tnlucaztuxe0s_k"
+        />
+        <meta
+          property="og:description"
+          content="Интернет-магазин по продаже одежды и аксессуаров."
+        />
       </Head>
       <CookiesProvider>
         <ApolloProvider client={client}>
