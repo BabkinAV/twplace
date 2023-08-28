@@ -1,9 +1,5 @@
 # TWplace
 
-| NOTE: |
-| :--- |
-| Work in progress |
-
 ## Overview
 Ecommerce website created for selling various outfit and apparel items.
 

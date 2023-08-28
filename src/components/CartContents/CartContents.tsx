@@ -37,6 +37,7 @@ const CartContents = () => {
     onCompleted: data => {
       if (data.placeOrder) {
         setOrderNumber(data.placeOrder.orderId);
+				cartProductsVar([]);
       }
     },
     onError: error => {
