@@ -90,13 +90,13 @@ export default function App({ Component, pageProps }: AppProps) {
       `}</style>
       <Head>
         <title>TWplace</title>
-        <meta name="description" content="TwPlace e-shop" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="title" content="TWplace" />
         <meta
           name="description"
           content="Интернет магазин по продаже одежды и аксессуаров"
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
         <meta
           name="keywords"
           content="магазин, одежда, аксессуары, футболка, чехол"
@@ -104,13 +104,18 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="robots" content="index, follow" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="Russian" />
-        <meta property="og:title" content="twplace" />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://twplace.vercel.app/" />
+        <meta property="og:title" content="TWplace" />
         <meta
           property="og:description"
           content="Интернет-магазин по продаже одежды и аксессуаров."
         />
-				<meta property="og:site_name" content="TWplace" />
+        <meta property="og:site_name" content="TWplace" />
+        <meta
+          property="og:image"
+          content="https://drive.google.com/uc?id=11dWQoxFNmjOCjJSEfoqAFQiGMLHBa7qe"
+        />
       </Head>
       <CookiesProvider>
         <ApolloProvider client={client}>
