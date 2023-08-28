@@ -15,7 +15,6 @@ export const StyledHero = styled.section`
     flex: 1 0 auto;
 
 		border-radius: 5px;
-		overflow: hidden;
   }
 
   & .hero__slider-wrapper {

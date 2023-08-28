@@ -13,6 +13,8 @@ export const StyledCategoriesNavigation = styled.nav`
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
+		border-top-right-radius: 5px;
+		border-top-left-radius: 5px;
 
     & .nav__link {
       position: relative;
