@@ -5,34 +5,40 @@ import Hero from '../components/Hero/Hero';
 import SeoText from '../components/SeoText/SeoText';
 import { GET_PRODUCTS } from '../queries/productQueries';
 import { Product } from '../types';
+import {client} from './_app';
+import { InferGetStaticPropsType } from 'next';
 
-export default function Home() {
-  const featuredProducts = useQuery<{ products: Product[] }>(
-    GET_PRODUCTS, {
-			variables: {
-				isFeatured: true
-			}
-		}
-  );
-  const newProducts = useQuery<{ products: Product[] }>(
-    GET_PRODUCTS, 
-  );
+export default function Home({featuredProducts, newProducts}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <Hero />
       <ProductsSection
-        loading={featuredProducts.loading}
-        error={featuredProducts.error}
-        featuredProducts={featuredProducts.data?.products}
+				featuredProducts={featuredProducts}
 				title='Успей купить'
       />
       <ProductsSection
-        loading={newProducts.loading}
-        error={newProducts.error}
-        featuredProducts={newProducts.data?.products}
+        featuredProducts={newProducts}
 				title='Новинки'
       />
       <SeoText />
     </>
   );
+}
+
+export async function getStaticProps() {
+	const queriedFeaturedProducts = await client.query<{ products: Product[] }>(
+    {query: GET_PRODUCTS, variables: {
+			isFeatured: true
+		}}
+  );
+	const queriedNewProducts = await client.query<{ products: Product[] }>(
+    {query: GET_PRODUCTS}
+  );
+
+	return {
+		props: {
+			featuredProducts: queriedFeaturedProducts.data.products,
+			newProducts: queriedNewProducts.data.products
+		},
+ };
 }

@@ -19,7 +19,7 @@ const roboto = Roboto({
   subsets: ['latin', 'cyrillic'],
 });
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   uri: process.env.NEXT_PUBLIC_BACKEND_ADDRESS,
   cache: new InMemoryCache(schema),
 });
