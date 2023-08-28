@@ -1,6 +1,5 @@
 import { useReactiveVar } from '@apollo/client';
 
-
 import ButtonOutlined from '../UI/Buttons/ButtonOutlined/ButtonOutlined';
 
 import { useRouter } from 'next/router';
@@ -10,15 +9,17 @@ import { StyledFavoriteProducts } from './FavoriteProducts.styles';
 
 const FavoriteProducts = () => {
   const router = useRouter();
-	const favoriteProducts = useReactiveVar(favoriteProductsVar)
+  const favoriteProducts = useReactiveVar(favoriteProductsVar);
   return (
     <StyledFavoriteProducts>
-      <h3 className="products__title">
-        Ваши избранные продукты:
-      </h3>
-      <div className="products__gallery">
+      <h3 className="products__title">Ваши избранные продукты:</h3>
+      {favoriteProducts.length > 0 ? (
+        <div className="products__gallery">
           <ProductGallery productsArr={favoriteProducts} />
-      </div>
+        </div>
+      ) : (
+        <p>Не найдено</p>
+      )}
       <div className="products__go-back go-back">
         <ButtonOutlined
           className="go-back__btn"

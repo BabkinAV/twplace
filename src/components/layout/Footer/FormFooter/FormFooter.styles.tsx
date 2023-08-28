@@ -24,6 +24,7 @@ export const StyledFormFooter = styled.form`
       padding-bottom: 8px;
       padding-right: 26px;
       padding-left: 24px;
+			border-radius: 5px;
 
       &:active {
         outline: none;

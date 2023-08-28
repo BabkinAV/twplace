@@ -4,15 +4,18 @@ export const StyledSearchForm = styled.form`
   display: flex;
   flex-direction: row;
   flex: 1 1 auto;
-  /* align-self: center; */
+  
 
-  /* This bit draws the box around it */
-  border: solid;
-  border-image: linear-gradient(to right, #f64d4d, #4d5ef6) 1 / 2px;
+	border: double 2px transparent;
+  border-radius: 5px;
+  background-image: linear-gradient(white, white), 
+	linear-gradient(to right, #f64d4d, #4d5ef6);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
 
   /* I've used padding so you can see the edges of the elements. */
   /* padding: 1px; */
-  height: 46px;
+  height: 50px;
 	padding-top: 2px;
 	padding-bottom: 2px;
 	padding-right: 3px;

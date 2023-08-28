@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const StyledButtonFilled = styled.button`
   /* min-height: 32px; */
   border: 0;
+	border-radius: 5px;
   width: min-content;
 	height: min-content;
   background: ${props => props.theme.palette.gradients.backgroundGradient};

@@ -6,6 +6,7 @@ export const StyledButtonOutlined = styled.button`
   padding: 14px 55px;
 
   border: solid 2px transparent;
+	border-radius: 5px;
 
   background-image: ${props => props.theme.palette.gradients.backgroundGradient},
     ${props => props.theme.palette.gradients.backgroundGradient};

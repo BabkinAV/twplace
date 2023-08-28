@@ -5,6 +5,7 @@ import styled from 'styled-components';
 export const StyledHamburger = styled.button`
 	background-color: transparent;
   border-width: 0;
+	border-radius: 5px;
   font-family: inherit;
   font-size: inherit;
   font-style: inherit;

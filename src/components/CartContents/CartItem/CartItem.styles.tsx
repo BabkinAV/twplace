@@ -4,7 +4,7 @@ export const StyledCartItem = styled.div`
   display: flex;
   justify-content: flex-start;
 
-  /* border: 1px solid blue; */
+	border-radius: 5px;
 
   margin-bottom: 26px;
 

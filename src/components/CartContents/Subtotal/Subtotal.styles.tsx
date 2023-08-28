@@ -4,6 +4,8 @@ export const StyledSubtotal = styled.div`
   padding: 10px 18px 15px;
 	box-shadow:  ${props => props.theme.palette.shadows.borderShadow};
 
+	border-radius: 5px;
+
   .subtotal__item,
   .subtotal__heading {
     display: flex;

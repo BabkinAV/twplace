@@ -13,11 +13,16 @@ export const StyledHero = styled.section`
     background-color: #fff;
     max-width: 296px;
     flex: 1 0 auto;
+
+		border-radius: 5px;
+		overflow: hidden;
   }
 
   & .hero__slider-wrapper {
     align-self: stretch;
     flex: 1 1 auto;
+		border-radius: 5px;
+		overflow: hidden;
   }
 
 	@media screen and (max-width: ${props => props.theme.breakpoints.lg}px) {

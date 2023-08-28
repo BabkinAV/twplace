@@ -12,6 +12,7 @@ export const StyledCounter = styled.div`
   background-origin: border-box;
   background-clip: content-box, border-box;
   box-shadow: 1px 1000px 1px #fff inset;
+	border-radius: 5px;
 
   .counter__input {
     width: 43px;

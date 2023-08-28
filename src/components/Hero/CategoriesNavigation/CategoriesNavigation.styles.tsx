@@ -5,6 +5,7 @@ import ThreeDotsIcon from '../../assets/images/ThreeDotsIcon.svg';
 export const StyledCategoriesNavigation = styled.nav`
   flex: 1 0 auto;
 
+
   .nav__header {
     padding: 10px 80px 10px 60px;
     background: ${props => props.theme.palette.gradients.backgroundGradient};

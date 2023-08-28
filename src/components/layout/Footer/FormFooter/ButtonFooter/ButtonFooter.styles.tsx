@@ -5,6 +5,7 @@ export const StyledButtonFooter = styled.button`
 	padding: 8px 22px;
 	border: unset;
 	line-height: 16px;
+	border-radius: 5px;
 	cursor: pointer;
 	vertical-align: middle;
   span {

@@ -93,7 +93,10 @@ const CartContents = () => {
                       handleChange={event => onSelectAll(event)}
                     />
                     {selected.length > 0 && (
-                      <ButtonOutlined onClick={handleDeleteSelectedClick} className='select-all__button'>
+                      <ButtonOutlined
+                        onClick={handleDeleteSelectedClick}
+                        className="select-all__button"
+                      >
                         Удалить выбранное
                       </ButtonOutlined>
                     )}
@@ -120,28 +123,39 @@ const CartContents = () => {
             )}
 
             <div className="cart__subtotal--wrapper">
-              <Subtotal
-                className="cart__subtotal subtotal"
-                subTotal={cartProducts.reduce(
-                  (prev, curr) =>
-                    prev + curr.price.priceCurrent * curr.quantity,
-                  0
-                )}
-                productsInCartNumber={cartProducts.length}
-                discount={cartProducts.reduce(
-                  (prev, curr) =>
-                    prev +
-                    (curr.price.priceOld
-                      ? curr.price.priceOld - curr.price.priceCurrent
-                      : 0) *
-                      curr.quantity,
-                  0
-                )}
-                // deliveryAddr='ул. Ленина'
-                handlePlaceOrderButtonClick={handlePlaceOrder}
-                placeOrderMutationInProgress={loading}
-                placeOrderError={error}
-              />
+              {cartProducts.length > 0 ? (
+                <Subtotal
+                  className="cart__subtotal subtotal"
+                  subTotal={cartProducts.reduce(
+                    (prev, curr) =>
+                      prev + curr.price.priceCurrent * curr.quantity,
+                    0
+                  )}
+                  productsInCartNumber={cartProducts.length}
+                  discount={cartProducts.reduce(
+                    (prev, curr) =>
+                      prev +
+                      (curr.price.priceOld
+                        ? curr.price.priceOld - curr.price.priceCurrent
+                        : 0) *
+                        curr.quantity,
+                    0
+                  )}
+                  // deliveryAddr='ул. Ленина'
+                  handlePlaceOrderButtonClick={handlePlaceOrder}
+                  placeOrderMutationInProgress={loading}
+                  placeOrderError={error}
+                />
+              ) : (
+                <div className="products__go-back go-back">
+                  <ButtonOutlined
+                    className="go-back__btn"
+                    onClick={() => router.push('/')}
+                  >
+                    На главную
+                  </ButtonOutlined>
+                </div>
+              )}
             </div>
           </div>
         </>

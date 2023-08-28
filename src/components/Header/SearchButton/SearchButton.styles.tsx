@@ -17,11 +17,13 @@ export const StyledSearchButton = styled.button`
   -o-transition: all 1s ease-out;
   transition: all 1s ease-out;
 
-  background: ${props => props.theme.palette.gradients.gradientPink};;
+  background: ${props => props.theme.palette.gradients.gradientPink};
+  /* background: red; */
   -webkit-transition: background 0.5s ease-out;
   -moz-transition: background 0.5s ease-out;
   -o-transition: background 0.5s ease-out;
   transition: background 0.5s ease-out;
+	border-radius: 5px;
 
   &:hover {
     background: #dba0e2;

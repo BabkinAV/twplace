@@ -63,5 +63,9 @@ export const StyledCartContents = styled.div`
   }
 	.cart__subtotal--wrapper {
 		margin-top: 78px;
+		.go-back {
+			display: flex;
+			justify-content: flex-end;
+		}
 	}
 `;

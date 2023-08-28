@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledOrderItem = styled.div`
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08);
+	border-radius: 5px;
   padding: 20px 90px;
 	@media screen and (max-width: ${props => props.theme.breakpoints.xl}px) {
 			padding-left: 20px;
