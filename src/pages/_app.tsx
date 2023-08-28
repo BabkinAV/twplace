@@ -95,7 +95,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="Интернет-магазин по продаже одежды и аксессуаров"
+          content="Интернет магазин по продаже одежды и аксессуаров"
         />
         <meta
           name="keywords"
@@ -106,15 +106,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="language" content="Russian" />
         <meta property="og:title" content="twplace" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://twplace.vercel.app/" />
-        <meta
-          property="og:image"
-          content="https://drive.google.com/uc?id=1lbwu9zfgkg_esnxh4tnlucaztuxe0s_k"
-        />
         <meta
           property="og:description"
           content="Интернет-магазин по продаже одежды и аксессуаров."
         />
+				<meta property="og:site_name" content="TWplace" />
       </Head>
       <CookiesProvider>
         <ApolloProvider client={client}>
