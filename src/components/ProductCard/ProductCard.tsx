@@ -4,16 +4,18 @@ import Image from 'next/image';
 
 import { StyledProductCard } from './ProductCard.styles';
 
-import LinePrice from '../assets/images/LinePrice.svg';
-import ButtonFilled from '../UI/Buttons/ButtonFilled/ButtonFilled';
-import HeartIconOutlined from '../assets/images/HeartIconOutlined.svg';
-import HeartIconFilled from '../assets/images/HeartIcon.svg';
+import { toast } from 'react-toastify';
 import {
-  addToFavoriteProducts,
-  favoriteProductsVar,
-  deleteFromFavoriteProducts,
+	addToFavoriteProducts,
+	deleteFromFavoriteProducts,
+	favoriteProductsVar,
 } from '../../cache/favoriteProducts/favoriteProductsVar';
 import { Product } from '../../types';
+import ButtonFilled from '../UI/Buttons/ButtonFilled/ButtonFilled';
+import HeartIconFilled from '../assets/images/HeartIcon.svg';
+import HeartIconOutlined from '../assets/images/HeartIconOutlined.svg';
+import LinePrice from '../assets/images/LinePrice.svg';
+import TrashIcon from '../assets/images/TrashIcon.svg';
 
 const ProductCard = ({
   product,
@@ -27,16 +29,36 @@ const ProductCard = ({
   const isFavoriteProduct = favoriteProducts.some(
     favoriteProduct => favoriteProduct._id === product._id
   );
+
+  const handleHeartButtonClick = () => {
+    if (isFavoriteProduct) {
+      deleteFromFavoriteProducts(product._id);
+			toast.success('Товар удален из избранных', {
+        icon: (
+          <Image
+            src={TrashIcon}
+            alt="Trash Icon"
+            style={{ height: 'auto' }}
+          />
+        ),
+      });
+    } else {
+      addToFavoriteProducts(product);
+      toast.success('Товар добавлен в избранное', {
+        icon: (
+          <Image
+            src={HeartIconOutlined}
+            alt="Heart Icon"
+            style={{ height: 'auto' }}
+          />
+        ),
+      });
+    }
+  };
+
   return (
     <StyledProductCard>
-      <button
-        className="add-favorite__button"
-        onClick={
-          isFavoriteProduct
-            ? () => deleteFromFavoriteProducts(product._id)
-            : () => addToFavoriteProducts(product)
-        }
-      >
+      <button className="add-favorite__button" onClick={handleHeartButtonClick}>
         <Image
           src={isFavoriteProduct ? HeartIconFilled : HeartIconOutlined}
           alt="add to favourite"
