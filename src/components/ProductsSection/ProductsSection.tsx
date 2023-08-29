@@ -1,4 +1,3 @@
-import { ApolloError } from '@apollo/client';
 
 import { Product } from '../../types';
 import { StyledProductsSection } from './ProductsSection.styles';
@@ -6,7 +5,6 @@ import { StyledProductsSection } from './ProductsSection.styles';
 import ButtonOutlined from '../UI/Buttons/ButtonOutlined/ButtonOutlined';
 
 import ProductGallery from '../layout/ProductGallery/ProductGallery';
-import Spinner from '../UI/Spinner/Spinner';
 
 const ProductsSection = ({
   featuredProducts,

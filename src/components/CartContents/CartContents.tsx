@@ -1,20 +1,23 @@
 import { useMutation } from '@apollo/client';
 
 import { useReactiveVar } from '@apollo/client';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { useCookies } from 'react-cookie';
+import { toast } from 'react-toastify';
+import { modalIsShownVar } from '../../cache/ModalISShown/modalIsShownVar';
 import { cartProductsVar } from '../../cache/cartProducts/cartProductsVar';
 import { isUserAuthenticatedVar } from '../../cache/userIsAuthenticated/isUserAuthenticatedVar';
-import { modalIsShownVar } from '../../cache/ModalISShown/modalIsShownVar';
+import useSelect from '../../hooks/useSelect';
 import { PLACE_ORDER } from '../../mutations/orderMutations';
+import ButtonFilled from '../UI/Buttons/ButtonFilled/ButtonFilled';
+import ButtonOutlined from '../UI/Buttons/ButtonOutlined/ButtonOutlined';
 import Checkbox from '../UI/Checkbox/Checkbox';
+import TrashIcon from '../assets/images/TrashIcon.svg';
 import { StyledCartContents } from './CartContents.styles';
 import CartItem from './CartItem/CartItem';
 import Subtotal from './Subtotal/Subtotal';
-import { useState } from 'react';
-import ButtonFilled from '../UI/Buttons/ButtonFilled/ButtonFilled';
-import { useRouter } from 'next/router';
-import useSelect from '../../hooks/useSelect';
-import ButtonOutlined from '../UI/Buttons/ButtonOutlined/ButtonOutlined';
 
 const CartContents = () => {
   const router = useRouter();
@@ -37,7 +40,7 @@ const CartContents = () => {
     onCompleted: data => {
       if (data.placeOrder) {
         setOrderNumber(data.placeOrder.orderId);
-				cartProductsVar([]);
+        cartProductsVar([]);
       }
     },
     onError: error => {
@@ -75,6 +78,12 @@ const CartContents = () => {
     cartProductsVar(cartProducts.filter(el => selected.indexOf(el._id) === -1));
 
     onDeleteSelected();
+
+    toast.success('Выбранные товары удалены из корзины', {
+      icon: (
+        <Image src={TrashIcon} alt="Trash Icon" style={{ height: 'auto' }} />
+      ),
+    });
   };
   return (
     <StyledCartContents className="cart">

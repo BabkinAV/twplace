@@ -1,17 +1,18 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
 import jwtDecode from 'jwt-decode';
 import type { AppProps } from 'next/app';
 import { Roboto } from 'next/font/google';
 import Head from 'next/head';
 import { useEffect } from 'react';
 import { CookiesProvider, useCookies } from 'react-cookie';
+import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from 'styled-components';
 import { schema } from '../cache/cache';
 import { isUserAuthenticatedVar } from '../cache/userIsAuthenticated/isUserAuthenticatedVar';
 import Layout from '../components/layout/Layout/Layout';
 import '../styles/reset.css';
 import { defaultTheme } from '../themes/defaultTheme';
+import { ToastContainer } from 'react-toastify';
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700', '900'],
@@ -102,7 +103,7 @@ export default function App({ Component, pageProps }: AppProps) {
           content="магазин, одежда, аксессуары, футболка, чехол"
         />
         <meta name="robots" content="index, follow" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="Russian" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://twplace.vercel.app/" />
@@ -122,6 +123,17 @@ export default function App({ Component, pageProps }: AppProps) {
           <ThemeProvider theme={defaultTheme}>
             <Layout>
               <Component {...pageProps} />
+              <ToastContainer
+                limit={4}
+                position="bottom-right"
+                autoClose={3000}
+                hideProgressBar
+                closeOnClick
+                pauseOnHover
+                draggable
+                draggablePercent={30}
+                theme="light"
+              />
             </Layout>
           </ThemeProvider>
         </ApolloProvider>
