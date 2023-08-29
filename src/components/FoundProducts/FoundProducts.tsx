@@ -7,6 +7,7 @@ import ButtonOutlined from '../UI/Buttons/ButtonOutlined/ButtonOutlined';
 
 import ProductGallery from '../layout/ProductGallery/ProductGallery';
 import { useRouter } from 'next/router';
+import Spinner from '../UI/Spinner/Spinner';
 
 const FoundProducts = ({
   loading,
@@ -26,7 +27,7 @@ const FoundProducts = ({
         Найдено по запросу &quot;{searchStr}&quot; :
       </h3>
       <div className="products__gallery">
-        {loading && <p>Загрузка...</p>}
+        {loading && <Spinner fill='black'/>}
         {!loading && !error && featuredProducts && (
           <ProductGallery productsArr={featuredProducts} />
         )}
