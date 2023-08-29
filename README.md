@@ -25,6 +25,8 @@ Ecommerce website created for selling various outfit and apparel items.
 
 - add products to favorites
 
+- work as a standalone Progressive Web App (PWA)
+
 
 ## Tech used / dependencies
 
