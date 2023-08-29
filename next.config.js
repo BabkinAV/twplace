@@ -1,6 +1,14 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
+
+const withPWA = require("next-pwa")({
+	dest: "public",
+	register: true,
+	skipWaiting: true,
+	disable: process.env.NODE_ENV === "development",
+});
+
+module.exports = withPWA({
+	reactStrictMode: true,
 	// Enables the styled-components SWC transform
 	compiler: {
     styledComponents: true,
@@ -8,6 +16,4 @@ const nextConfig = {
 	images: {
     domains: [process.env.IMAGE_DOMAIN],
   },
-}
-
-module.exports = nextConfig
+});

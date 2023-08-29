@@ -1,6 +1,12 @@
 // pages/_document.tsx file
-import Document, { DocumentContext, Html, Head, Main, NextScript } from "next/document";
-import { ServerStyleSheet } from "styled-components";
+import Document, {
+  DocumentContext,
+  Html,
+  Head,
+  Main,
+  NextScript,
+} from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const sheet = new ServerStyleSheet();
@@ -8,8 +14,7 @@ export default class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />), //gets the styles from all the components inside <App>
+          enhanceApp: App => props => sheet.collectStyles(<App {...props} />), //gets the styles from all the components inside <App>
         });
       const initialProps = await Document.getInitialProps(ctx);
       return {
@@ -27,15 +32,19 @@ export default class MyDocument extends Document {
     }
   }
 
-	render() {
+  render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <link rel="manifest" href="/manifest.json" />
+          <link rel="apple-touch-icon" href="/icon.png"></link>
+          <meta name="theme-color" content="#9013fe" />
+        </Head>
         <body>
           <Main />
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }

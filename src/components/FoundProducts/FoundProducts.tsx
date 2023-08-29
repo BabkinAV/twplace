@@ -24,7 +24,7 @@ const FoundProducts = ({
   return (
     <StyledFoundProducts>
       <h3 className="products__title">
-        Найдено по запросу &quot;{searchStr}&quot; :
+        Найдено товаров по запросу &quot;{searchStr}&quot; :
       </h3>
       <div className="products__gallery">
         {loading && <Spinner fill='black'/>}
