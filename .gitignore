@@ -35,7 +35,7 @@ old.env.local
 *.tsbuildinfo
 next-env.d.ts
 
-package-lock.json
+# package-lock.json
 
 # PWA files
 **/public/sw.js
